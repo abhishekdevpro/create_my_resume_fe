@@ -614,7 +614,7 @@ export default function MobileBuilder() {
   return (
     <>
       <Meta
-        title="Cibli Job  - AI Resume Builder"
+        title="Create My Resume  - AI Resume Builder"
         description="ATSResume is a cutting-edge resume builder that helps job seekers create a professional, ATS-friendly resume in minutes..."
         keywords="ATS-friendly, Resume optimization..."
       />

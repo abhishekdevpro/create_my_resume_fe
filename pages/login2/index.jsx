@@ -154,7 +154,7 @@
 //             <div className="text-center py-2">
 //               {/* <button
 //                 type="button"
-//                 className="text-[#00b38d] hover:text-[#00b38d]"
+//                 className="text-teal-700 hover:text-teal-700"
 //                 onClick={() => setThirdstepOpen(true)}
 //                 disabled={isLoading}
 //               >
@@ -179,7 +179,7 @@
 //               />
 //               <label htmlFor="terms" className="text-gray-700 text-sm">
 //                 I agree to the{" "}
-//                 <Link href="/TermsandConditions" className="text-[#00b38d] underline">
+//                 <Link href="/TermsandConditions" className="text-teal-700 underline">
 //                   Terms & Conditions
 //                 </Link>
 //               </label>
@@ -187,7 +187,7 @@
 //             <Link href={`/login2/login-email`}>
 //             <button
 //               // type="submit"
-//               className="w-full bg-[#00b38d] text-white px-4 py-2 rounded-md hover:bg-[#00b38d] transition-colors duration-300 relative"
+//               className="w-full bg-teal-700 text-white px-4 py-2 rounded-md hover:bg-teal-700 transition-colors duration-300 relative"
 //               disabled={isLoading}
 //             >
 //              Send OTP
@@ -195,7 +195,7 @@
 //             </Link>
 //             {/* <button
 //               type="submit"
-//               className="w-full bg-[#00b38d] text-white px-4 py-2 rounded-md hover:bg-[#00b38d] transition-colors duration-300 relative"
+//               className="w-full bg-teal-700 text-white px-4 py-2 rounded-md hover:bg-teal-700 transition-colors duration-300 relative"
 //               disabled={isLoading}
 //             >
 //               {isLoading ? (
@@ -240,7 +240,7 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import logo from "./logo.png";
+import logo from "../../public/assets/logo.png";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -330,7 +330,7 @@ const Login2 = () => {
       <div className="flex justify-center items-center h-screen w-full">
         <div className="p-8 rounded-xl shadow-lg shadow-slate-700 w-full max-w-lg bg-white">
           <div className="flex justify-center mb-6">
-            <Image src={logo} className="w-40 h-10" alt="Logo" />
+            <Image src={logo} className="w-64 h-20" alt="Logo" />
           </div>
           <div className="text-2xl text-black text-center font-bold mb-4">
             Welcome Back
@@ -379,7 +379,7 @@ const Login2 = () => {
                 I agree to the{" "}
                 <Link
                   href="/TermsandConditions"
-                  className="text-[#00b38d] underline"
+                  className="text-teal-700 underline"
                 >
                   Terms & Conditions
                 </Link>
@@ -388,7 +388,7 @@ const Login2 = () => {
 
             {/* <button
               // type="submit"
-              className="w-full bg-[#00b38d] text-white px-4 py-2 rounded-md hover:bg-[#00b38d] transition-colors duration-300 relative"
+              className="w-full bg-teal-700 text-white px-4 py-2 rounded-md hover:bg-teal-700 transition-colors duration-300 relative"
               // disabled={isLoading}
             >
               Send OTP
@@ -396,7 +396,7 @@ const Login2 = () => {
           </form>
           <button
             // type="submit"
-            className="w-full bg-[#00b38d] text-white px-4 py-2 rounded-md hover:bg-[#00b38d] transition-colors duration-300 relative"
+            className="w-full bg-teal-700 text-white px-4 py-2 rounded-md hover:bg-teal-700 transition-colors duration-300 relative"
             // disabled={isLoading}
           >
             Send OTP

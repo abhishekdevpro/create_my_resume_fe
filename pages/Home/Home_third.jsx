@@ -199,7 +199,7 @@
 //     <>
 //       <div className='bg-gray-100 py-10'>
 //         <div className='flex justify-center'>
-//           <div className='md:w-[78%] rounded-xl py-5 px-4 bg-[#00b38d]' id='home_third' >
+//           <div className='md:w-[78%] rounded-xl py-5 px-4 bg-teal-700' id='home_third' >
 //             <div className='flex flex-col gap-2 justify-evenly md:flex-row rounded-xl px-5 text-black'>
 //               <div>
 //                 <Image src={image} alt="logo" className='h-[400px] w-[400px] rounded-xl shadow-lg shadow-gray-600' />
@@ -227,28 +227,28 @@
 //         </div>
 //         <div className='flex flex-col gap-5  my-8 rounded-xl items-center justify-center px-5 py-10  md:mx-auto md:w-full'>
 //   <div className='flex flex-col items-center justify-center max-w-6xl'>
-//     <h1 className=' text-3xl md:text-5xl font-bold text-[#00b38d] text-center py-6'>Explore Our Wide Range Of Trending Templates That Recruiters Loves To See
+//     <h1 className=' text-3xl md:text-5xl font-bold text-teal-700 text-center py-6'>Explore Our Wide Range Of Trending Templates That Recruiters Loves To See
 //     </h1>
 
 //      <div className="flex flex-col md:flex-row gap-4 ">
 //       <div className="text-lg text-left flex flex-col gap-1">
 //         <div className="flex gap-2">
-//           <AiOutlineCheck className="border-2 px-2 py-2 rounded-full text-white bg-[#00b38d]" />
+//           <AiOutlineCheck className="border-2 px-2 py-2 rounded-full text-white bg-teal-700" />
 //           Chosen & Crafted by Our Experts
 //         </div>
 //         <div className="flex gap-2">
-//           <AiOutlineCheck className="border-2 px-2 py-2 rounded-full text-white bg-[#00b38d]" />
+//           <AiOutlineCheck className="border-2 px-2 py-2 rounded-full text-white bg-teal-700" />
 //           Backed by our Technology
 //         </div>
 //       </div>
 
 //       <div className="text-lg text-left flex flex-col gap-1">
 //         <div className="flex gap-2">
-//           <AiOutlineCheck className="border-2 px-2 py-2 rounded-full text-white bg-[#00b38d]" />
+//           <AiOutlineCheck className="border-2 px-2 py-2 rounded-full text-white bg-teal-700" />
 //           Powered by our Robust AI
 //         </div>
 //         <div className="flex gap-2">
-//           <AiOutlineCheck className="border-2 px-2 py-2 rounded-full text-white bg-[#00b38d]" />
+//           <AiOutlineCheck className="border-2 px-2 py-2 rounded-full text-white bg-teal-700" />
 //           Get it ready in less than 15 minutes
 //         </div>
 //       </div>
@@ -340,7 +340,7 @@
 //         </div> */}
 //       </div>
 //       <div className='py-6 border-2 mb-3 bg-gray-100'>
-//     <div className='flex gap-2 justify-center bg-[#00b38d] text-white py-4 text-lg md:text-4xl align-middle items-center font-bold px-2'>
+//     <div className='flex gap-2 justify-center bg-teal-700 text-white py-4 text-lg md:text-4xl align-middle items-center font-bold px-2'>
 //         Certified By Recruiters & Admired By Job Seekers
 //     </div>
 //     <div className='flex justify-center items-center px-2 py-3'>
@@ -360,7 +360,7 @@
 // </div>
 // <div className='flex flex-col gap-5 px-5 py-10 md:mx-auto md:w-[70%]'>
 //   <div className='flex flex-col items-center'>
-//     <h1 className='text-5xl font-bold text-[#00b38d] rounded-xl text-center py-6'>Looking For Impressive Cover Letters?</h1>
+//     <h1 className='text-5xl font-bold text-teal-700 rounded-xl text-center py-6'>Looking For Impressive Cover Letters?</h1>
 //     <p className=' text-lg'>Explore from our 25+ premium Cover Letters, Which are exclusively crafted by our Experts.
 //     </p>
 //   </div>
@@ -374,7 +374,7 @@
 //       <div key={index} className='relative group'>
 //         <Image src={template.src} alt={template.alt} className=' h-[400px] w-full border-2 rounded-lg shadow-xl shadow-gray-500' />
 //         <h1 className='font-bold  text-xl text-center mt-2' id='homecard'>{template.title}</h1>
-//         <button className='absolute top-0 left-0 right-0 bottom-0 m-auto w-fit h-fit bg-[#00b38d] text-white font-bold py-2 px-4 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300' >Create Your CV </button>
+//         <button className='absolute top-0 left-0 right-0 bottom-0 m-auto w-fit h-fit bg-teal-700 text-white font-bold py-2 px-4 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300' >Create Your CV </button>
 //       </div>
 //     ))}
 //   </div>
@@ -417,10 +417,10 @@ function Home_third() {
   const { t } = useTranslation();
   return (
     <>
-      <div className="bg-gray-100 py-10">
-        <div className="flex justify-center">
+      <div className="bg-gray-100">
+        {/* <div className="flex justify-center">
           <div
-            className="md:w-[78%] rounded-xl py-5 px-4 bg-[#00b38d]"
+            className="md:w-[78%] rounded-xl py-5 px-4 bg-teal-700"
             id="home_third"
           >
             <div className="flex flex-col gap-2 justify-evenly md:flex-row rounded-xl px-5 text-black">
@@ -474,32 +474,32 @@ function Home_third() {
               </div>
             </div>
           </div>
-        </div>
-        <div className="flex flex-col gap-5  my-8 rounded-xl items-center justify-center px-5 py-10  md:mx-auto md:w-full">
+        </div> */}
+        <div className="flex flex-col gap-5 rounded-xl items-center justify-center px-5 py-5  md:mx-auto md:w-full">
           <div className="flex flex-col items-center justify-center max-w-6xl">
-            <h1 className=" text-3xl md:text-5xl font-bold text-[#00b38d] text-center py-6">
+            <h1 className=" text-3xl md:text-5xl font-bold text-teal-700 text-center py-6">
               {t("explore_templates")}
             </h1>
 
             <div className="flex flex-col md:flex-row gap-4 ">
               <div className="text-lg text-left flex flex-col gap-1">
                 <div className="flex gap-2">
-                  <AiOutlineCheck className="border-2 px-2 py-2 rounded-full text-white bg-[#00b38d]" />
+                  <AiOutlineCheck className="border-2 px-2 py-2 rounded-full text-white bg-teal-700" />
                   {t("chosen_by_experts")}
                 </div>
                 <div className="flex gap-2">
-                  <AiOutlineCheck className="border-2 px-2 py-2 rounded-full text-white bg-[#00b38d]" />
+                  <AiOutlineCheck className="border-2 px-2 py-2 rounded-full text-white bg-teal-700" />
                   {t("backed_by_technology")}
                 </div>
               </div>
 
               <div className="text-lg text-left flex flex-col gap-1">
                 <div className="flex gap-2">
-                  <AiOutlineCheck className="border-2 px-2 py-2 rounded-full text-white bg-[#00b38d]" />
+                  <AiOutlineCheck className="border-2 px-2 py-2 rounded-full text-white bg-teal-700" />
                   {t("powered_by_ai")}
                 </div>
                 <div className="flex gap-2">
-                  <AiOutlineCheck className="border-2 px-2 py-2 rounded-full text-white bg-[#00b38d]" />
+                  <AiOutlineCheck className="border-2 px-2 py-2 rounded-full text-white bg-teal-700" />
                   {t("ready_in_15_minutes")}
                 </div>
               </div>
@@ -540,8 +540,8 @@ function Home_third() {
           </div>
         </div>
       </div>
-      <div className="py-6 border-2 mb-3 bg-gray-100">
-        <div className="flex gap-2 justify-center bg-[#00b38d] text-white py-4 text-lg md:text-4xl align-middle items-center font-bold px-2">
+      {/* <div className="py-6 border-2 mb-3 bg-gray-100">
+        <div className="flex gap-2 justify-center bg-teal-700 text-white py-4 text-lg md:text-4xl align-middle items-center font-bold px-2">
           {t("certified_by_recruiters")}
         </div>
         <div className="flex justify-center items-center px-2 py-3">
@@ -558,10 +558,10 @@ function Home_third() {
             ></video>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="flex flex-col gap-5 px-5 py-10 md:mx-auto md:w-[70%]">
         <div className="flex flex-col items-center">
-          <h1 className="text-5xl font-bold text-[#00b38d] rounded-xl text-center py-6">
+          <h1 className="text-5xl font-bold text-teal-700 rounded-xl text-center py-6">
             {t("looking_cover_letter")}
           </h1>
           <p className=" text-lg">{t("explore_cover_letters")}</p>
@@ -598,7 +598,7 @@ function Home_third() {
               <h1 className="font-bold  text-xl text-center mt-2" id="homecard">
                 {template.title}
               </h1>
-              <button className="absolute top-0 left-0 right-0 bottom-0 m-auto w-fit h-fit bg-[#00b38d] text-white font-bold py-2 px-4 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <button className="absolute top-0 left-0 right-0 bottom-0 m-auto w-fit h-fit bg-teal-700 text-white font-bold py-2 px-4 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 {t("create_cv")}
               </button>
             </div>

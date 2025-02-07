@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import logo from "../Footer/logo.png";
+import logo from "../../public/assets/logo.png";
 import { useState } from "react";
 import axios from "axios";
 import Link from "next/link"; // Import Link from next/link
@@ -58,7 +58,7 @@ const Footer = () => {
             </div> */}
 
             <div className="w-full md:w-auto mb-6 md:mb-0">
-              <h2 className="text-lg font-semibold text-[#00b38d]">
+              <h2 className="text-lg font-semibold text-teal-700">
                 Get Our Weekly
               </h2>
               <form
@@ -86,7 +86,7 @@ const Footer = () => {
           <br />
           <div className="flex flex-wrap justify-around">
             <div className="w-full md:w-auto mb-6 md:mb-0" id="footer">
-              <h2 className="text-lg font-bold text-[#00b38d]">Cibli Job </h2>
+              <h2 className="text-lg font-bold text-teal-700">Create My Resume </h2>
               <ul>
                 <li>
                   <Link href="/footers/Aboutus">
@@ -104,14 +104,14 @@ const Footer = () => {
                   </Link>
                 </li> */}
                 <li>
-                  <Link href="https://blog.ciblijob.fr/">
+                  <Link href="https://blog.Create My Resume.fr/">
                     <span>Resources</span>
                   </Link>
                 </li>
               </ul>
             </div>
             <div className="w-full md:w-auto mb-6 md:mb-0">
-              <h2 className="text-lg font-bold text-[#00b38d]">Support</h2>
+              <h2 className="text-lg font-bold text-teal-700">Support</h2>
               <ul>
                 <li>
                   <Link href="/footers/Salarytools">
@@ -131,7 +131,7 @@ const Footer = () => {
               </ul>
             </div>
             <div className="w-full md:w-auto mb-6 md:mb-0">
-              <h2 className="text-lg font-bold text-[#00b38d]">
+              <h2 className="text-lg font-bold text-teal-700">
                 Scope & Products
               </h2>
               <ul>
@@ -163,7 +163,7 @@ const Footer = () => {
               </ul>
             </div>
             <div className="w-full md:w-auto mb-6 md:mb-0">
-              <h2 className="text-lg font-bold text-[#00b38d]">Ai Resources</h2>
+              <h2 className="text-lg font-bold text-teal-700">Ai Resources</h2>
               <ul>
                 <li>
                   <Link href="/footers/AIEnhancedResumeAccuracy">
@@ -185,8 +185,8 @@ const Footer = () => {
           </div>
         </div>
         <div className="container text-base md:mx-auto text-center border-t border-white pt-6 mt-6">
-          <p className="text-[#00b38d] text-right">
-            &copy; Copyright By CibliJob.fr All Rights Reserved
+          <p className="text-teal-700 text-right">
+            &copy; Copyright By Create My ResumeAll Rights Reserved
           </p>
         </div>
       </footer>

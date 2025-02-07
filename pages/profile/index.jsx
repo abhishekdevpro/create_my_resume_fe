@@ -669,7 +669,7 @@ const ProfileForm = () => {
               {formData.photo && (
                 <div className="relative">
                   <img
-                    src={`https://api.ciblijob.fr${formData.photo}`}
+                    src={`https://api.Create My Resume.fr${formData.photo}`}
                     alt="Profile"
                     className="w-20 h-20 rounded-full border"
                   />

@@ -11,7 +11,7 @@ function Aboutus() {
           About Us
         </h1>
         <p className="text-base sm:text-lg">
-          Welcome to Cibli Job, your trusted partner in crafting the ideal
+          Welcome to Create My Resume, your trusted partner in crafting the ideal
           resume that opens doors to new career opportunities. We specialize in
           creating personalized, professional resumes that showcase your unique
           skills, experiences, and achievements.
@@ -21,7 +21,7 @@ function Aboutus() {
           Our Mission
         </h2>
         <p className="text-base sm:text-lg">
-          At Cibli Job, our mission is to empower job seekers by providing
+          At Create My Resume, our mission is to empower job seekers by providing
           expertly designed resumes that make a lasting impression. We
           understand that your resume is more than just a document; it’s a
           reflection of your professional journey and aspirations. Our goal is
@@ -104,7 +104,7 @@ function Aboutus() {
           Join Our Community
         </h2>
         <p className="text-base sm:text-lg">
-          At Cibli Job, we’re more than just a resume writing service. We’re a
+          At Create My Resume, we’re more than just a resume writing service. We’re a
           community of career-driven individuals dedicated to supporting each
           other’s professional growth. Join us today and take the first step
           towards achieving your career aspirations.
@@ -115,7 +115,7 @@ function Aboutus() {
         </h2>
         <p className="text-base sm:text-lg">
           Ready to transform your resume and unlock new opportunities? Contact
-          us today and let Cibli Job help you craft the perfect resume for your
+          us today and let Create My Resume help you craft the perfect resume for your
           career journey.
         </p>
       </div>

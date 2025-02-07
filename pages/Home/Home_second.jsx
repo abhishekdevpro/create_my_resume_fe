@@ -769,7 +769,7 @@ function Home_Second() {
         </div>
       </div>
 
-      <Home_third />
+      
     </>
   );
 }
