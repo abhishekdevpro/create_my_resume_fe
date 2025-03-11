@@ -196,17 +196,6 @@ function CoverLetterBuilder() {
         ${htmlContent}
       `;
 
-      // const response = await axios.post(
-      //   "${BASE_URL}/api/jobseeker/generate-pdf1",
-      //   { html: fullContent },
-      //   {
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //       Authorization: token,
-      //     },
-      //   }
-      // );
-
       downloadPDF();
     } catch (error) {
       console.error("PDF generation error:", error);

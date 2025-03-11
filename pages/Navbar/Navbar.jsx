@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -67,7 +66,7 @@ const Navbar = () => {
     } else {
       setIsLoggedIn(false);
     }
-  }, []); 
+  }, []);
 
   const handleOpenPopup = () => setIsPopupOpen(true);
   const handleClosePopup = () => setIsPopupOpen(false);
@@ -166,7 +165,7 @@ const Navbar = () => {
               {t("ai_resume_builder")}
             </Link>
             <Link
-              href="/dashboard/Jobs"
+              href="/dashboard/jobs"
               className="text-black hover:text-teal-700 px-3 py-2 rounded-md text-lg font-semibold"
             >
               {t("jobs")}
@@ -260,7 +259,7 @@ const Navbar = () => {
                   href="/login2"
                   className="bg-teal-700 text-white px-4 py-2 text-md font-semibold rounded-xl"
                 >
-                  {("login")}
+                  {"login"}
                 </Link>
               </>
             )}
@@ -292,7 +291,7 @@ const Navbar = () => {
           <div className="md:hidden absolute top-16 left-0 right-0 bg-white shadow-lg z-50">
             <div className="px-2 pt-2 pb-3 space-y-1">
               <Link
-                href="/dashboard/MyJobs"
+                href="/dashboard/jobs"
                 className="text-black hover:text-teal-700 block px-3 py-2 rounded-md text-base font-semibold"
               >
                 {t("jobs")}
