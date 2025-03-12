@@ -139,7 +139,9 @@ const Projects = () => {
         }
       );
 
-      setKeyAchievements(response.data.data.resume_analysis.responsibilities);
+      setKeyAchievements(
+        response.data.data.resume_analysis.responsibilities || []
+      );
       setPopupIndex(index);
       setPopupType("keyAchievements");
       setShowPopup(true);
@@ -300,7 +302,9 @@ const Projects = () => {
         }
       );
 
-      setDescriptions(response.data.data.resume_analysis.project_summaries);
+      setDescriptions(
+        response.data.data.resume_analysis.project_summaries || []
+      );
       setPopupIndex(projectIndex);
       setPopupType("description");
       setShowPopup(true);
@@ -768,8 +772,8 @@ const Projects = () => {
             </h3>
             <div className="space-y-3 max-h-96 overflow-y-auto">
               {(popupType === "description"
-                ? descriptions
-                : keyAchievements
+                ? descriptions || []
+                : keyAchievements || []
               ).map((item, index) => (
                 <div key={index} className="flex items-start gap-3">
                   {/* Radio for description (Single Select) */}

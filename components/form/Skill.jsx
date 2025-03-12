@@ -262,7 +262,7 @@ const Skill = ({ title, currentSkillIndex }) => {
       );
 
       if (response.data.status === "success") {
-        setAiSkills(response.data.data.resume_analysis.skills);
+        setAiSkills(response.data.data.resume_analysis.skills || []);
         setIsModalOpen(true);
       } else {
         setError("Unable to fetch AI data. Please try again.");

@@ -36,6 +36,8 @@ import applepay from "./builderImages/apple-pay.png";
 import { ResumeContext } from "../components/context/ResumeContext";
 import PayAndDownload from "../components/PayDownload";
 import { BASE_URL } from "../components/Constant/constant";
+import { useTranslation } from "react-i18next";
+import { SaveLoader } from "../components/ResumeLoader/SaveLoader";
 
 const Print = dynamic(() => import("../components/utility/WinPrint"), {
   ssr: false,
@@ -48,6 +50,7 @@ export default function WebBuilder() {
   // const [selectedFont, setSelectedFont] = useState("Ubuntu");
   // const [headerColor, setHeaderColor] = useState("");
   // const [backgroundColorss, setBgColor] = useState("");
+  const [selectedPdfType, setSelectedPdfType] = useState("1");
   const [selectedTemplate, setSelectedTemplate] = useState("template1");
   const [isFinished, setIsFinished] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -57,13 +60,15 @@ export default function WebBuilder() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const router = useRouter();
   const pdfExportComponent = useRef(null);
-  const [isLoading, handleAction] = useLoader();
   const { PayerID } = router.query;
   const [isSaved, setIsSaved] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const [userId, setUserId] = useState(0);
   const templateRef = useRef(null);
+  const [loading, setLoading] = useState(null);
+
   const {
+    setResumeStrength,
     resumeData,
     setResumeData,
     setHeaderColor,
@@ -101,7 +106,7 @@ export default function WebBuilder() {
           if (response.data.status === "success") {
             const { data } = response.data;
             const parsedData = JSON.parse(data.ai_resume_parse_data);
-
+            setResumeStrength(data.resume_strenght_details);
             // Update state with fetched data
             setResumeData(parsedData.templateData);
             console.log(parsedData, ">>>>parsedData");
@@ -207,7 +212,6 @@ export default function WebBuilder() {
     const id = path.split("/").pop();
     setResumeId(id);
   }, []);
-
   const sections = [
     { label: "Personal Details", component: <PersonalInformation /> },
     { label: "Social Links", component: <SocialMedia /> },
@@ -228,17 +232,6 @@ export default function WebBuilder() {
     { label: "Languages", component: <Language /> },
     { label: "Certifications", component: <Certification /> },
   ];
-
-  // const handleProfilePicture = (e) => {
-  //   const file = e.target.files[0];
-  //   if (file instanceof Blob) {
-  //     const reader = new FileReader();
-  //     reader.onload = (event) => {
-  //       setResumeData({ ...resumeData, profilePicture: event.target.result });
-  //     };
-  //     reader.readAsDataURL(file);
-  //   }
-  // };
 
   const handleChange = (e) => {
     setResumeData({ ...resumeData, [e.target.name]: e.target.value });
@@ -330,7 +323,7 @@ export default function WebBuilder() {
       toast.error("Template reference not found");
       return;
     }
-
+    setLoading("download");
     try {
       // Get the HTML content from the template
       const htmlContent = templateRef.current.innerHTML;
@@ -345,8 +338,9 @@ export default function WebBuilder() {
 
       // API call to generate the PDF
       const response = await axios.post(
-        `${BASE_URL}/api/user/generate-pdf1`,
-        { html: fullContent },
+        `${BASE_URL}/api/user/generate-pdf-py`,
+        // { html: fullContent },
+        { html: fullContent, pdf_type: selectedPdfType },
         {
           headers: {
             "Content-Type": "application/json",
@@ -369,134 +363,57 @@ export default function WebBuilder() {
       // window.open(downloadUrl, '_blank');
 
       // toast.success('PDF generated and opened in a new tab!');
+      // initiateCheckout();
+      downloadPDF();
+      // toast.success("PDF generation request sent successfully!");
     } catch (error) {
       console.error("PDF generation error:", error);
       toast.error(
         error.response?.data?.message || "Failed to generate and open PDF"
       );
+    } finally {
+      setLoading(null);
     }
   };
-  const createPayment = async () => {
-    const amount = 49; // Fixed price
-
+  const initiateCheckout = async () => {
     try {
-      // Make the payment API call
-      const payload = {
-        amount,
-        ResumeId: resumeId, // Make sure resumeId is defined in your component
-        Token: token || "", // Make sure token is defined in your component
-      };
+      // Ensure resumeId is a valid integer
+      const parsedResumeId = parseInt(resumeId, 10);
+      if (isNaN(parsedResumeId)) {
+        throw new Error("Invalid resume ID; unable to convert to an integer.");
+      }
 
-      const response = await axios.post(
-        `${BASE_URL}/api/user/paypal/create-payment`,
-        payload,
+      // Step 2: Checkout API Call
+      const checkoutResponse = await axios.post(
+        `${BASE_URL}/api/user/payment/checkout`,
+        {
+          plan_id: 1,
+          resume_id: parsedResumeId, // Use integer here
+        },
         {
           headers: {
             Authorization: token,
-            "Content-Type": "application/json",
           },
         }
       );
 
-      const data = response.data;
-      console.log(data, "data");
-      if (data && data.data) {
-        // Store the order ID for later verification if needed
-        const orderId = data.order_id;
-        localStorage.setItem("orderid", orderId);
-
-        // Redirect the user to PayPal URL to complete payment
-        if (data.data) {
-          window.location.href = data.data; // Redirect to PayPal
-        } else {
-          console.error("Payment URL not found");
-        }
+      // Check for successful response
+      const redirectUrl = checkoutResponse.data.data; // Adjust the key if necessary
+      if (redirectUrl) {
+        toast.success("Checkout successful! Redirecting...");
+        window.location.href = redirectUrl; // Redirects user to payment page
+      } else {
+        throw new Error("No redirect URL found in checkout response.");
       }
     } catch (error) {
-      console.error("Payment Error:", error);
-      // Handle error (show error message to user)
+      console.error("Error during checkout:", error);
+      toast.error(
+        error.response?.data?.message ||
+          "Failed to initiate the payment process."
+      );
     }
   };
-  // const downloadAsPDF = async () => {
-  //   if (!templateRef.current) {
-  //     toast.error("Template reference not found");
-  //     return;
-  //   }
 
-  //   try {
-  //     // Get HTML and used classes
-  //     const htmlContent = templateRef.current.innerHTML;
-  //     const usedClasses = [...new Set(
-  //       Array.from(templateRef.current.querySelectorAll('*')).flatMap(el => [...el.classList])
-  //     )];
-
-  //     // Extract relevant CSS
-  //     const cssContent = Array.from(document.styleSheets)
-  //       .flatMap(sheet => {
-  //         try {
-  //           return [...sheet.cssRules]
-  //             .filter(rule =>
-  //               rule.selectorText && usedClasses.some(cls => rule.selectorText.includes(`.${cls}`))
-  //             )
-  //             .map(rule => rule.cssText);
-  //         } catch {
-  //           return [];
-  //         }
-  //       })
-  //       .join('\n');
-
-  //     // Generate HTML content for PDF
-  //     const fullContent = `
-  //       <style>${cssContent}</style>
-  //       ${htmlContent}
-  //     `;
-  //     console.log(fullContent,"fullContent");
-
-  //     // API call to generate the PDF
-  //     const response = await axios.post(
-  //       '${BASE_URL}/api/user/generate-pdf1',
-  //       { html: ` <script src="https://cdn.tailwindcss.com"></script> ${htmlContent}` },
-  //       {
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //           Authorization: token,
-  //         },
-  //       }
-  //     );
-
-  //     if (!response.data.data?.file_path) {
-  //       throw new Error('PDF file path not received');
-  //     }
-
-  //     // Construct the download URL
-  //     const downloadUrl = `${BASE_URL}${response.data.data.file_path}`;
-
-  //     // Fetch the PDF file to handle CORS issues
-  //     const fileResponse = await axios.get(downloadUrl, {
-  //       responseType: 'blob', // Ensure the response is treated as a binary file
-  //     });
-
-  //     // Create a Blob URL
-  //     const blob = new Blob([fileResponse.data], { type: 'application/pdf' });
-  //     const blobUrl = window.URL.createObjectURL(blob);
-
-  //     // Download the file
-  //     const link = document.createElement('a');
-  //     link.href = blobUrl;
-  //     link.download = 'GeneratedResume.pdf'; // Name of the file to be downloaded
-  //     document.body.appendChild(link);
-  //     link.click();
-  //     document.body.removeChild(link);
-
-  //     // Clean up the Blob URL
-  //     window.URL.revokeObjectURL(blobUrl);
-
-  //     toast.success('PDF generated and downloaded successfully!');
-  //   } catch (error) {
-  //     console.error('PDF generation error:', error);
-  //     toast.error(error.response?.data?.message || 'Failed to generate PDF');
-  //   }
-  // };
   useEffect(() => {
     if (PayerID) {
       verifyPayment();
@@ -522,9 +439,12 @@ export default function WebBuilder() {
         if (response.data.status === "success") {
           setPaymentVerified(true);
           toast.success("Payment verified successfully!");
-
+          downloadPDF();
           localStorage.removeItem("orderid");
-          await downloadPDF(orderId, resumeId, token);
+
+          if (pdfExportComponent.current) {
+            pdfExportComponent.current.save();
+          }
         } else {
           toast.error("Payment verification failed. Please try again.");
           router.push("/payment-failed");
@@ -538,12 +458,11 @@ export default function WebBuilder() {
       router.push("/payment-failed");
     }
   };
-
-  const downloadPDF = async (orderId, resumeId, token) => {
+  const downloadPDF = async () => {
     handleFinish();
     try {
       const response = await axios.get(
-        `${BASE_URL}/api/user/download-file/${orderId}/${resumeId}`,
+        `${BASE_URL}/api/user/download-file/11/${resumeId}`,
         {
           headers: {
             Authorization: token,
@@ -559,7 +478,7 @@ export default function WebBuilder() {
       link.href = url;
 
       // Set the file name
-      link.setAttribute("download", `resume_${orderId}.pdf`);
+      link.setAttribute("download", `resume.pdf`);
       document.body.appendChild(link);
       link.click();
 
@@ -650,41 +569,46 @@ export default function WebBuilder() {
     </style>
     ${htmlContent}
   `;
-    await handleAction(async () => {
-      try {
-        const id = router.query.id || localStorage.getItem("resumeId");
-        if (!id) {
-          console.error("Resume ID not found.");
-          return;
-        }
 
-        const url = `${BASE_URL}/api/user/resume-update/${id}`;
-        const response = await axios.put(
-          url,
-          { ...templateData, resume_html: resumeHtml },
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: token,
-            },
-          }
-        );
-
-        if (response.data.code === 200 || response.data.status === "success") {
-          if (showToast) {
-            toast.success(
-              response.data.message || "Resume saved successfully."
-            );
-          }
-          // localStorage.setItem("isSaved", "true");
-        } else {
-          toast.error(response.data.error || "Error while saving the Resume");
-        }
-      } catch (error) {
-        toast.error(error?.message || "Error !!");
-        console.error("Error updating resume:", error);
+    try {
+      const id = router.query.id || localStorage.getItem("resumeId");
+      if (!id) {
+        console.error("Resume ID not found.");
+        return;
       }
-    });
+
+      const url = `${BASE_URL}/api/user/resume-update/${id}`;
+      const response = await axios.put(
+        url,
+        { ...templateData, resume_html: resumeHtml },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
+        }
+      );
+
+      if (response.data.code === 200 || response.data.status === "success") {
+        if (showToast) {
+          toast.success(response.data.message || "Resume saved successfully.");
+        }
+        // localStorage.setItem("isSaved", "true");
+      } else {
+        toast.error(response.data.error || "Error while saving the Resume");
+      }
+    } catch (error) {
+      toast.error(error?.message || "Error !!");
+      console.error("Error updating resume:", error);
+    }
+  };
+  const handleClick = async () => {
+    setLoading("save");
+    try {
+      await handleFinish(); // Ensure handleFinish is an async function
+    } finally {
+      setLoading(null);
+    }
   };
 
   const handleBackToEditor = () => {
@@ -739,7 +663,7 @@ export default function WebBuilder() {
   return (
     <>
       <Meta
-        title="Create My Resume  - AI Resume Builder"
+        title="Cibli Job  - AI Resume Builder"
         description="ATSResume is a cutting-edge resume builder that helps job seekers create a professional, ATS-friendly resume in minutes..."
         keywords="ATS-friendly, Resume optimization..."
       />
@@ -792,6 +716,8 @@ export default function WebBuilder() {
                     <TemplateSelector
                       selectedTemplate={selectedTemplate}
                       setSelectedTemplate={setSelectedTemplate}
+                      selectedPdfType={selectedPdfType}
+                      setSelectedPdfType={setSelectedPdfType}
                     />
                   </div>
                 </div>
@@ -909,26 +835,36 @@ export default function WebBuilder() {
                 <TemplateSelector
                   selectedTemplate={selectedTemplate}
                   setSelectedTemplate={setSelectedTemplate}
+                  selectedPdfType={selectedPdfType}
+                  setSelectedPdfType={setSelectedPdfType}
                 />
               </div>
               <div className="flex gap-4">
                 <button
-                  onClick={handleFinish}
+                  onClick={handleClick}
                   className="bg-green-500 text-white px-6 py-2 rounded-lg"
                 >
-                  Save Resume
+                  {loading == "save" ? (
+                    <SaveLoader loadingText={"Saving"} />
+                  ) : (
+                    "Save Resume"
+                  )}
                 </button>
-                {/* <button
+                <button
                   onClick={downloadAsPDF}
                   className="bg-yellow-500 text-black px-6 py-2 rounded-lg"
                 >
-                  Pay & Download
-                </button> */}
-                <PayAndDownload
+                  {loading == "download" ? (
+                    <SaveLoader loadingText={"Downloading"} />
+                  ) : (
+                    "Pay & Download"
+                  )}
+                </button>
+                {/* <PayAndDownload
                   resumeId={resumeId}
                   token={token}
                   PayerID={PayerID}
-                />
+                /> */}
                 {/* {showModal && (
                   <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
                     <div className=" w-full max-w-4xl bg-white rounded-lg shadow-lg ">

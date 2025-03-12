@@ -15,11 +15,15 @@ const Login2 = () => {
   const [isThirdstepOpen, setThirdstepOpen] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
   const router = useRouter();
+  const handleCheckboxChange = (e) => {
+    setIsChecked(e.target.checked);
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -173,8 +177,8 @@ const Login2 = () => {
                 type="checkbox"
                 id="terms"
                 name="terms"
-                // checked={isChecked}
-                // onChange={(e) => setIsChecked(e.target.checked)}
+                checked={isChecked}
+                onChange={handleCheckboxChange}
                 className="w-4 h-4 text-yellow-500 border-gray-300 rounded focus:ring-yellow-500"
               />
               <label htmlFor="terms" className="text-gray-700 text-sm">
@@ -188,10 +192,16 @@ const Login2 = () => {
               </label>
             </div>
             {/* <Link href={}> */}
+
             <button
               type="submit"
-              className="w-full bg-teal-700 text-white px-4 py-2 rounded-md hover:bg-teal-700 transition-colors duration-300 relative"
-              disabled={isLoading}
+              className={`w-full text-white px-4 py-2 rounded-md transition-colors duration-300 relative 
+                ${
+                  !isChecked || isLoading
+                    ? "bg-gray-400 cursor-not-allowed "
+                    : "bg-teal-700 hover:bg-teal-800"
+                }`}
+              disabled={!isChecked || isLoading} // Disabled when terms are not checked or loading
             >
               Login
             </button>

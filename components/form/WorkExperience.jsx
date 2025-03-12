@@ -226,7 +226,7 @@ const WorkExperience = () => {
       );
 
       setDescriptions(
-        response.data.data.resume_analysis.professional_summaries
+        response.data.data.resume_analysis.professional_summaries || []
       ); // ✅ Store in descriptions state
       setPopupIndex(index);
       setPopupType("description");
@@ -268,7 +268,9 @@ const WorkExperience = () => {
         }
       );
 
-      setKeyAchievements(response.data.data.resume_analysis.responsibilities); // ✅ Store in keyAchievements state
+      setKeyAchievements(
+        response.data.data.resume_analysis.responsibilities || []
+      ); // ✅ Store in keyAchievements state
       setPopupIndex(index);
       setPopupType("keyAchievements");
       setShowPopup(true);
@@ -1116,8 +1118,8 @@ const WorkExperience = () => {
             </h3>
             <div className="space-y-3 max-h-96 overflow-y-auto">
               {(popupType === "description"
-                ? descriptions
-                : keyAchievements
+                ? descriptions || []
+                : keyAchievements || []
               ).map((item, index) => (
                 <div key={index} className="flex items-start gap-3">
                   {/* Radio for description (Single Select) */}

@@ -444,6 +444,7 @@ const ProfileForm = () => {
     state_id: "",
     city_id: "",
     photo: "",
+    phone: "",
     uploadPhoto: null,
   });
 
@@ -620,6 +621,7 @@ const ProfileForm = () => {
     formDataToSend.append("country_id", formData.country_id);
     formDataToSend.append("state_id", formData.state_id);
     formDataToSend.append("city_id", formData.city_id);
+    formDataToSend.append("phone", formData.phone);
 
     if (formData.uploadPhoto) {
       formDataToSend.append("upload_photo", formData.uploadPhoto);
@@ -774,7 +776,7 @@ const ProfileForm = () => {
                 name="phone"
                 value={formData.phone}
                 className="w-full border p-2"
-                readOnly
+                onChange={handleChange}
               />
             </div>
             <div>

@@ -121,7 +121,9 @@ const Summary = () => {
         response.data.status === "success" &&
         response.data.data?.resume_analysis?.professional_summaries
       ) {
-        setSummaries(response.data.data.resume_analysis.professional_summaries);
+        setSummaries(
+          response.data.data.resume_analysis.professional_summaries || []
+        );
         setShowPopup(true);
       } else {
         setError("Unable to fetch summaries. Please try again.");
