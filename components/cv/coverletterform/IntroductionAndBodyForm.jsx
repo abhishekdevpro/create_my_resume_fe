@@ -54,7 +54,7 @@ const IntroductionAndBodyForm = () => {
         <textarea
           value={coverLetterData.introduction}
           onChange={(e) => handleIntroductionChange(e.target.value)}
-          className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600"
           rows="4"
           placeholder="Write your introduction here"
         ></textarea>
@@ -81,7 +81,7 @@ const IntroductionAndBodyForm = () => {
           <textarea
             value={paragraph}
             onChange={(e) => handleBodyChange(index, e.target.value)}
-            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600"
             rows="4"
             placeholder={`Write paragraph ${index + 1}`}
           ></textarea>

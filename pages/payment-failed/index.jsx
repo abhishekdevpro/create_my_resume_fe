@@ -34,7 +34,7 @@ const PaymentFailed = () => {
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-3 w-full">
             <button
-              className="w-full py-2 px-4 bg-[#00b38d] text-white rounded-lg hover:bg-blue-800 transition-colors"
+              className="w-full py-2 px-4 bg-teal-600 text-white rounded-lg hover:bg-teal-800 transition-colors"
               onClick={() => {
                 window.location.href = "/dashboard/aibuilder";
               }}
@@ -43,7 +43,7 @@ const PaymentFailed = () => {
             </button>
 
             <button
-              className="w-full py-2 px-4 border border-blue-700 text-blue-700 rounded-lg hover:bg-blue-50 transition-colors"
+              className="w-full py-2 px-4 border border-teal-700 text-teal-700 rounded-lg hover:bg-teal-50 transition-colors"
               onClick={() => window.history.back()}
             >
               Go Back
@@ -51,7 +51,7 @@ const PaymentFailed = () => {
           </div>
 
           {/* Support Link */}
-          <a href="#" className="mt-6 text-sm text-blue-700 hover:underline">
+          <a href="#" className="mt-6 text-sm text-teal-700 hover:underline">
             Contact Support
           </a>
         </div>

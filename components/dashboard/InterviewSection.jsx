@@ -23,17 +23,16 @@ const InterviewSection = () => {
           <div>
             <h3 className="text-lg font-semibold">Clear Your Interview</h3>
             <p className="text-gray-600 max-w-md">
-            Gain insights from our expert-written resources and receive weekly updates straight to your inbox.
+              Gain insights from our expert-written resources and receive weekly
+              updates straight to your inbox.
             </p>
           </div>
         </div>
-       <Link  
-        href={`https://blog.Create My Resume.fr/`}
-       >
-       <button className="px-6 py-2 border border-[#00b38d] text-[#00b38d] rounded-lg hover:bg-blue-50">
-          Visit Resources
-        </button>
-       </Link>
+        <Link href={`https://blog.Create My Resume.fr/`}>
+          <button className="px-6 py-2 border border-teal-600 text-teal-600 rounded-lg hover:bg-teal-50">
+            Visit Resources
+          </button>
+        </Link>
       </div>
     </div>
   );

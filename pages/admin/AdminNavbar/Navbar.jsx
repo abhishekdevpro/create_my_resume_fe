@@ -67,7 +67,9 @@ const Navbar = () => {
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0 flex items-center">
-            <Image src={logo} alt="logo" className="h-10 w-40" />
+            <Link href="/">
+              <Image src={logo} alt="logo" className="h-10 w-40" />
+            </Link>
           </div>
           <div className="hidden md:flex justify-center items-center space-x-4">
             {/* <Link href="/adminlogin" className="text-white px-3 py-2 rounded-md text-lg font-semibold">

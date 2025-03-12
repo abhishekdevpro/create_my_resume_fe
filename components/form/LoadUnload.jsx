@@ -91,7 +91,7 @@ const ResumeEnhancementModal = ({ isOpen, onClose, fileLocation, token }) => {
   //             className={`px-4 py-2 rounded ${
   //               isEnhancing
   //               ? 'bg-gray-400 cursor-not-allowed'
-  //               : 'bg-green-500 hover:bg-green-600 text-white'
+  //               : 'bg-teal-500 hover:bg-green-600 text-white'
   //             }`}
   //           >
   //             {isEnhancing ? 'Enhancing...' : 'Yes, Enhance'}
@@ -147,7 +147,7 @@ const ResumeEnhancementModal = ({ isOpen, onClose, fileLocation, token }) => {
         <div className="p-6">
           {/* <div className="grid grid-cols-3 gap-4 mb-6">
           {[
-            { icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z', color: 'text-green-500', label: 'Professional Formatting' },
+            { icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z', color: 'text-teal-500', label: 'Professional Formatting' },
             { icon: 'M10 20l4-16m4 4l4 4-4 4', color: 'text-blue-500', label: 'ATS Optimization' },
             { icon: 'M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z', color: 'text-purple-500', label: 'Smart Editing' }
           ].map((feature, index) => (
@@ -181,7 +181,7 @@ const ResumeEnhancementModal = ({ isOpen, onClose, fileLocation, token }) => {
                 <div key={index} className="flex items-start space-x-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 text-green-500 flex-shrink-0 mt-1"
+                    className="h-5 w-5 text-teal-500 flex-shrink-0 mt-1"
                     viewBox="0 0 20 20"
                     fill="currentColor"
                   >
@@ -207,7 +207,7 @@ const ResumeEnhancementModal = ({ isOpen, onClose, fileLocation, token }) => {
               ${
                 isEnhancing
                   ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600"
+                  : "bg-gradient-to-r from-teal-500 to-blue-500 hover:from-green-600 hover:to-blue-600"
               }
             `}
             >

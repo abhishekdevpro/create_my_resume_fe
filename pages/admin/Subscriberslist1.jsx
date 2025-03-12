@@ -72,7 +72,7 @@ function Subscriberslist1() {
         ) : (
           <table className="min-w-full bg-dark text-black rounded-md text-center">
             <thead>
-              <tr className="bg-pink-500 text-white">
+              <tr className="bg-black text-white">
                 <th className="py-2 px-4">Created At</th>
                 <th className="py-2 px-4">Email</th>
                 <th className="py-2 px-4">Subscription Status</th>

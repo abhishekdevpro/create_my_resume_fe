@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import React, { useState } from "react";
 import axios from "axios";
@@ -28,7 +27,7 @@ function Signup() {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    
+
     if (
       !formData.first_name ||
       !formData.last_name ||
@@ -39,9 +38,9 @@ function Signup() {
       toast.error("All fields are required");
       return;
     }
-    
+
     setIsLoading(true);
-    
+
     const body = {
       first_name: formData.first_name,
       last_name: formData.last_name,
@@ -49,7 +48,7 @@ function Signup() {
       phone: formData.phone,
       password: formData.password,
     };
-  
+
     try {
       const response = await axios.post(
         `${BASE_URL}/api/user/auth/signup`,
@@ -60,10 +59,12 @@ function Signup() {
           },
         }
       );
-     console.log(response,response.status,"userinfoooo");
+      console.log(response, response.status, "userinfoooo");
       if (response.status === 200) {
-        toast.success("Verification link sent on your email ID, please activate to login ");
-        
+        toast.success(
+          "Verification link sent on your email ID, please activate to login "
+        );
+
         setFormData({
           first_name: "",
           last_name: "",
@@ -71,7 +72,7 @@ function Signup() {
           phone: "",
           password: "",
         });
-  
+
         // router.push("/login2");
       } else {
         toast.error("Failed to sign up");
@@ -198,7 +199,7 @@ function Signup() {
           </div>
           <button
             type="submit"
-            className="w-full bg-[#00b38d] text-black px-4 py-2 rounded-md flex items-center justify-center gap-2 hover:bg-[#00b38d] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full bg-teal-600 text-black px-4 py-2 rounded-md flex items-center justify-center gap-2 hover:bg-teal-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={isLoading}
           >
             {isLoading ? (

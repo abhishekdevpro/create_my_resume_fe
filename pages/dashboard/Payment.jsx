@@ -66,7 +66,7 @@ function Payment() {
               {/* <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                 <div className="text-center mt-4">
                   <p className="text-lg font-bold text-violet-900 m">Free</p>
-                  <button className='bg-red-200 text-blue-900 p-2 px-6 rounded-lg m-4  disabled:'>Your Plan</button>
+                  <button className='bg-red-200 text-teal-900 p-2 px-6 rounded-lg m-4  disabled:'>Your Plan</button>
                 </div>
               </th> */}
               <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600  tracking-wider">
@@ -79,7 +79,7 @@ function Payment() {
                   </span>{" "}
                   <br />
                   {/* <Link href="/dashboard/resume-builder"> */}
-                  <button className="bg-blue-900 text-white p-2 rounded-lg m-2 mt-3">
+                  <button className="bg-teal-900 text-white p-2 rounded-lg m-2 mt-3">
                     Free
                   </button>
                   {/* </Link> */}

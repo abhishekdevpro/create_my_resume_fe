@@ -64,7 +64,7 @@ const UploadResume = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
-      <div className="w-full max-w-screen-lg border border-dashed border-blue-500 p-8 rounded-lg bg-white shadow-lg text-center">
+      <div className="w-full max-w-screen-lg border border-dashed border-teal-600 p-8 rounded-lg bg-white shadow-lg text-center">
         <h1 className="text-2xl font-bold mb-6">
           How do you want to upload your resume?
         </h1>
@@ -74,7 +74,7 @@ const UploadResume = () => {
             <div
               onDrop={handleDrop}
               onDragOver={handleDragOver}
-              className="border border-dashed border-blue-500 p-6 rounded-lg h-40 flex items-center justify-center cursor-pointer hover:bg-blue-50 w-full"
+              className="border border-dashed border-teal-600 p-6 rounded-lg h-40 flex items-center justify-center cursor-pointer hover:bg-teal-50 w-full"
             >
               {file ? (
                 <span className="text-gray-500">{file.name}</span>
@@ -93,7 +93,7 @@ const UploadResume = () => {
 
             <button
               onClick={handleBrowseClick}
-              className="mt-4 w-full px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-[#00b38d]"
+              className="mt-4 w-full px-4 py-2 bg-teal-500 text-white rounded-lg hover:bg-teal-600"
             >
               Browse
             </button>

@@ -57,7 +57,7 @@
 //                 </div>
 //                 <div className=" flex flex-wrap gap-4">
 //                   {/* <Link href={isAuthenticated ? "/dashboard" : "/signup"}>
-//                         <button className='  px-6 py-2 text-lg text-white bg-[#00b38d] rounded-full font-bold hover:shadow-2xl hover:shadow-slate-500'
+//                         <button className='  px-6 py-2 text-lg text-white bg-teal-600 rounded-full font-bold hover:shadow-2xl hover:shadow-slate-500'
 
 //                         > Sign Up! Its 100% Free!</button>
 //                         </Link> */}
@@ -255,10 +255,10 @@ function Home_first() {
           </div>
         </div>
       </div>
-       <Home_step/>
-       <ATSResumeSection />
-       <Home_third />
-       {/* <Home_fourth /> */}
+      <Home_step />
+      <ATSResumeSection />
+      <Home_third />
+      {/* <Home_fourth /> */}
       {/* <ImageSlider />
       <Home_second /> */}
     </>

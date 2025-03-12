@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { BASE_URL } from '../../../components/Constant/constant';
-import { Mail, MessageSquare, Phone } from 'lucide-react';
+import React, { useState } from "react";
+import { BASE_URL } from "../../../components/Constant/constant";
+import { Mail, MessageSquare, Phone } from "lucide-react";
 
 const ContactUs = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    remark: '',
+    name: "",
+    phone: "",
+    email: "",
+    remark: "",
   });
-  const [error, setError] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
+  const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -20,25 +20,25 @@ const ContactUs = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
-    setSuccessMessage('');
+    setError("");
+    setSuccessMessage("");
 
     try {
       const response = await fetch(`${BASE_URL}/api/user/contact-us`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
 
       if (!response.ok) {
-        throw new Error('Failed to submit the form');
+        throw new Error("Failed to submit the form");
       }
 
       const data = await response.json();
-      setSuccessMessage('Message sent successfully!');
-      setFormData({ name: '', phone: '', email: '', remark: '' });
+      setSuccessMessage("Message sent successfully!");
+      setFormData({ name: "", phone: "", email: "", remark: "" });
     } catch (error) {
       setError(error.message);
     }
@@ -54,7 +54,7 @@ const ContactUs = () => {
     //       Build professional, job-winning resumes in minutes with our AI-powered
     //       tools and expert suggestions!
     //     </p>
-        
+
     //     <div className="flex flex-col md:flex-row items-center justify-center gap-8 max-w-4xl mx-auto">
     //       <div className="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg p-6 flex-grow max-w-md">
     //         <div className="flex items-center mb-4">
@@ -225,11 +225,11 @@ const ContactUs = () => {
     //               </div>
     //               {error && <p className="text-red-500 mb-2">{error}</p>}
     //               {successMessage && (
-    //                 <p className="text-green-500 mb-2">{successMessage}</p>
+    //                 <p className="text-teal-500 mb-2">{successMessage}</p>
     //               )}
     //               <button
     //                 type="submit"
-    //                 className="bg-green-400 text-white px-4 py-2 rounded-lg"
+    //                 className="bg-teal-500 text-white px-4 py-2 rounded-lg"
     //               >
     //                 Send
     //               </button>
@@ -241,152 +241,201 @@ const ContactUs = () => {
     //   </div>
     // </div>
     <div className="bg-gray-100 py-12 lg:py-20">
-  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 ">
-    <h1 className="text-3xl font-bold text-center mb-8 sm:mb-12 text-teal-700" id="phone">
-      Get In Touch
-    </h1>
-    <p className="text-center mb-8 sm:mb-12 text-black">
-      Build professional, job-winning resumes in minutes with our AI-powered tools and expert suggestions!
-    </p>
-
-    <div className="flex flex-col md:flex-row items-center justify-center gap-8 max-w-4xl mx-auto">
-      <div className="relative flex flex-col my-6 bg-white shadow-md border border-teal-500 rounded-lg p-6 flex-grow max-w-md">
-        <div className="flex items-center mb-4">
-          {/* <div className="text-3xl"> 📞</div> */}
-          <Phone className='text-3xl'/>
-          <h5 className="ml-3 text-black text-xl font-semibold">Contact us</h5>
-        </div>
-        <p className="text-black font-semibold mb-1">We are here to help</p>
-        <p className="text-black font-light mb-4 text-sm">Contact us anytime</p>
-        <div>
-          <button className="border border-teal-500 text-teal-700 px-3 py-2 rounded-lg hover:bg-teal-500 hover:text-white">
-            <a href="tel:123456789" className="font-semibold text-sm flex items-center">
-              123456789
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="ml-2 h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </a>
-          </button>
-        </div>
-      </div>
-
-      <div className="relative flex flex-col my-6 bg-white shadow-md border border-teal-500 rounded-lg p-6 flex-grow max-w-md">
-        <div className="flex items-center mb-4">
-          {/* <div className="text-3xl">✉</div> */}
-          <Mail />
-          <h5 className="ml-3 text-black text-xl font-semibold">Email Us</h5>
-        </div>
-        <p className="text-black font-semibold mb-1">We are here to help</p>
-        <p className="text-black font-light mb-4 text-sm">Contact us anytime</p>
-        <div>
-          <button className="border border-teal-500 text-teal-700 px-3 py-2 rounded-lg hover:bg-teal-500 hover:text-white">
-            <a href="mailto:info@Create My Resume.fr" className="font-semibold text-sm flex items-center">
-              info@createmyresume
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="ml-2 h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </a>
-          </button>
-        </div>
-      </div>
-
-      <div className="relative flex flex-col my-6 bg-white shadow-md border border-teal-500 rounded-lg p-6 flex-grow max-w-md">
-        <div className="flex items-center mb-4">
-          {/* <div className="text-3xl">🗨</div> */}
-          <MessageSquare/>
-          <h5 className="ml-3 text-black text-xl font-semibold">Message Us</h5>
-        </div>
-        <p className="text-black font-semibold mb-1">We are here to help</p>
-        <p className="text-black font-light mb-4 text-sm">Reach out for any assistance</p>
-        <button
-          className="border border-teal-500 text-teal-700 px-3 py-2 rounded-lg hover:bg-teal-500 hover:text-white"
-          onClick={() => setIsFormVisible(!isFormVisible)}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 ">
+        <h1
+          className="text-3xl font-bold text-center mb-8 sm:mb-12 text-teal-700"
+          id="phone"
         >
-          <span className="font-semibold text-sm flex items-center">
-            Chat
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="ml-2 h-4 w-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </span>
-        </button>
+          Get In Touch
+        </h1>
+        <p className="text-center mb-8 sm:mb-12 text-black">
+          Build professional, job-winning resumes in minutes with our AI-powered
+          tools and expert suggestions!
+        </p>
 
-        {isFormVisible && (
-          <div className="bg-white shadow-md border border-teal-500 rounded-lg p-6 w-full mt-4 z-10">
-            <form onSubmit={handleSubmit}>
-              <div className="mb-4">
-                <label className="block text-sm font-semibold mb-1 text-black">Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  className="w-full border border-teal-500 px-2 py-1 rounded-lg"
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block text-sm font-semibold mb-1 text-black">Phone</label>
-                <input
-                  type="text"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  className="w-full border border-teal-500 px-2 py-1 rounded-lg"
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block text-sm font-semibold mb-1 text-black">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className="w-full border border-teal-500 px-2 py-1 rounded-lg"
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block text-sm font-semibold mb-1 text-black">Remark</label>
-                <textarea
-                  name="remark"
-                  value={formData.remark}
-                  onChange={handleInputChange}
-                  className="w-full border border-teal-500 px-2 py-1 rounded-lg"
-                  required
-                />
-              </div>
-              {error && <p className="text-red-500 mb-2">{error}</p>}
-              {successMessage && <p className="text-green-500 mb-2">{successMessage}</p>}
-              <button type="submit" className="bg-teal-700 text-white px-4 py-2 rounded-lg hover:bg-teal-600">
-                Send
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8 max-w-4xl mx-auto">
+          <div className="relative flex flex-col my-6 bg-white shadow-md border border-teal-500 rounded-lg p-6 flex-grow max-w-md">
+            <div className="flex items-center mb-4">
+              {/* <div className="text-3xl"> 📞</div> */}
+              <Phone className="text-3xl" />
+              <h5 className="ml-3 text-black text-xl font-semibold">
+                Contact us
+              </h5>
+            </div>
+            <p className="text-black font-semibold mb-1">We are here to help</p>
+            <p className="text-black font-light mb-4 text-sm">
+              Contact us anytime
+            </p>
+            <div>
+              <button className="border border-teal-500 text-teal-700 px-3 py-2 rounded-lg hover:bg-teal-500 hover:text-white">
+                <a
+                  href="tel:123456789"
+                  className="font-semibold text-sm flex items-center"
+                >
+                  123456789
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="ml-2 h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                </a>
               </button>
-            </form>
+            </div>
           </div>
-        )}
+
+          <div className="relative flex flex-col my-6 bg-white shadow-md border border-teal-500 rounded-lg p-6 flex-grow max-w-md">
+            <div className="flex items-center mb-4">
+              {/* <div className="text-3xl">✉</div> */}
+              <Mail />
+              <h5 className="ml-3 text-black text-xl font-semibold">
+                Email Us
+              </h5>
+            </div>
+            <p className="text-black font-semibold mb-1">We are here to help</p>
+            <p className="text-black font-light mb-4 text-sm">
+              Contact us anytime
+            </p>
+            <div>
+              <button className="border border-teal-500 text-teal-700 px-3 py-2 rounded-lg hover:bg-teal-500 hover:text-white">
+                <a
+                  href="mailto:info@Create My Resume.fr"
+                  className="font-semibold text-sm flex items-center"
+                >
+                  info@createmyresume
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="ml-2 h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                </a>
+              </button>
+            </div>
+          </div>
+
+          <div className="relative flex flex-col my-6 bg-white shadow-md border border-teal-500 rounded-lg p-6 flex-grow max-w-md">
+            <div className="flex items-center mb-4">
+              {/* <div className="text-3xl">🗨</div> */}
+              <MessageSquare />
+              <h5 className="ml-3 text-black text-xl font-semibold">
+                Message Us
+              </h5>
+            </div>
+            <p className="text-black font-semibold mb-1">We are here to help</p>
+            <p className="text-black font-light mb-4 text-sm">
+              Reach out for any assistance
+            </p>
+            <button
+              className="border border-teal-500 text-teal-700 px-3 py-2 rounded-lg hover:bg-teal-500 hover:text-white"
+              onClick={() => setIsFormVisible(!isFormVisible)}
+            >
+              <span className="font-semibold text-sm flex items-center">
+                Chat
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="ml-2 h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
+              </span>
+            </button>
+
+            {isFormVisible && (
+              <div className="bg-white shadow-md border border-teal-500 rounded-lg p-6 w-full mt-4 z-10">
+                <form onSubmit={handleSubmit}>
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold mb-1 text-black">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      className="w-full border border-teal-500 px-2 py-1 rounded-lg"
+                      required
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold mb-1 text-black">
+                      Phone
+                    </label>
+                    <input
+                      type="text"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      className="w-full border border-teal-500 px-2 py-1 rounded-lg"
+                      required
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold mb-1 text-black">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className="w-full border border-teal-500 px-2 py-1 rounded-lg"
+                      required
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold mb-1 text-black">
+                      Remark
+                    </label>
+                    <textarea
+                      name="remark"
+                      value={formData.remark}
+                      onChange={handleInputChange}
+                      className="w-full border border-teal-500 px-2 py-1 rounded-lg"
+                      required
+                    />
+                  </div>
+                  {error && <p className="text-red-500 mb-2">{error}</p>}
+                  {successMessage && (
+                    <p className="text-teal-500 mb-2">{successMessage}</p>
+                  )}
+                  <button
+                    type="submit"
+                    className="bg-teal-700 text-white px-4 py-2 rounded-lg hover:bg-teal-600"
+                  >
+                    Send
+                  </button>
+                </form>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-
   );
 };
 

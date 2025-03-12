@@ -97,7 +97,7 @@
 
 //           <button
 //             onClick={fetchJobs}
-//             className="w-full py-2 px-4 bg-[#00b38d] text-white rounded-lg "
+//             className="w-full py-2 px-4 bg-teal-600 text-white rounded-lg "
 //           >
 //             Search Jobs
 //           </button>
@@ -113,7 +113,7 @@
 //                 key={job.id}
 //                 className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition duration-200"
 //               >
-//                 <h3 className="text-xl font-semibold text-[#00b38d]">
+//                 <h3 className="text-xl font-semibold text-teal-600">
 //                   {job.title}
 //                 </h3>
 //                 <p className="text-sm text-gray-600">{job.company}</p>
@@ -122,7 +122,7 @@
 //                   href={job.url}
 //                   target="_blank"
 //                   rel="noopener noreferrer"
-//                   className="text-[#00b38d] hover:underline mt-2 block"
+//                   className="text-teal-600 hover:underline mt-2 block"
 //                 >
 //                   Apply Now
 //                 </a>
@@ -226,7 +226,7 @@ const JobSearch = () => {
 
           <button
             onClick={fetchJobs}
-            className="w-full py-2 px-4 bg-[#00b38d] text-white rounded-lg"
+            className="w-full py-2 px-4 bg-teal-600 text-white rounded-lg"
           >
             Search Jobs
           </button>
@@ -242,7 +242,7 @@ const JobSearch = () => {
                 key={job.id}
                 className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition duration-200"
               >
-                <h3 className="text-xl font-semibold text-[#00b38d]">
+                <h3 className="text-xl font-semibold text-teal-600">
                   {job.title}
                 </h3>
                 <p className="text-sm text-gray-600">{job.company}</p>
@@ -251,7 +251,7 @@ const JobSearch = () => {
                   href={job.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#00b38d] hover:underline mt-2 block"
+                  className="text-teal-600 hover:underline mt-2 block"
                 >
                   Apply Now
                 </a>

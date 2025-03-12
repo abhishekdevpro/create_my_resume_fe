@@ -24,7 +24,7 @@ const ClosingGratitudeAndSignatureForm = () => {
         <textarea
           value={coverLetterData.closing}
           onChange={(e) => handleChange("closing", e.target.value)}
-          className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600"
           rows="4"
           placeholder="Write your closing statement here"
         ></textarea>
@@ -36,7 +36,7 @@ const ClosingGratitudeAndSignatureForm = () => {
         <textarea
           value={coverLetterData.gratitude}
           onChange={(e) => handleChange("gratitude", e.target.value)}
-          className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600"
           rows="4"
           placeholder="Write your gratitude statement here"
         ></textarea>
@@ -49,7 +49,7 @@ const ClosingGratitudeAndSignatureForm = () => {
           type="text"
           value={coverLetterData.signature}
           onChange={(e) => handleChange("signature", e.target.value)}
-          className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600"
           placeholder="Enter your signature (e.g., Sincerely, John Doe)"
         />
       </div>

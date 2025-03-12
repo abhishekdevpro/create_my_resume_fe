@@ -80,7 +80,7 @@
 //             <button
 //               onClick={handleImproveResume}
 //               disabled={!resumeId}
-//               className={`mt-2 px-6 py-2 bg-[#00b38d] text-white rounded-lg hover:bg-[#00b38d] w-full sm:w-auto ${
+//               className={`mt-2 px-6 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-600 w-full sm:w-auto ${
 //                 !resumeId ? "opacity-50 cursor-not-allowed" : ""
 //               }`}
 //             >
@@ -240,132 +240,141 @@ const TooltipContent = ({ improvements, resumeId, onClose }) => {
   };
 
   return (
-    <div className="h-[600px] overflow-y-auto p-6 bg-gray-50 rounded-lg shadow-md">
-      {/* Grid Layout for Improvements and Formatting Checklist */}
-      <div className="flex flex-col">
-        {/* Improvements Section */}
-        <div className="p-6 bg-white rounded-lg shadow-sm">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">
-            Areas for Improvement
-          </h3>
-          <ul className="space-y-3">
-            {improvements?.areas_for_improvement?.file_format && (
-              <li className="flex items-start gap-3">
-                <div className="w-2 h-2 mt-2 bg-blue-500 rounded-full" />
-                <p className="text-gray-700">
-                  <span className="font-bold text-black">
-                    File Formatting:{" "}
-                  </span>
-                  {improvements.areas_for_improvement.file_format}
-                </p>
-              </li>
-            )}
-            {improvements?.areas_for_improvement?.keyword_optimization && (
-              <li className="flex items-start gap-3">
-                <div className="w-2 h-2 mt-2 bg-blue-500 rounded-full" />
-                <p className="text-gray-700">
-                  <span className="font-bold text-black">
-                    Keyword Optimization:{" "}
-                  </span>
-                  {improvements.areas_for_improvement.keyword_optimization}
-                </p>
-              </li>
-            )}
-            {improvements?.areas_for_improvement?.section_order && (
-              <li className="flex items-start gap-3">
-                <div className="w-2 h-2 mt-2 bg-blue-500 rounded-full" />
-                <p className="text-gray-700">
-                  <span className="font-bold text-black">Section Order: </span>
-                  {improvements.areas_for_improvement.section_order}
-                </p>
-              </li>
-            )}
-          </ul>
-        </div>
+    // <div className="h-[600px] overflow-y-auto p-6 bg-gray-50 rounded-lg shadow-md">
+    //   {/* Grid Layout for Improvements and Formatting Checklist */}
+    //   <div className="flex flex-col">
+    //     {/* Improvements Section */}
+    //     <div className="p-6 bg-white rounded-lg shadow-sm">
+    //       <h3 className="text-lg font-semibold text-gray-900 mb-4">
+    //         Areas for Improvement
+    //       </h3>
+    //       <ul className="space-y-3">
+    //         {improvements?.areas_for_improvement?.file_format && (
+    //           <li className="flex items-start gap-3">
+    //             <div className="w-2 h-2 mt-2 bg-blue-500 rounded-full" />
+    //             <p className="text-gray-700">
+    //               <span className="font-bold text-black">
+    //                 File Formatting:{" "}
+    //               </span>
+    //               {improvements.areas_for_improvement.file_format}
+    //             </p>
+    //           </li>
+    //         )}
+    //         {improvements?.areas_for_improvement?.keyword_optimization && (
+    //           <li className="flex items-start gap-3">
+    //             <div className="w-2 h-2 mt-2 bg-blue-500 rounded-full" />
+    //             <p className="text-gray-700">
+    //               <span className="font-bold text-black">
+    //                 Keyword Optimization:{" "}
+    //               </span>
+    //               {improvements.areas_for_improvement.keyword_optimization}
+    //             </p>
+    //           </li>
+    //         )}
+    //         {improvements?.areas_for_improvement?.section_order && (
+    //           <li className="flex items-start gap-3">
+    //             <div className="w-2 h-2 mt-2 bg-blue-500 rounded-full" />
+    //             <p className="text-gray-700">
+    //               <span className="font-bold text-black">Section Order: </span>
+    //               {improvements.areas_for_improvement.section_order}
+    //             </p>
+    //           </li>
+    //         )}
+    //       </ul>
+    //     </div>
 
-        {/* Formatting Checklist */}
-        <div className="p-6 bg-white rounded-lg shadow-sm">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">
-            Formatting Checklist
-          </h3>
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {formatItems.map((item, index) => (
-              <li
-                key={index}
-                className="flex items-center gap-3 bg-gray-100 p-3 rounded-lg"
-              >
-                <div
-                  className={`rounded-full p-1.5 ${
-                    item.value
-                      ? "bg-green-100 text-green-600"
-                      : "bg-red-100 text-red-600"
-                  }`}
-                >
-                  {item.value ? (
-                    <Check className="w-5 h-5" />
-                  ) : (
-                    <X className="w-5 h-5" />
-                  )}
-                </div>
-                <div>
-                  <p className="text-gray-700 font-medium">{item.label}</p>
-                  <p className="text-sm text-gray-500">{item.description}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
+    //     {/* Formatting Checklist */}
+    //     <div className="p-6 bg-white rounded-lg shadow-sm">
+    //       <h3 className="text-lg font-semibold text-gray-900 mb-4">
+    //         Formatting Checklist
+    //       </h3>
+    //       <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    //         {formatItems.map((item, index) => (
+    //           <li
+    //             key={index}
+    //             className="flex items-center gap-3 bg-gray-100 p-3 rounded-lg"
+    //           >
+    //             <div
+    //               className={`rounded-full p-1.5 ${
+    //                 item.value
+    //                   ? "bg-green-100 text-green-600"
+    //                   : "bg-red-100 text-red-600"
+    //               }`}
+    //             >
+    //               {item.value ? (
+    //                 <Check className="w-5 h-5" />
+    //               ) : (
+    //                 <X className="w-5 h-5" />
+    //               )}
+    //             </div>
+    //             <div>
+    //               <p className="text-gray-700 font-medium">{item.label}</p>
+    //               <p className="text-sm text-gray-500">{item.description}</p>
+    //             </div>
+    //           </li>
+    //         ))}
+    //       </ul>
+    //     </div>
+    //   </div>
+
+    //   {/* Keywords Section */}
+    //   <div className="w-full flex flex-col md:flex-row justify-between items-start gap-2 md:gap-6 mt-6">
+    //     <div className="w-full md:w-1/2 p-4 bg-green-100 text-green-700 rounded-lg">
+    //       <h4 className="font-bold text-lg">Keywords Found</h4>
+    //       {improvements.keywords_found?.length > 0 ? (
+    //         <ul className="list-disc list-inside">
+    //           {improvements.keywords_found.map((keyword, index) => (
+    //             <li key={index}>{keyword}</li>
+    //           ))}
+    //         </ul>
+    //       ) : (
+    //         <p>No missing keywords</p>
+    //       )}
+    //     </div>
+    //     <div className="w-full md:w-1/2 p-4 bg-red-100 text-red-700 rounded-lg">
+    //       <h4 className="font-bold text-lg">Keywords Missing</h4>
+    //       {improvements.keywords_missing?.length > 0 ? (
+    //         <ul className="list-disc list-inside">
+    //           {improvements.keywords_missing.map((keyword, index) => (
+    //             <li key={index}>{keyword}</li>
+    //           ))}
+    //         </ul>
+    //       ) : (
+    //         <p>No missing keywords</p>
+    //       )}
+    //     </div>
+    //   </div>
+
+    //   {/* Overall Comments */}
+    //   <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-xl p-6 mt-6 text-white">
+    //     <h3 className="text-lg font-bold">Overall Comments</h3>
+    //     <p>{improvements.overall_comments}</p>
+    //   </div>
+    //   <button
+    //     onClick={handleATS}
+    //     className={`mt-6 px-6 py-2 w-full bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors ${
+    //       improvements.ats_score === 10 || Loading
+    //         ? "opacity-50 cursor-not-allowed"
+    //         : ""
+    //     }`}
+    //     disabled={improvements.ats_score === 10 || Loading} // Button is disabled during loading and when ATS score is 10
+    //   >
+    //     {Loading ? (
+    //       <SaveLoader loadingText="Proceed To Improve" />
+    //     ) : (
+    //       "Proceed To Improve...."
+    //     )}
+    //   </button>
+    // </div>
+    <>
+      <div className="h-[200px] overflow-y-auto p-6 bg-gray-50 rounded-lg shadow-md">
+        <div className="w-full flex flex-col md:flex-row justify-between items-start gap-2 md:gap-6 mt-6">
+          <div className="w-full md:w-1/2 p-4 bg-teal-100 text-teal-700 rounded-lg">
+            <h4 className="font-bold text-lg"> Improve ATS Coming Soon</h4>
+          </div>
         </div>
       </div>
-
-      {/* Keywords Section */}
-      <div className="w-full flex flex-col md:flex-row justify-between items-start gap-2 md:gap-6 mt-6">
-        <div className="w-full md:w-1/2 p-4 bg-green-100 text-green-700 rounded-lg">
-          <h4 className="font-bold text-lg">Keywords Found</h4>
-          {improvements.keywords_found?.length > 0 ? (
-            <ul className="list-disc list-inside">
-              {improvements.keywords_found.map((keyword, index) => (
-                <li key={index}>{keyword}</li>
-              ))}
-            </ul>
-          ) : (
-            <p>No missing keywords</p>
-          )}
-        </div>
-        <div className="w-full md:w-1/2 p-4 bg-red-100 text-red-700 rounded-lg">
-          <h4 className="font-bold text-lg">Keywords Missing</h4>
-          {improvements.keywords_missing?.length > 0 ? (
-            <ul className="list-disc list-inside">
-              {improvements.keywords_missing.map((keyword, index) => (
-                <li key={index}>{keyword}</li>
-              ))}
-            </ul>
-          ) : (
-            <p>No missing keywords</p>
-          )}
-        </div>
-      </div>
-
-      {/* Overall Comments */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-xl p-6 mt-6 text-white">
-        <h3 className="text-lg font-bold">Overall Comments</h3>
-        <p>{improvements.overall_comments}</p>
-      </div>
-      <button
-        onClick={handleATS}
-        className={`mt-6 px-6 py-2 w-full bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors ${
-          improvements.ats_score === 10 || Loading
-            ? "opacity-50 cursor-not-allowed"
-            : ""
-        }`}
-        disabled={improvements.ats_score === 10 || Loading} // Button is disabled during loading and when ATS score is 10
-      >
-        {Loading ? (
-          <SaveLoader loadingText="Proceed To Improve" />
-        ) : (
-          "Proceed To Improve...."
-        )}
-      </button>
-    </div>
+    </>
   );
 };
 
@@ -465,7 +474,7 @@ const ResumeStrength = ({ score, strength, resumeId }) => {
 
   const getScoreColor = (score, maxScore) => {
     const percentage = (score / maxScore) * 100;
-    if (percentage >= 70) return "bg-green-500";
+    if (percentage >= 70) return "bg-teal-500";
     return "bg-red-600";
   };
 
@@ -507,7 +516,7 @@ const ResumeStrength = ({ score, strength, resumeId }) => {
               <button
                 onClick={handleImproveResume}
                 disabled={!resumeId}
-                className={`px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors ${
+                className={`px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-700 transition-colors ${
                   !resumeId ? "opacity-50 cursor-not-allowed" : ""
                 }`}
               >
@@ -516,7 +525,7 @@ const ResumeStrength = ({ score, strength, resumeId }) => {
               <button
                 disabled={strength.ats_score === 10}
                 onClick={() => setIsModalOpen(true)}
-                className={`px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors ${
+                className={`px-6 py-2 bg-teal-700 text-white rounded-lg hover:bg-teal-800 transition-colors ${
                   !strength.ats_score === 10
                 }?"opacity-50 cursor-not-allowed" :""}`}
               >

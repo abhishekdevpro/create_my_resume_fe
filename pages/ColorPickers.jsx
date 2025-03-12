@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const colors = [
-  { name: 'None', value: '' },
-  { name: 'Nobel Grey', value: '#6D7278' },
-  { name: 'Oxford Blue', value: '#2563EB' },
+  { name: "None", value: "" },
+  { name: "Nobel Grey", value: "#6D7278" },
+  { name: "Oxford teal", value: "#2563EB" },
   // { name: 'Electric Lilac', value: '#b19cd9' },
-  { name: 'Purple', value: '#9333EA' },
+  { name: "Purple", value: "#9333EA" },
   // { name: 'Turquoise', value: '#00b5ad' },
-  { name: 'Jungle Green', value: '#16A34A' },
-  { name: 'Indian Red', value: '#DC2626' },
-  { name: 'Tuscan Yellow', value: '#EAB308' },
+  { name: "Jungle Green", value: "#16A34A" },
+  { name: "Indian Red", value: "#DC2626" },
+  { name: "Tuscan Yellow", value: "#EAB308" },
 ];
 
 const ColorPicker = ({ selectedColor, onChange }) => {
@@ -28,19 +28,17 @@ const ColorPicker = ({ selectedColor, onChange }) => {
     <div className="relative flex items-center m-2 z-20 ">
       <button
         onClick={handleToggleDropdown}
-
-        className="hidden sm:block rounded-lg border-2 border-green-500 px-8 p-1 font-bold  bg-white text-black"
-        style={{ backgroundColor: selectedColor || 'transparent' }}
+        className="hidden sm:block rounded-lg border-2 border-teal-500 px-8 p-1 font-bold  bg-white text-black"
+        style={{ backgroundColor: selectedColor || "transparent" }}
       >
-    <span className="">Background Color</span>
-
+        <span className="">Background Color</span>
       </button>
       <button
         onClick={handleToggleDropdown}
-        className="sm:hidden rounded-lg border-2 border-green-500 px-5 py-2 font-bold  bg-white text-black"
-        style={{ backgroundColor: selectedColor || 'transparent' }}
+        className="sm:hidden rounded-lg border-2 border-teal-500 px-5 py-2 font-bold  bg-white text-black"
+        style={{ backgroundColor: selectedColor || "transparent" }}
       >
-     Color 
+        Color
       </button>
       {isOpen && (
         <div className="absolute top-10 mt-2  bg-white border rounded-3xl shadow-lg z-50">
@@ -49,7 +47,7 @@ const ColorPicker = ({ selectedColor, onChange }) => {
               const isSelected = selectedColor === color.value;
               const hoverStyle = {
                 backgroundColor: color.value,
-                borderColor: isSelected ? 'black' : 'gray',
+                borderColor: isSelected ? "black" : "gray",
               };
 
               return (
@@ -57,7 +55,9 @@ const ColorPicker = ({ selectedColor, onChange }) => {
                   key={index}
                   onClick={() => handleColorSelect(color.value)}
                   className={`w-6 h-6 rounded-full cursor-pointer border transition-all duration-300 ease-in-out ${
-                    isSelected ? 'border-blue-80 shadow-lg shadow-blue-500' : 'border-gray-300'
+                    isSelected
+                      ? "border-teal-80 shadow-lg shadow-teal-600"
+                      : "border-gray-300"
                   } hover:border-black`}
                   style={hoverStyle}
                 />

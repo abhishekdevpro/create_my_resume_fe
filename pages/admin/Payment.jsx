@@ -59,7 +59,7 @@ function Payment() {
       <div className="overflow-x-auto">
         <table className="min-w-full bg-dark text-black rounded-md text-center">
           <thead>
-            <tr className="bg-pink-500 text-white">
+            <tr className="bg-black text-white">
               <th className="py-2 px-4">ID</th>
               <th className="py-2 px-4">Name</th>
               <th className="py-2 px-4">Email</th>
@@ -92,7 +92,7 @@ function Payment() {
                 <td className="py-2 px-4">
                   <button
                     onClick={() => handleRemarkSubmit(user.id)}
-                    className="bg-blue-900 text-white px-2 py-1 rounded"
+                    className="bg-teal-900 text-white px-2 py-1 rounded"
                   >
                     Submit
                   </button>

@@ -35,7 +35,7 @@ const LoginModal = ({ onClose }) => {
           </button>
           <Link
             href="/login"
-            className="px-4 py-2 bg-[#00b38d] text-white rounded hover:bg-[#00b38d] transition-colors"
+            className="px-4 py-2 bg-teal-600 text-white rounded hover:bg-teal-600 transition-colors"
           >
             Login
           </Link>
@@ -66,7 +66,7 @@ const JobCard = ({ item, onSaveJob, onApplyNow }) => (
             <Link
               href={`${item.redirect_url}`}
               // href={""}
-              className="text-lg font-semibold text-gray-900 hover:text-[#00b38d] transition-colors"
+              className="text-lg font-semibold text-gray-900 hover:text-teal-600 transition-colors"
             >
               {item.job_title}
             </Link>
@@ -81,9 +81,7 @@ const JobCard = ({ item, onSaveJob, onApplyNow }) => (
           <div className="flex items-center space-x-2">
             <MapPin className="w-4 h-4" />
             <span>
-              {item.location
-                ? `${item.location}`
-                : "Location not specified"}
+              {item.location ? `${item.location}` : "Location not specified"}
             </span>
           </div>
           {/* <div className="flex items-center space-x-2">
@@ -98,7 +96,7 @@ const JobCard = ({ item, onSaveJob, onApplyNow }) => (
 
         {item.job_type && (
           <div className="flex items-center">
-            <span className="px-3 py-1 text-sm text-[#00b38d] bg-blue-50 rounded-full">
+            <span className="px-3 py-1 text-sm text-teal-600 bg-teal-50 rounded-full">
               {item.job_type}
             </span>
           </div>
@@ -113,7 +111,7 @@ const JobCard = ({ item, onSaveJob, onApplyNow }) => (
           </button>
           <button
             onClick={() => onApplyNow(item.id)}
-            className="p-2 text-gray-600 hover:text-[#00b38d] transition-colors"
+            className="p-2 text-gray-600 hover:text-teal-600 transition-colors"
           >
             <Bookmark className="w-5 h-5" />
           </button>
@@ -147,8 +145,9 @@ export default function JobsPage() {
 
     try {
       const response = await axios.post(
-        `${BASE_URL}/api/user/job-favorites`,{
-            job_id:jobId
+        `${BASE_URL}/api/user/job-favorites`,
+        {
+          job_id: jobId,
         },
         {
           headers: {
@@ -181,9 +180,7 @@ export default function JobsPage() {
     const fetchJobs = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(
-          `${BASE_URL}/api/user/job-list`
-        );
+        const response = await fetch(`${BASE_URL}/api/user/job-list`);
         const data = await response.json();
 
         if (data.data) {
@@ -249,7 +246,7 @@ export default function JobsPage() {
               <select
                 value={sort}
                 onChange={handleSort}
-                className="block w-full rounded-md border-gray-300 text-sm focus:border-blue-500 focus:ring-blue-500"
+                className="block w-full rounded-md border-gray-300 text-sm focus:border-teal-600 focus:ring-teal-600"
               >
                 <option value="">Sort by (default)</option>
                 <option value="asc">Newest</option>
@@ -259,7 +256,7 @@ export default function JobsPage() {
               <select
                 onChange={handlePerPage}
                 value={JSON.stringify(perPage)}
-                className="block w-full rounded-md border-gray-300 text-sm focus:border-blue-500 focus:ring-blue-500"
+                className="block w-full rounded-md border-gray-300 text-sm focus:border-teal-600 focus:ring-teal-600"
               >
                 <option value={JSON.stringify({ start: 0, end: 0 })}>
                   All
@@ -296,7 +293,7 @@ export default function JobsPage() {
           </div>
           {/* <div className="w-full bg-gray-200 rounded-full h-2 mb-4">
           <div
-            className="bg-[#00b38d] h-2 rounded-full transition-all duration-300"
+            className="bg-teal-600 h-2 rounded-full transition-all duration-300"
             style={{ width: `${(displayedJobs.length / jobs.length) * 100}%` }}
           ></div>
         </div> */}
@@ -304,7 +301,7 @@ export default function JobsPage() {
          <Link href={'https://abroadium-arbuild-fe.vercel.app/job-list'}>
             <button 
             // onClick={() => setPerPage({ start: 0, end: 0 })}
-            className="px-6 py-2 bg-[#00b38d] text-white rounded-md hover:bg-[#00b38d] transition-colors"
+            className="px-6 py-2 bg-teal-600 text-white rounded-md hover:bg-teal-600 transition-colors"
           >
             Show More
           </button>

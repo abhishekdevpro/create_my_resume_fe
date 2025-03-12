@@ -154,19 +154,19 @@ const Testpaper = () => {
       //   </div>
       // </div>
       <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-80 z-50">
-      <div className="flex flex-col items-center">
-        {/* Loader Spinner */}
-        <div className="animate-spin rounded-full h-24 w-24 border-t-4 border-b-4 border-violet-500"></div>
+        <div className="flex flex-col items-center">
+          {/* Loader Spinner */}
+          <div className="animate-spin rounded-full h-24 w-24 border-t-4 border-b-4 border-violet-500"></div>
 
-        {/* Text Content */}
-        <h2 className="text-white text-2xl font-semibold mt-6 text-center">
-          Hold On A Second! We are Processing your request...
-        </h2>
-        <p className="text-red-500 text-lg font-medium mt-2 text-center">
-          Don’t Close or Navigate Away!
-        </p>
+          {/* Text Content */}
+          <h2 className="text-white text-2xl font-semibold mt-6 text-center">
+            Hold On A Second! We are Processing your request...
+          </h2>
+          <p className="text-red-500 text-lg font-medium mt-2 text-center">
+            Don’t Close or Navigate Away!
+          </p>
+        </div>
       </div>
-    </div>
     );
   }
 
@@ -190,7 +190,7 @@ const Testpaper = () => {
                 Percentage: {Math.floor(results.Percentage)}%
               </h3>
               <button
-                className="p-2 bg-[#00b38d] rounded-md text-white hover:bg-[#00b38d] mt-4"
+                className="p-2 bg-teal-600 rounded-md text-white hover:bg-teal-600 mt-4"
                 onClick={handleBack}
               >
                 Back
@@ -232,10 +232,10 @@ const Testpaper = () => {
                 </ul>
                 <div className="flex justify-between">
                   <button
-                    className={`p-2 bg-[#00b38d] rounded-md text-white hover:bg-[#00b38d] mt-4 ${
+                    className={`p-2 bg-teal-600 rounded-md text-white hover:bg-teal-600 mt-4 ${
                       currentQuestionIndex === 0
                         ? "opacity-50 cursor-not-allowed"
-                        : "hover:bg-[#00b38d]"
+                        : "hover:bg-teal-600"
                     }`}
                     onClick={handlePrevious}
                     disabled={currentQuestionIndex === 0}
@@ -244,14 +244,14 @@ const Testpaper = () => {
                   </button>
                   {currentQuestionIndex === questions.length - 1 ? (
                     <button
-                      className="p-2 bg-green-500 rounded-md text-white hover:bg-green-700"
+                      className="p-2 bg-teal-500 rounded-md text-white hover:bg-green-700"
                       onClick={handleSubmit}
                     >
                       🎓 Submit
                     </button>
                   ) : (
                     <button
-                      className="p-2 bg-[#00b38d] rounded-md text-white hover:bg-[#00b38d] mt-4"
+                      className="p-2 bg-teal-600 rounded-md text-white hover:bg-teal-600 mt-4"
                       onClick={handleNext}
                     >
                       ↪️ Next

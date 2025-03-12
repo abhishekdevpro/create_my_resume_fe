@@ -75,7 +75,7 @@ const Footer = () => {
                 />
                 <button
                   type="submit"
-                  className="md:px-4 md:py-1 p-1 rounded-full bg-white text-black hover:bg-green-500"
+                  className="md:px-4 md:py-1 p-1 rounded-full bg-white text-black hover:bg-teal-500"
                 >
                   Subscribe
                 </button>
@@ -86,7 +86,9 @@ const Footer = () => {
           <br />
           <div className="flex flex-wrap justify-around">
             <div className="w-full md:w-auto mb-6 md:mb-0" id="footer">
-              <h2 className="text-lg font-bold text-teal-700">Create My Resume </h2>
+              <h2 className="text-lg font-bold text-teal-700">
+                Create My Resume{" "}
+              </h2>
               <ul>
                 <li>
                   <Link href="/footers/Aboutus">

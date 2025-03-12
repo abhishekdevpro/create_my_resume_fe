@@ -70,7 +70,7 @@ const CibliJobId = ({ isOpen, onClose }) => {
             />
             <button
               type="submit"
-              className="bg-blue-950 text-white px-6 py-2 rounded-lg"
+              className="bg-teal-950 text-white px-6 py-2 rounded-lg"
             >
               Notify Me
             </button>

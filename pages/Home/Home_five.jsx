@@ -17,40 +17,40 @@
 //           <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 md:p-8">
 //             <h1 className="font-bold text-xl mb-4">Create My Resume  Builder</h1>
 //             <div className="flex items-center gap-2 font-medium mb-2">
-//               <i className="fa-solid fa-check border-2 px-2 py-2 rounded-full text-white bg-green-500"></i>
+//               <i className="fa-solid fa-check border-2 px-2 py-2 rounded-full text-white bg-teal-500"></i>
 //               <span>AI Score</span>
 //             </div>
 //             <div className="flex items-center gap-2 font-medium mb-2">
-//               <i className="fa-solid fa-check border-2 px-2 py-2 rounded-full text-white bg-green-500"></i>
+//               <i className="fa-solid fa-check border-2 px-2 py-2 rounded-full text-white bg-teal-500"></i>
 //               <span>AI Parsing</span>
 //             </div>
 //             <div className="flex items-center gap-2 font-medium mb-2">
-//               <i className="fa-solid fa-check border-2 px-2 py-2 rounded-full text-white bg-green-500"></i>
+//               <i className="fa-solid fa-check border-2 px-2 py-2 rounded-full text-white bg-teal-500"></i>
 //               <span>Resume Building</span>
 //             </div>
 //             <div className="flex items-center gap-2 font-medium mb-2">
-//               <i className="fa-solid fa-check border-2 px-2 py-2 rounded-full text-white bg-green-500"></i>
+//               <i className="fa-solid fa-check border-2 px-2 py-2 rounded-full text-white bg-teal-500"></i>
 //               <span>AI Enhancer</span>
 //             </div>
 //             <div className="flex items-center gap-2 font-medium mb-2">
-//               <i className="fa-solid fa-check border-2 px-2 py-2 rounded-full text-white bg-green-500"></i>
+//               <i className="fa-solid fa-check border-2 px-2 py-2 rounded-full text-white bg-teal-500"></i>
 //               <span>Match & Apply</span>
 //             </div>
 //             <div className="flex items-center gap-2 font-medium mb-2">
-//               <i className="fa-solid fa-check border-2 px-2 py-2 rounded-full text-white bg-green-500"></i>
+//               <i className="fa-solid fa-check border-2 px-2 py-2 rounded-full text-white bg-teal-500"></i>
 //               <span>AI Skill Test</span>
 //             </div>
 //             <div className="flex items-center gap-2 font-medium mb-2">
-//               <i className="fa-solid fa-check border-2 px-2 py-2 rounded-full text-white bg-green-500"></i>
+//               <i className="fa-solid fa-check border-2 px-2 py-2 rounded-full text-white bg-teal-500"></i>
 //               <span>Skill Badges</span>
 //             </div>
 //             <div className="flex items-center gap-2 font-medium mb-2">
-//               <i className="fa-solid fa-check border-2 px-2 py-2 rounded-full text-white bg-green-500"></i>
+//               <i className="fa-solid fa-check border-2 px-2 py-2 rounded-full text-white bg-teal-500"></i>
 //               <span>& More</span>
 //             </div>
 //             <div className="flex justify-center mt-6">
 //             <Link href={isAuthenticated?"/dashboard":"/login2"}>
-//               <button className="px-6 py-3 rounded-2xl font-semibold text-black bg-green-400 hover:bg-green-500 shadow-md">
+//               <button className="px-6 py-3 rounded-2xl font-semibold text-black bg-teal-500 hover:bg-teal-500 shadow-md">
 //                 Get Started For Free
 //               </button>
 //               </Link>
@@ -191,7 +191,7 @@ function Home_five() {
                   <li className="flex items-center space-x-3">
                     {/* Icon */}
                     <svg
-                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      className="flex-shrink-0 w-5 h-5 text-teal-500 dark:text-teal-500"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
@@ -207,7 +207,7 @@ function Home_five() {
                   <li className="flex items-center space-x-3">
                     {/* Icon */}
                     <svg
-                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      className="flex-shrink-0 w-5 h-5 text-teal-500 dark:text-teal-500"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
@@ -223,7 +223,7 @@ function Home_five() {
                   <li className="flex items-center space-x-3">
                     {/* Icon */}
                     <svg
-                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      className="flex-shrink-0 w-5 h-5 text-teal-500 dark:text-teal-500"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
@@ -239,7 +239,7 @@ function Home_five() {
                   <li className="flex items-center space-x-3">
                     {/* Icon */}
                     <svg
-                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      className="flex-shrink-0 w-5 h-5 text-teal-500 dark:text-teal-500"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
@@ -255,7 +255,7 @@ function Home_five() {
                   <li className="flex items-center space-x-3">
                     {/* Icon */}
                     <svg
-                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      className="flex-shrink-0 w-5 h-5 text-teal-500 dark:text-teal-500"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
@@ -295,7 +295,7 @@ function Home_five() {
                   <li className="flex items-center space-x-3">
                     {/* Icon */}
                     <svg
-                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      className="flex-shrink-0 w-5 h-5 text-teal-500 dark:text-teal-500"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
@@ -312,7 +312,7 @@ function Home_five() {
                   <li className="flex items-center space-x-3">
                     {/* Icon */}
                     <svg
-                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      className="flex-shrink-0 w-5 h-5 text-teal-500 dark:text-teal-500"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
@@ -329,7 +329,7 @@ function Home_five() {
                   <li className="flex items-center space-x-3">
                     {/* Icon */}
                     <svg
-                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      className="flex-shrink-0 w-5 h-5 text-teal-500 dark:text-teal-500"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
@@ -346,7 +346,7 @@ function Home_five() {
                   <li className="flex items-center space-x-3">
                     {/* Icon */}
                     <svg
-                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      className="flex-shrink-0 w-5 h-5 text-teal-500 dark:text-teal-500"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
@@ -362,7 +362,7 @@ function Home_five() {
                   <li className="flex items-center space-x-3">
                     {/* Icon */}
                     <svg
-                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      className="flex-shrink-0 w-5 h-5 text-teal-500 dark:text-teal-500"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
@@ -378,7 +378,7 @@ function Home_five() {
                   <li className="flex items-center space-x-3">
                     {/* Icon */}
                     <svg
-                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      className="flex-shrink-0 w-5 h-5 text-teal-500 dark:text-teal-500"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
@@ -459,7 +459,7 @@ function Home_five() {
                             </label>
                             <input
                               type="text"
-                              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-500"
                               value={name}
                               onChange={(e) => setName(e.target.value)}
                               required
@@ -471,7 +471,7 @@ function Home_five() {
                             </label>
                             <input
                               type="email"
-                              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-500"
                               value={email}
                               onChange={(e) => setEmail(e.target.value)}
                               required
@@ -483,7 +483,7 @@ function Home_five() {
                             </label>
                             <input
                               type="tel"
-                              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-500"
                               value={phone}
                               onChange={(e) => setPhone(e.target.value)}
                               required
@@ -586,7 +586,7 @@ function Home_five() {
                             </label>
                             <input
                               type="text"
-                              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-500"
                               value={name1}
                               onChange={(e) => setName1(e.target.value)}
                               required
@@ -598,7 +598,7 @@ function Home_five() {
                             </label>
                             <input
                               type="email"
-                              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-500"
                               value={email1}
                               onChange={(e) => setEmail1(e.target.value)}
                               required
@@ -610,7 +610,7 @@ function Home_five() {
                             </label>
                             <input
                               type="tel"
-                              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-500"
                               value={phone1}
                               onChange={(e) => setPhone1(e.target.value)}
                               required
@@ -675,7 +675,7 @@ function Home_five() {
                   <li className="flex items-center space-x-3">
                     {/* Icon */}
                     <svg
-                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      className="flex-shrink-0 w-5 h-5 text-teal-500 dark:text-teal-500"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
@@ -692,7 +692,7 @@ function Home_five() {
                   <li className="flex items-center space-x-3">
                     {/* Icon */}
                     <svg
-                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      className="flex-shrink-0 w-5 h-5 text-teal-500 dark:text-teal-500"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
@@ -709,7 +709,7 @@ function Home_five() {
                   <li className="flex items-center space-x-3">
                     {/* Icon */}
                     <svg
-                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      className="flex-shrink-0 w-5 h-5 text-teal-500 dark:text-teal-500"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
@@ -726,7 +726,7 @@ function Home_five() {
                   <li className="flex items-center space-x-3">
                     {/* Icon */}
                     <svg
-                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      className="flex-shrink-0 w-5 h-5 text-teal-500 dark:text-teal-500"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
@@ -742,7 +742,7 @@ function Home_five() {
                   <li className="flex items-center space-x-3">
                     {/* Icon */}
                     <svg
-                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      className="flex-shrink-0 w-5 h-5 text-teal-500 dark:text-teal-500"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
@@ -758,7 +758,7 @@ function Home_five() {
                   <li className="flex items-center space-x-3">
                     {/* Icon */}
                     <svg
-                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      className="flex-shrink-0 w-5 h-5 text-teal-500 dark:text-teal-500"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"

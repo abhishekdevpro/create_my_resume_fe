@@ -1,14 +1,13 @@
-
 import React, { useState } from "react";
 import Image from "next/image";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Loader2 } from "lucide-react";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Navbar from '../Navbar/Navbar';
-import logo from './logo.png'
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Navbar from "../Navbar/Navbar";
+import logo from "./logo.png";
 import { BASE_URL } from "../../components/Constant/constant";
 
 const Signup = () => {
@@ -30,7 +29,7 @@ const Signup = () => {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    
+
     // Form validation
     if (
       !formData.first_name ||
@@ -49,9 +48,9 @@ const Signup = () => {
       });
       return;
     }
-    
+
     setIsLoading(true);
-    
+
     const body = {
       first_name: formData.first_name,
       last_name: formData.last_name,
@@ -59,7 +58,7 @@ const Signup = () => {
       phone: formData.phone,
       password: formData.password,
     };
-  
+
     try {
       const response = await axios.post(
         `${BASE_URL}/api/user/auth/signup`,
@@ -72,15 +71,19 @@ const Signup = () => {
       );
 
       if (response.data.status === "success" || response.data.code === 200) {
-        toast.success(response.data.message || "Verification link sent on your email ID, please activate to login", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-        });
-        
+        toast.success(
+          response.data.message ||
+            "Verification link sent on your email ID, please activate to login",
+          {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+          }
+        );
+
         setFormData({
           first_name: "",
           last_name: "",
@@ -88,7 +91,7 @@ const Signup = () => {
           phone: "",
           password: "",
         });
-        router.push('/login2')
+        router.push("/login2");
       } else {
         toast.error(response.data.error || "Failed to sign up", {
           position: "top-right",
@@ -218,7 +221,7 @@ const Signup = () => {
                 />
                 <Link
                   href={"/TermsandConditions"}
-                  className="text-[#00b38d] hover:underline"
+                  className="text-teal-600 hover:underline"
                 >
                   {" "}
                   Agree to terms & conditions
@@ -228,7 +231,7 @@ const Signup = () => {
 
             <button
               type="submit"
-              className="w-full bg-[#00b38d] text-white px-4 py-2 rounded-md flex items-center justify-center gap-2 hover:bg-[#00b38d] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-teal-600 text-white px-4 py-2 rounded-md flex items-center justify-center gap-2 hover:bg-teal-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               disabled={isLoading}
             >
               {isLoading ? (

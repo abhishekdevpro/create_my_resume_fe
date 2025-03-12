@@ -116,7 +116,7 @@ function Careers() {
           of a dynamic, growth-oriented team, we’d love to hear from you. To
           apply for a position at Create My Resume, please send your resume and
           a cover letter to{" "}
-          <a href="mailto:career@createmyresume.fr" className="text-blue-500">
+          <a href="mailto:career@createmyresume.fr" className="text-teal-700">
             career@createmyresume.ca
           </a>
           .

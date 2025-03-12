@@ -38,9 +38,9 @@
 
 //   const colors = [
 //     { name: 'Gray', class: 'bg-gray-200', selectedClass: 'ring-gray-400', hexCode: '#6D7278' },
-//     { name: 'Blue', class: 'bg-green-500', selectedClass: 'ring-blue-400', hexCode: '#2563EB' },
+//     { name: 'Blue', class: 'bg-teal-500', selectedClass: 'ring-blue-400', hexCode: '#2563EB' },
 //     { name: 'Purple', class: 'bg-purple-600', selectedClass: 'ring-purple-400', hexCode: '#9333EA' },
-//     { name: 'Green', class: 'bg-green-600', selectedClass: 'ring-green-400', hexCode: '#16A34A' },
+//     { name: 'Green', class: 'bg-green-600', selectedClass: 'ring-teal-500', hexCode: '#16A34A' },
 //     { name: 'Red', class: 'bg-red-600', selectedClass: 'ring-red-400', hexCode: '#DC2626' },
 //     { name: 'Yellow', class: 'bg-yellow-500', selectedClass: 'ring-yellow-400', hexCode: '#EAB308' }
 //   ];
@@ -310,7 +310,7 @@
 //                       name="photo"
 //                       checked={value.hasPhoto === (option === 'With Photo')}
 //                       onChange={() => onChange({ ...value, hasPhoto: option === 'With Photo' })}
-//                       className="w-5 h-5 text-green-500 border-gray-300 focus:ring-blue-500"
+//                       className="w-5 h-5 text-teal-500 border-gray-300 focus:ring-blue-500"
 //                     />
 //                     <span className="ml-3 text-gray-700 font-medium">{option}</span>
 //                   </label>
@@ -403,12 +403,14 @@ import template18 from "../preview/template/template18.png";
 import template19 from "../preview/template/template19.png";
 import template20 from "../preview/template/template20.png";
 import { BASE_URL } from "../Constant/constant";
+import { SaveLoader } from "../ResumeLoader/SaveLoader";
 
 const TemplateStep = ({ onNext, onBack, onChange, value }) => {
   const router = useRouter();
   const [resumeData, setResumeData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isSaved, setIsSaved] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [selectedHexCode, setSelectedHexCode] = useState("#2563EB"); // Default blue hex code
   const token =
     typeof window !== "undefined" ? localStorage.getItem("token") : null;
@@ -422,7 +424,7 @@ const TemplateStep = ({ onNext, onBack, onChange, value }) => {
     },
     {
       name: "Blue",
-      class: "bg-[#00b38d]",
+      class: "bg-teal-600",
       selectedClass: "ring-blue-400",
       hexCode: "#2563EB",
     },
@@ -435,7 +437,7 @@ const TemplateStep = ({ onNext, onBack, onChange, value }) => {
     {
       name: "Green",
       class: "bg-green-600",
-      selectedClass: "ring-green-400",
+      selectedClass: "ring-teal-500",
       hexCode: "#16A34A",
     },
     {
@@ -609,7 +611,7 @@ const TemplateStep = ({ onNext, onBack, onChange, value }) => {
     const templateData = {
       templateData: formatResumeData(resumeData),
     };
-
+    setIsLoading(true);
     try {
       const resumeId = router.query.id || localStorage.getItem("resumeId");
       if (!resumeId) {
@@ -639,6 +641,8 @@ const TemplateStep = ({ onNext, onBack, onChange, value }) => {
     } catch (error) {
       toast.error(error?.message || "Error updating resume!");
       console.error("Error updating resume:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -744,7 +748,7 @@ const TemplateStep = ({ onNext, onBack, onChange, value }) => {
                           hasPhoto: option === "With Photo",
                         })
                       }
-                      className="w-5 h-5 text-[#00b38d] border-gray-300 focus:ring-blue-500"
+                      className="w-5 h-5 text-teal-600 border-gray-300 focus:ring-blue-500"
                     />
                     <span className="ml-3 text-gray-700 font-medium">
                       {option}
@@ -800,10 +804,14 @@ const TemplateStep = ({ onNext, onBack, onChange, value }) => {
           <button
             onClick={handleSaveTemplate}
             style={{ backgroundColor: selectedHexCode }}
-            className="px-8 py-3 text-white rounded-xl font-medium
-              hover:opacity-90 transition-colors shadow-lg hover:shadow-xl"
+            className={`px-8 py-3 text-white rounded-xl font-medium transition-all shadow-lg 
+              ${
+                loading
+                  ? "opacity-70 cursor-not-allowed"
+                  : "hover:opacity-90 hover:shadow-xl"
+              }`}
           >
-            Next
+            {isLoading ? <SaveLoader loadingText="Saving..." /> : "Next"}
           </button>
         </div>
       </div>

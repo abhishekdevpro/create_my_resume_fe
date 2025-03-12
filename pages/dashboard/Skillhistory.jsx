@@ -36,7 +36,7 @@ function Skillhistory() {
           ) : (
             <table className="min-w-full bg-dark text-black rounded-md text-center">
               <thead>
-                <tr className="bg-[#00b38d] text-white">
+                <tr className="bg-teal-600 text-white">
                   <th className="py-2 px-4">Date / Time</th>
                   <th className="py-2 px-4">Verification Status</th>
                   <th className="py-2 px-4">Total Questions</th>

@@ -92,6 +92,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import Navbar from "../../Navbar/Navbar";
 import { BASE_URL } from "../../../components/Constant/constant";
+import { SaveLoader } from "../../../components/ResumeLoader/SaveLoader";
 
 export default function Home() {
   const router = useRouter();
@@ -145,11 +146,16 @@ export default function Home() {
           <button
             onClick={handleCreateResume}
             className={`px-6 py-3 text-white font-semibold rounded-lg ${
-              loading ? "bg-gray-400" : "bg-[#00b38d] hover:bg-[#00b38d]"
+              loading ? "bg-gray-400" : "bg-teal-600 hover:bg-teal-700"
             }`}
             disabled={loading}
           >
-            {loading ? "Creating..." : "Create Your Resume"}
+            {/* {loading ? "Creating..." : "Create Your Resume"} */}
+            {loading ? (
+              <SaveLoader loadingText="Creating..." />
+            ) : (
+              "Create Your Resume"
+            )}
           </button>
         </div>
       </main>

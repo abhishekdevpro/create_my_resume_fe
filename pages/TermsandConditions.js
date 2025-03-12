@@ -5,18 +5,18 @@ import Navbar from "./Navbar/Navbar";
 function TermsandConditions() {
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       <div className="m-4 sm:mx-10 lg:mx-40 p-4 sm:p-6 shadow-2xl">
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold my-4 underline">
           Terms and Conditions
         </h1>
 
         <p className="text-base sm:text-lg">
-          Welcome to Create My Resume. These terms and conditions outline the rules and
-          regulations for the use of Create My Resumes website and services. By
-          accessing this website and using our services, you accept these terms
-          and conditions in full. If you disagree with any part of these terms
-          and conditions, please do not use our website or services.
+          Welcome to Create My Resume. These terms and conditions outline the
+          rules and regulations for the use of Create My Resumes website and
+          services. By accessing this website and using our services, you accept
+          these terms and conditions in full. If you disagree with any part of
+          these terms and conditions, please do not use our website or services.
         </p>
 
         <h2 className="text-xl sm:text-2xl font-semibold my-2 mt-5">
@@ -24,7 +24,8 @@ function TermsandConditions() {
         </h2>
         <ul className="list-inside list-disc pl-4 text-base sm:text-lg">
           <li>
-            Client: Any individual or entity using the services of Create My Resume.
+            Client: Any individual or entity using the services of Create My
+            Resume.
           </li>
           <li>Company: Create My Resume.</li>
           <li>
@@ -76,8 +77,8 @@ function TermsandConditions() {
         </h2>
         <ul className="list-inside list-disc pl-4 text-base sm:text-lg">
           <li>
-            All content, materials, and services provided by Create My Resume are
-            protected by intellectual property laws.
+            All content, materials, and services provided by Create My Resume
+            are protected by intellectual property laws.
           </li>
           <li>
             Clients are granted a limited license to use the content and
@@ -94,7 +95,8 @@ function TermsandConditions() {
         </h2>
         <ul className="list-inside list-disc pl-4 text-base sm:text-lg">
           <li>
-            Create My Resume respects the privacy and confidentiality of its clients.
+            Create My Resume respects the privacy and confidentiality of its
+            clients.
           </li>
           <li>
             Any personal information provided by clients will be used solely for
@@ -112,9 +114,9 @@ function TermsandConditions() {
         </h2>
         <ul className="list-inside list-disc pl-4 text-base sm:text-lg">
           <li>
-            Create My Resume will not be liable for any direct, indirect, incidental,
-            or consequential damages arising out of or in connection with the
-            use of our services.
+            Create My Resume will not be liable for any direct, indirect,
+            incidental, or consequential damages arising out of or in connection
+            with the use of our services.
           </li>
           <li>
             We do not guarantee employment or specific job outcomes as a result
@@ -142,8 +144,8 @@ function TermsandConditions() {
         </h2>
         <ul className="list-inside list-disc pl-4 text-base sm:text-lg">
           <li>
-            Create My Resume reserves the right to modify or update these terms and
-            conditions at any time without prior notice.
+            Create My Resume reserves the right to modify or update these terms
+            and conditions at any time without prior notice.
           </li>
           <li>
             Continued use of our website and services after any changes
@@ -157,8 +159,8 @@ function TermsandConditions() {
         <ul className="list-inside list-disc pl-4 text-base sm:text-lg">
           <li>
             These terms and conditions are governed by and construed in
-            accordance with the laws of the jurisdiction in which Create My Resume
-            operates.
+            accordance with the laws of the jurisdiction in which Create My
+            Resume operates.
           </li>
           <li>
             Any disputes arising out of or in connection with these terms and
@@ -175,7 +177,7 @@ function TermsandConditions() {
           conditions, please contact us at:
           <br />
           Email:{" "}
-          <a href="mailto:career@CibliJob.fr" className="text-blue-500">
+          <a href="mailto:career@CibliJob.fr" className="text-teal-600">
             career@CibliJob.fr
           </a>
         </p>

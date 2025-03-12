@@ -26,7 +26,7 @@
 //             type="date"
 //             value={coverLetterData.letterDetails.date}
 //             onChange={(e) => handleChange("date", e.target.value)}
-//             className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+//             className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600"
 //             placeholder="Select a date"
 //           />
 //         </div>
@@ -38,7 +38,7 @@
 //             type="text"
 //             value={coverLetterData.letterDetails.jobTitle}
 //             onChange={(e) => handleChange("jobTitle", e.target.value)}
-//             className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+//             className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600"
 //             placeholder="Enter the job title"
 //           />
 //         </div>
@@ -50,7 +50,7 @@
 //             type="text"
 //             value={coverLetterData.letterDetails.reference}
 //             onChange={(e) => handleChange("reference", e.target.value)}
-//             className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+//             className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600"
 //             placeholder="Enter the reference (e.g., Ref#123)"
 //           />
 //         </div>
@@ -64,7 +64,7 @@
 //             type="text"
 //             value={coverLetterData.letterDetails.companyName}
 //             onChange={(e) => handleChange("companyName", e.target.value)}
-//             className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+//             className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600"
 //             placeholder="Enter the company's name"
 //           />
 //         </div>
@@ -78,7 +78,7 @@
 //             type="text"
 //             value={coverLetterData.letterDetails.salutation}
 //             onChange={(e) => handleChange("salutation", e.target.value)}
-//             className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+//             className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600"
 //             placeholder="Enter the salutation (e.g., Ms. Smith)"
 //           />
 //         </div>
@@ -132,7 +132,7 @@ const LetterDetails = () => {
             }
             onChange={handleDateChange}
             dateFormat="MMMM d, yyyy"
-            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600"
             placeholderText="Select a date"
           />
         </div>
@@ -152,7 +152,7 @@ const LetterDetails = () => {
                 },
               }))
             }
-            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600"
             placeholder="Enter the job title"
           />
         </div>
@@ -172,7 +172,7 @@ const LetterDetails = () => {
                 },
               }))
             }
-            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600"
             placeholder="Enter the reference (e.g., Ref#123)"
           />
         </div>
@@ -194,7 +194,7 @@ const LetterDetails = () => {
                 },
               }))
             }
-            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600"
             placeholder="Enter the company's name"
           />
         </div>
@@ -216,7 +216,7 @@ const LetterDetails = () => {
                 },
               }))
             }
-            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600"
             placeholder="Enter the salutation (e.g., Ms. Smith)"
           />
         </div>

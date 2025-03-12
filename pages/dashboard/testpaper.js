@@ -175,7 +175,7 @@ function Testpaper() {
                 Percentage: {Math.floor(results.Percentage)}%
               </h3>
               <button
-                className="p-2 bg-[#00b38d] rounded-md text-white hover:bg-[#00b38d] mt-4"
+                className="p-2 bg-teal-600 rounded-md text-white hover:bg-teal-600 mt-4"
                 onClick={handleBack}
               >
                 Back
@@ -212,10 +212,10 @@ function Testpaper() {
             </ul>
             <div className="flex justify-between">
               <button
-                className={`p-2 bg-[#00b38d] rounded-md text-white hover:bg-[#00b38d] mt-4 ${
+                className={`p-2 bg-teal-600 rounded-md text-white hover:bg-teal-600 mt-4 ${
                   currentQuestionIndex === 0
                     ? "opacity-50 cursor-not-allowed"
-                    : "hover:bg-[#00b38d]"
+                    : "hover:bg-teal-600"
                 }`}
                 onClick={handlePrevious}
                 disabled={currentQuestionIndex === 0}
@@ -224,14 +224,14 @@ function Testpaper() {
               </button>
               {currentQuestionIndex === questions.length - 1 ? (
                 <button
-                  className="p-2 bg-green-500 rounded-md text-white hover:bg-green-700"
+                  className="p-2 bg-teal-500 rounded-md text-white hover:bg-green-700"
                   onClick={handleSubmit}
                 >
                   🎓 Submit
                 </button>
               ) : (
                 <button
-                  className="p-2 bg-[#00b38d] rounded-md text-white hover:bg-[#00b38d] mt-4"
+                  className="p-2 bg-teal-600 rounded-md text-white hover:bg-teal-600 mt-4"
                   onClick={handleNext}
                 >
                   ↪️ Next

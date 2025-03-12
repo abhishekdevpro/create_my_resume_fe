@@ -65,7 +65,7 @@ const LoginCode = () => {
         {/* Back Button */}
         <Link
           href="/login2"
-          className="text-blue-600 flex items-center mb-6 hover:text-blue-700"
+          className="text-teal-600 flex items-center mb-6 hover:text-teal-700"
         >
           <span className="mr-2">←</span> Back
         </Link>
@@ -100,7 +100,7 @@ const LoginCode = () => {
             value={otp}
             onChange={handleOtpChange}
             maxLength={6}
-            className="w-full text-center text-xl py-2 px-4 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+            className="w-full text-center text-xl py-2 px-4 border rounded-md focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none"
             placeholder="______"
           />
         </div>
@@ -114,7 +114,7 @@ const LoginCode = () => {
         </div> */}
 
         {/* Success Message */}
-        {/* <div className="flex items-center bg-green-100 border border-green-500 text-green-700 p-3 rounded-md mb-6">
+        {/* <div className="flex items-center bg-green-100 border border-teal-500 text-green-700 p-3 rounded-md mb-6">
           <span className="mr-2">✅</span> Success!
         </div> */}
 
@@ -123,7 +123,7 @@ const LoginCode = () => {
           Didn&apos;t receive your code?{" "}
           <Link href="/login2">
             {" "}
-            <button className="text-[#00b38d] font-semibold hover:text-[#00b38d]">
+            <button className="text-teal-600 font-semibold hover:text-teal-600">
               Send new code
             </button>
           </Link>
@@ -132,13 +132,13 @@ const LoginCode = () => {
         {/* Sign In Button */}
         <button
           onClick={handleSignIn}
-          className="w-full bg-[#00b38d] text-white py-2 px-4 rounded-md hover:bg-[#00b38d] flex items-center justify-center"
+          className="w-full bg-teal-600 text-white py-2 px-4 rounded-md hover:bg-teal-600 flex items-center justify-center"
         >
           Sign in <span className="ml-2">→</span>
         </button>
 
         {/* Alternative Option */}
-        <p className="mt-6 text-center text-sm text-[#00b38d] font-semibold">
+        <p className="mt-6 text-center text-sm text-teal-600 font-semibold">
           Don&apos;t have access to this email?
         </p>
       </div>

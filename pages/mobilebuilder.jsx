@@ -528,7 +528,7 @@ export default function MobileBuilder() {
         <button
           onClick={handlePrevious}
           disabled={currentSection === 0}
-          className="px-4 py-2 bg-green-500 text-white rounded-lg disabled:opacity-50"
+          className="px-4 py-2 bg-teal-500 text-white rounded-lg disabled:opacity-50"
         >
           Previous
         </button>
@@ -537,7 +537,7 @@ export default function MobileBuilder() {
         </span>
         <button
           onClick={handleNext}
-          className="px-4 py-2 bg-yellow-500 text-black rounded-lg"
+          className="px-4 py-2 bg-black text-white rounded-lg"
         >
           {currentSection === sections.length - 1 ? "Finish" : "Next"}
         </button>
@@ -556,8 +556,8 @@ export default function MobileBuilder() {
                 onClick={() => handleSectionClick(index)}
                 className={`w-full p-3 mb-2 rounded-lg text-left ${
                   currentSection === index
-                    ? "bg-green-500 text-white"
-                    : "bg-gray-100 text-blue-950"
+                    ? "bg-teal-500 text-white"
+                    : "bg-gray-100 text-teal-950"
                 }`}
               >
                 {section.label}
@@ -621,7 +621,7 @@ export default function MobileBuilder() {
   return (
     <>
       <Meta
-        title="Cibli Job  - AI Resume Builder"
+        title="Create My Resume - AI Resume Builder"
         description="ATSResume is a cutting-edge resume builder that helps job seekers create a professional, ATS-friendly resume in minutes..."
         keywords="ATS-friendly, Resume optimization..."
       />
@@ -632,7 +632,7 @@ export default function MobileBuilder() {
             <div className="flex flex-col md:flex-row flex-grow ">
               <button
                 onClick={toggleMobileSidebar}
-                className="fixed z-10 bottom-20 right-4  bg-green-500 text-white p-3 rounded-full shadow-lg"
+                className="fixed z-10 bottom-20 right-4  bg-teal-500 text-white p-3 rounded-full shadow-lg"
               >
                 {isMobileSidebarOpen ? (
                   <X className="h-6 w-6 stroke-2" />
@@ -680,7 +680,7 @@ export default function MobileBuilder() {
                 <select
                   value={selectedFont}
                   onChange={handleFontChange}
-                  className="rounded-lg border-2 border-green-500 px-5 py-2 font-bold  bg-white text-black"
+                  className="rounded-lg border-2 border-teal-500 px-5 py-2 font-bold  bg-white text-black"
                 >
                   <option value="Ubuntu">Ubuntu</option>
                   <option value="Calibri">Calibri</option>
@@ -718,7 +718,7 @@ export default function MobileBuilder() {
 
                 <button
                   onClick={downloadAsPDF}
-                  className=" bg-yellow-500 text-black px-4 py-2 rounded-lg bottom-btns"
+                  className=" bg-black text-white px-4 py-2 rounded-lg bottom-btns"
                 >
                   {loading == "download" ? (
                     <SaveLoader loadingText={"Downloading"} />
@@ -783,7 +783,7 @@ export default function MobileBuilder() {
                             </label>
                             <input
                               type="text"
-                              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-500"
                               value={`${formData.first_name} ${formData.last_name}`.trim()}
                               name="full name"
                               required
@@ -797,7 +797,7 @@ export default function MobileBuilder() {
                             </label>
                             <input
                               type="email"
-                              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-500"
                               value={formData.email}
                               name="email"
                               required
@@ -811,7 +811,7 @@ export default function MobileBuilder() {
                             </label>
                             <input
                               type="number"
-                              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-500"
                               name="phone"
                               value={formData.phone}
                               required
@@ -856,7 +856,7 @@ export default function MobileBuilder() {
               )} */}
                 <button
                   onClick={handleBackToEditor}
-                  className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors bottom-btns"
+                  className="bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors bottom-btns"
                 >
                   Back
                 </button>
