@@ -187,7 +187,8 @@ function Home_first() {
             <div className="px-3 py-3 w-full md:w-[500px]">
               <div className="flex flex-col gap-4">
                 <div className="font-extrabold text-5xl font-sans">
-                  " Create My Resume" AI Powered Resume Tool, is Live NOW
+                  &quot;Create My Resume&quot; AI Powered Resume Tool, is Live
+                  NOW
                 </div>
 
                 <div className="text-lg font-medium text-slate-700">
