@@ -21,10 +21,8 @@ const Landingpage = () => {
 
       <div className="flex gap-10 justify-center text-center">
         <div
-          className={`border h-60 w-1/3 rounded-lg pt-28 text-xl border-teal-700  cursor-pointer ${
-            selectedOption === "create"
-              ? "bg-teal-100 border-2 border-teal-600"
-              : ""
+          className={`border h-60 w-1/3 rounded-lg pt-28 text-xl border-blue-700  cursor-pointer ${
+            selectedOption === "create" ? "bg-blue-100 border-2 border-blue-500" : ""
           }`}
           onClick={() => setSelectedOption("create")}
         >
@@ -33,10 +31,8 @@ const Landingpage = () => {
         </div>
 
         <div
-          className={`border h-60 w-1/3 rounded-lg pt-28 text-xl border-teal-700  cursor-pointer ${
-            selectedOption === "upload"
-              ? "bg-teal-100 border-2 border-teal-600"
-              : ""
+          className={`border h-60 w-1/3 rounded-lg pt-28 text-xl border-blue-700  cursor-pointer ${
+            selectedOption === "upload" ? "bg-blue-100 border-2 border-blue-500" : ""
           }`}
           onClick={() => setSelectedOption("upload")}
         >
@@ -47,8 +43,8 @@ const Landingpage = () => {
       </div>
 
       <div className="flex px-60 my-20 justify-between text-center">
-        <button className="border-2 rounded-full p-2 px-10 text-lg font-bold border-teal-500 text-black">
-          Back
+        <button className="border-2 rounded-full p-2 px-10 text-lg font-bold border-green-500 text-black">
+         Back
         </button>
 
         <button

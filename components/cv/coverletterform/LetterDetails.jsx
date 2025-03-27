@@ -1,33 +1,49 @@
 // import React, { useContext } from "react";
+// import DatePicker from "react-datepicker";
+// import "react-datepicker/dist/react-datepicker.css";
 // import { CoverLetterContext } from "../../context/CoverLetterContext";
 
 // const LetterDetails = () => {
 //   const { coverLetterData, setCoverLetterData } =
 //     useContext(CoverLetterContext);
 
-//   const handleChange = (field, value) => {
+//   const handleDateChange = (date) => {
+//     // Format the selected date as "January 17, 2025"
+//     const formattedDate = date
+//       ? new Intl.DateTimeFormat("en-US", {
+//           month: "long",
+//           day: "numeric",
+//           year: "numeric",
+//         }).format(date)
+//       : "";
+
+//     // Update the context with the formatted date
 //     setCoverLetterData((prevData) => ({
 //       ...prevData,
 //       letterDetails: {
 //         ...prevData.letterDetails,
-//         [field]: value,
+//         date: formattedDate,
 //       },
 //     }));
 //   };
 
 //   return (
-//     <div className="p-4 md:p-8  rounded-lg shadow-md">
+//     <div className="p-4 md:p-8 rounded-lg shadow-md">
 //       <h2 className="text-2xl font-bold mb-6 text-black">Letter Details</h2>
 //       <div className="space-y-4">
 //         {/* Date */}
 //         <div>
 //           <label className="block text-black font-medium mb-2">Date</label>
-//           <input
-//             type="date"
-//             value={coverLetterData.letterDetails.date}
-//             onChange={(e) => handleChange("date", e.target.value)}
-//             className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600"
-//             placeholder="Select a date"
+//           <DatePicker
+//             selected={
+//               coverLetterData.letterDetails.date
+//                 ? new Date(coverLetterData.letterDetails.date)
+//                 : null
+//             }
+//             onChange={handleDateChange}
+//             dateFormat="MMMM d, yyyy"
+//             className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+//             placeholderText="Select a date"
 //           />
 //         </div>
 
@@ -37,8 +53,16 @@
 //           <input
 //             type="text"
 //             value={coverLetterData.letterDetails.jobTitle}
-//             onChange={(e) => handleChange("jobTitle", e.target.value)}
-//             className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600"
+//             onChange={(e) =>
+//               setCoverLetterData((prevData) => ({
+//                 ...prevData,
+//                 letterDetails: {
+//                   ...prevData.letterDetails,
+//                   jobTitle: e.target.value,
+//                 },
+//               }))
+//             }
+//             className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
 //             placeholder="Enter the job title"
 //           />
 //         </div>
@@ -49,8 +73,16 @@
 //           <input
 //             type="text"
 //             value={coverLetterData.letterDetails.reference}
-//             onChange={(e) => handleChange("reference", e.target.value)}
-//             className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600"
+//             onChange={(e) =>
+//               setCoverLetterData((prevData) => ({
+//                 ...prevData,
+//                 letterDetails: {
+//                   ...prevData.letterDetails,
+//                   reference: e.target.value,
+//                 },
+//               }))
+//             }
+//             className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
 //             placeholder="Enter the reference (e.g., Ref#123)"
 //           />
 //         </div>
@@ -63,8 +95,16 @@
 //           <input
 //             type="text"
 //             value={coverLetterData.letterDetails.companyName}
-//             onChange={(e) => handleChange("companyName", e.target.value)}
-//             className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600"
+//             onChange={(e) =>
+//               setCoverLetterData((prevData) => ({
+//                 ...prevData,
+//                 letterDetails: {
+//                   ...prevData.letterDetails,
+//                   companyName: e.target.value,
+//                 },
+//               }))
+//             }
+//             className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
 //             placeholder="Enter the company's name"
 //           />
 //         </div>
@@ -77,8 +117,16 @@
 //           <input
 //             type="text"
 //             value={coverLetterData.letterDetails.salutation}
-//             onChange={(e) => handleChange("salutation", e.target.value)}
-//             className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600"
+//             onChange={(e) =>
+//               setCoverLetterData((prevData) => ({
+//                 ...prevData,
+//                 letterDetails: {
+//                   ...prevData.letterDetails,
+//                   salutation: e.target.value,
+//                 },
+//               }))
+//             }
+//             className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
 //             placeholder="Enter the salutation (e.g., Ms. Smith)"
 //           />
 //         </div>
@@ -88,26 +136,27 @@
 // };
 
 // export default LetterDetails;
+
 import React, { useContext } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { CoverLetterContext } from "../../context/CoverLetterContext";
+import { useTranslation } from "react-i18next";
 
 const LetterDetails = () => {
+  const { t, i18n } = useTranslation();
   const { coverLetterData, setCoverLetterData } =
     useContext(CoverLetterContext);
 
   const handleDateChange = (date) => {
-    // Format the selected date as "January 17, 2025"
     const formattedDate = date
-      ? new Intl.DateTimeFormat("en-US", {
+      ? new Intl.DateTimeFormat(i18n.language === "en" ? "en-US" : "fr-FR", {
           month: "long",
           day: "numeric",
           year: "numeric",
         }).format(date)
       : "";
 
-    // Update the context with the formatted date
     setCoverLetterData((prevData) => ({
       ...prevData,
       letterDetails: {
@@ -119,11 +168,15 @@ const LetterDetails = () => {
 
   return (
     <div className="p-4 md:p-8 rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-6 text-black">Letter Details</h2>
+      <h2 className="text-2xl font-bold mb-6 text-black">
+        {t("letterDetails.title")}
+      </h2>
       <div className="space-y-4">
         {/* Date */}
         <div>
-          <label className="block text-black font-medium mb-2">Date</label>
+          <label className="block text-black font-medium mb-2">
+            {t("letterDetails.date")}
+          </label>
           <DatePicker
             selected={
               coverLetterData.letterDetails.date
@@ -132,14 +185,16 @@ const LetterDetails = () => {
             }
             onChange={handleDateChange}
             dateFormat="MMMM d, yyyy"
-            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600"
-            placeholderText="Select a date"
+            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholderText={t("letterDetails.datePlaceholder")}
           />
         </div>
 
         {/* Job Title */}
         <div>
-          <label className="block text-black font-medium mb-2">Job Title</label>
+          <label className="block text-black font-medium mb-2">
+            {t("letterDetails.jobTitle")}
+          </label>
           <input
             type="text"
             value={coverLetterData.letterDetails.jobTitle}
@@ -152,14 +207,16 @@ const LetterDetails = () => {
                 },
               }))
             }
-            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600"
-            placeholder="Enter the job title"
+            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder={t("letterDetails.jobTitlePlaceholder")}
           />
         </div>
 
         {/* Reference */}
         <div>
-          <label className="block text-black font-medium mb-2">Reference</label>
+          <label className="block text-black font-medium mb-2">
+            {t("letterDetails.reference")}
+          </label>
           <input
             type="text"
             value={coverLetterData.letterDetails.reference}
@@ -172,15 +229,15 @@ const LetterDetails = () => {
                 },
               }))
             }
-            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600"
-            placeholder="Enter the reference (e.g., Ref#123)"
+            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder={t("letterDetails.referencePlaceholder")}
           />
         </div>
 
         {/* Company Name */}
         <div>
           <label className="block text-black font-medium mb-2">
-            Company Name
+            {t("letterDetails.companyName")}
           </label>
           <input
             type="text"
@@ -194,15 +251,15 @@ const LetterDetails = () => {
                 },
               }))
             }
-            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600"
-            placeholder="Enter the company's name"
+            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder={t("letterDetails.companyNamePlaceholder")}
           />
         </div>
 
         {/* Salutation */}
         <div>
           <label className="block text-black font-medium mb-2">
-            Salutation
+            {t("letterDetails.salutation")}
           </label>
           <input
             type="text"
@@ -216,8 +273,8 @@ const LetterDetails = () => {
                 },
               }))
             }
-            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600"
-            placeholder="Enter the salutation (e.g., Ms. Smith)"
+            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder={t("letterDetails.salutationPlaceholder")}
           />
         </div>
       </div>

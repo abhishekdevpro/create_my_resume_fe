@@ -66,7 +66,7 @@
 //                       isAuthenticated ? "/dashboard/resume-builder" : "/login2"
 //                     }
 //                   >
-//                     <button className=" text-white bg-pink-600 text-lg px-6 py-2 rounded-full  font-bold hover:shadow-2xl hover:shadow-slate-500 ">
+//                     <button className=" text-white bg-black text-lg px-6 py-2 rounded-full  font-bold hover:shadow-2xl hover:shadow-slate-500 ">
 //                       {" "}
 //                       Build your Resume
 //                     </button>
@@ -187,13 +187,13 @@ function Home_first() {
             <div className="px-3 py-3 w-full md:w-[500px]">
               <div className="flex flex-col gap-4">
                 <div className="font-extrabold text-5xl font-sans">
-                  &quot; {t("cibli_job")}&quot;{t("ai_powered_resume_tool")},{" "}
-                  {t("is_live_now")}
+                  &quot;Create My Resume&quot; AI Powered Resume Tool, is Live
+                  NOW
                 </div>
 
                 <div className="text-lg font-medium text-slate-700">
-                  {t("resume_score")}, {t("enhanced_resume")} {t("much_more")}{" "}
-                  {t("apply_job_with_confidence")}
+                  Resume Score, Enhanced Resume & much more. Now Apply Job with
+                  confidence with our all-in-one solution under one roof.
                 </div>
 
                 <div className="flex flex-wrap gap-4">

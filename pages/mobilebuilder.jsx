@@ -59,7 +59,8 @@ export default function MobileBuilder() {
   const [userId, setUserId] = useState(0);
   const templateRef = useRef(null);
   const [loading, setLoading] = useState(null);
-
+  const { i18n, t } = useTranslation();
+  const language = i18n.language;
   const {
     setResumeStrength,
     resumeData,
@@ -91,7 +92,7 @@ export default function MobileBuilder() {
       if (id && token) {
         try {
           const response = await axios.get(
-            `${BASE_URL}/api/user/resume-list/${id}`,
+            `${BASE_URL}/api/user/resume-list/${id}?lang=${language}`,
             {
               headers: {
                 Authorization: token,
@@ -209,25 +210,61 @@ export default function MobileBuilder() {
     setResumeId(id);
   }, []);
   const sections = [
-    { label: "Personal Details", component: <PersonalInformation /> },
-    { label: "Social Links", component: <SocialMedia /> },
-    { label: "Summary", component: <Summary /> },
-    { label: "Education", component: <Education /> },
-    { label: "Experience", component: <WorkExperience /> },
-    { label: "Projects", component: <Projects /> },
     {
-      label: "Skills",
+      label: t("resumeStrength.sections.personalInformation"),
+      component: <PersonalInformation />,
+    },
+    {
+      label: t("resumeStrength.sections.socialLinks"),
+      component: <SocialMedia />,
+    },
+    {
+      label: t("resumeStrength.sections.personalSummary"),
+      component: <Summary />,
+    },
+    { label: t("resumeStrength.sections.education"), component: <Education /> },
+    {
+      label: t("resumeStrength.sections.workHistory"),
+      component: <WorkExperience />,
+    },
+    { label: t("resumeStrength.sections.projects"), component: <Projects /> },
+    {
+      label: t("resumeStrength.sections.skills"),
       component: Array.isArray(resumeData?.skills) ? (
         resumeData.skills.map((skill, index) => (
-          <Skill title={skill.title} key={index} />
+          <Skill title={skill.title} currentSkillIndex={index} key={index} />
         ))
       ) : (
         <p>No skills available</p>
       ),
     },
-    { label: "Languages", component: <Language /> },
-    { label: "Certifications", component: <Certification /> },
+    { label: t("resumeStrength.sections.languages"), component: <Language /> },
+    {
+      label: t("resumeStrength.sections.certification"),
+      component: <Certification />,
+    },
   ];
+  // const sections = [
+  //   { label: "Personal Details", component: <PersonalInformation /> },
+  //   { label: "Social Links", component: <SocialMedia /> },
+  //   { label: "Summary", component: <Summary /> },
+  //   { label: "Education", component: <Education /> },
+  //   { label: "Experience", component: <WorkExperience /> },
+  //   { label: "Projects", component: <Projects /> },
+  //   {
+  //     label: "Skills",
+  //     component: Array.isArray(resumeData?.skills) ? (
+  //       resumeData.skills.map((skill, index) => (
+  //         <Skill title={skill.title} currentSkillIndex={index} key={index} />
+  //       ))
+  //     ) : (
+  //       <p>No skills available</p>
+  //     ),
+  //   },
+  //   { label: "Languages", component: <Language /> },
+  //   { label: "Certifications", component: <Certification /> },
+  // ];
+
   const handleNext = () => {
     handleFinish(false);
     if (currentSection === sections.length - 1) {
@@ -300,7 +337,7 @@ export default function MobileBuilder() {
 
       // API call to generate the PDF
       const response = await axios.post(
-        `${BASE_URL}/api/user/generate-pdf-py`,
+        `${BASE_URL}/api/user/generate-pdf-py?lang=${language}`,
         // { html: fullContent },
         { html: fullContent, pdf_type: selectedPdfType },
         {
@@ -340,7 +377,7 @@ export default function MobileBuilder() {
     handleFinish();
     try {
       const response = await axios.get(
-        `${BASE_URL}/api/user/download-file/11/${resumeId}`,
+        `${BASE_URL}/api/user/download-file/11/${resumeId}?lang=${language}`,
         {
           headers: {
             Authorization: token,
@@ -384,7 +421,7 @@ export default function MobileBuilder() {
 
       if (orderId && token && PayerID) {
         const response = await axios.get(
-          `${BASE_URL}/api/user/paypal/verify-order?orderid=${orderId}`,
+          `${BASE_URL}/api/user/paypal/verify-order?orderid=${orderId}?lang=${language}`,
           {
             headers: {
               Authorization: token,
@@ -528,18 +565,20 @@ export default function MobileBuilder() {
         <button
           onClick={handlePrevious}
           disabled={currentSection === 0}
-          className="px-4 py-2 bg-teal-500 text-white rounded-lg disabled:opacity-50"
+          className="px-4 py-2 bg-teal-600 text-white rounded-lg disabled:opacity-50"
         >
-          Previous
+          {t("buttons.previous")}
         </button>
         <span className="text-sm font-medium">
           {sections[currentSection].label}
         </span>
         <button
           onClick={handleNext}
-          className="px-4 py-2 bg-black text-white rounded-lg"
+          className="px-4 py-2 bg-yellow-500 text-black rounded-lg"
         >
-          {currentSection === sections.length - 1 ? "Finish" : "Next"}
+          {currentSection === sections.length - 1
+            ? t("buttons.finish")
+            : t("buttons.next")}
         </button>
       </div>
     </div>
@@ -556,8 +595,8 @@ export default function MobileBuilder() {
                 onClick={() => handleSectionClick(index)}
                 className={`w-full p-3 mb-2 rounded-lg text-left ${
                   currentSection === index
-                    ? "bg-teal-500 text-white"
-                    : "bg-gray-100 text-teal-950"
+                    ? "bg-teal-600 text-white"
+                    : "bg-gray-100 text-blue-950"
                 }`}
               >
                 {section.label}
@@ -591,7 +630,7 @@ export default function MobileBuilder() {
         const token = localStorage.getItem("token");
 
         const userProfileResponse = await axios.get(
-          `${BASE_URL}/api/user/user-profile`,
+          `${BASE_URL}/api/user/user-profile?lang=${language}`,
           {
             headers: {
               Authorization: token,
@@ -621,7 +660,7 @@ export default function MobileBuilder() {
   return (
     <>
       <Meta
-        title="Create My Resume - AI Resume Builder"
+        title="Create My Resume  - AI Resume Builder"
         description="ATSResume is a cutting-edge resume builder that helps job seekers create a professional, ATS-friendly resume in minutes..."
         keywords="ATS-friendly, Resume optimization..."
       />
@@ -632,7 +671,7 @@ export default function MobileBuilder() {
             <div className="flex flex-col md:flex-row flex-grow ">
               <button
                 onClick={toggleMobileSidebar}
-                className="fixed z-10 bottom-20 right-4  bg-teal-500 text-white p-3 rounded-full shadow-lg"
+                className="fixed z-10 bottom-20 right-4  bg-teal-600 text-white p-3 rounded-full shadow-lg"
               >
                 {isMobileSidebarOpen ? (
                   <X className="h-6 w-6 stroke-2" />
@@ -709,22 +748,28 @@ export default function MobileBuilder() {
                   onClick={handleClick}
                   className=" text-white px-4 py-2 rounded-lg bottom-btns"
                 >
-                  {loading == "save" ? (
-                    <SaveLoader loadingText={"Saving"} />
+                  {loading === "save" ? (
+                    <SaveLoader loadingText={t("buttons.saving")} />
                   ) : (
-                    "Save"
+                    t("buttons.save")
                   )}
                 </LoaderButton>
 
                 <button
                   onClick={downloadAsPDF}
-                  className=" bg-black text-white px-4 py-2 rounded-lg bottom-btns"
+                  className=" bg-yellow-500 text-black px-4 py-2 rounded-lg bottom-btns"
                 >
-                  {loading == "download" ? (
-                    <SaveLoader loadingText={"Downloading"} />
+                  {loading === "download" ? (
+                    <SaveLoader loadingText={t("buttons.downloading")} />
                   ) : (
-                    "Downlaod"
+                    t("buttons.download")
                   )}
+                </button>
+                <button
+                  onClick={handleBackToEditor}
+                  className="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors bottom-btns"
+                >
+                  {t("buttons.backToDashboard")}
                 </button>
                 {/* <PayAndDownload
                   resumeId={resumeId}
@@ -854,12 +899,6 @@ export default function MobileBuilder() {
                   </div>
                 </div>
               )} */}
-                <button
-                  onClick={handleBackToEditor}
-                  className="bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors bottom-btns"
-                >
-                  Back
-                </button>
               </div>
             </div>
           </>

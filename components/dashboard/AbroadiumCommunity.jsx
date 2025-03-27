@@ -19,9 +19,7 @@ const AbroadiumCommunity = () => {
             </svg>
           </div>
           <div>
-            <h3 className="text-lg font-semibold">
-              Join the Abroadium Community!
-            </h3>
+            <h3 className="text-lg font-semibold">Join the Cibli Community!</h3>
             <p className="text-gray-600 max-w-md">
               Connect with professionals, industry experts, and like-minded
               peers in our vibrant discussion space. Share ideas, ask questions,
@@ -30,7 +28,7 @@ const AbroadiumCommunity = () => {
             </p>
           </div>
         </div>
-        <button className="px-6 py-2 border border-teal-600 text-teal-600 rounded-lg hover:bg-teal-50">
+        <button className="px-6 py-2 border border-teal-700 text-teal-700 rounded-lg hover:bg-blue-50">
           I’m In!
         </button>
       </div>

@@ -1,17 +1,20 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "./logo.png";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 // import ReCAPTCHA from 'react-google-recaptcha';
+import axios from "axios";
 import { BASE_URL } from "../../components/Constant/constant";
+import { ResumeContext } from "../../components/context/ResumeContext";
 const LoginCode = () => {
   const [otp, setOtp] = useState("");
   const [captchaVerified, setCaptchaVerified] = useState(false);
   const router = useRouter();
-
+  const { selectedLang } = useContext(ResumeContext);
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(true);
   const handleOtpChange = (e) => {
@@ -38,7 +41,7 @@ const LoginCode = () => {
 
     try {
       const response = await axios.post(
-        `${BASE_URL}/api/user/auth/login-verify-otp`,
+        `${BASE_URL}/api/user/auth/login-verify-otp?lang=${selectedLang}`,
 
         { email, otp }
       );
@@ -46,7 +49,7 @@ const LoginCode = () => {
       const token = response.data?.data?.token;
 
       localStorage.setItem("token", token);
-
+      toast.success("Login Successfully");
       router.push(`/dashboard`);
     } catch (error) {
       console.error(
@@ -65,7 +68,7 @@ const LoginCode = () => {
         {/* Back Button */}
         <Link
           href="/login2"
-          className="text-teal-600 flex items-center mb-6 hover:text-teal-700"
+          className="text-teal-700 flex items-center mb-6 hover:text-teal-700"
         >
           <span className="mr-2">←</span> Back
         </Link>
@@ -87,7 +90,7 @@ const LoginCode = () => {
         </h2>
         <p className="text-gray-600 text-center mb-6">
           We have sent your one-time passcode to <br />
-          <strong>{email}</strong>. This passcode will expire after 10 minutes.
+          <strong>{email}</strong>. This passcode will expire after 5 minutes.
         </p>
 
         {/* OTP Input */}
@@ -100,7 +103,7 @@ const LoginCode = () => {
             value={otp}
             onChange={handleOtpChange}
             maxLength={6}
-            className="w-full text-center text-xl py-2 px-4 border rounded-md focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none"
+            className="w-full text-center text-xl py-2 px-4 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
             placeholder="______"
           />
         </div>
@@ -114,7 +117,7 @@ const LoginCode = () => {
         </div> */}
 
         {/* Success Message */}
-        {/* <div className="flex items-center bg-green-100 border border-teal-500 text-green-700 p-3 rounded-md mb-6">
+        {/* <div className="flex items-center bg-green-100 border border-green-500 text-green-700 p-3 rounded-md mb-6">
           <span className="mr-2">✅</span> Success!
         </div> */}
 
@@ -123,7 +126,7 @@ const LoginCode = () => {
           Didn&apos;t receive your code?{" "}
           <Link href="/login2">
             {" "}
-            <button className="text-teal-600 font-semibold hover:text-teal-600">
+            <button className="text-teal-700 font-semibold hover:text-teal-700">
               Send new code
             </button>
           </Link>
@@ -132,13 +135,13 @@ const LoginCode = () => {
         {/* Sign In Button */}
         <button
           onClick={handleSignIn}
-          className="w-full bg-teal-600 text-white py-2 px-4 rounded-md hover:bg-teal-600 flex items-center justify-center"
+          className="w-full bg-teal-700 text-white py-2 px-4 rounded-md hover:bg-teal-700 flex items-center justify-center"
         >
           Sign in <span className="ml-2">→</span>
         </button>
 
         {/* Alternative Option */}
-        <p className="mt-6 text-center text-sm text-teal-600 font-semibold">
+        <p className="mt-6 text-center text-sm text-teal-700 font-semibold">
           Don&apos;t have access to this email?
         </p>
       </div>

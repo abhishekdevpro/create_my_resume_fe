@@ -8,11 +8,20 @@ import "react-quill/dist/quill.snow.css";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import { BASE_URL } from "../Constant/constant";
+import { useTranslation } from "react-i18next";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 const WorkExperience = () => {
-  const { resumeData, setResumeData, resumeStrength, setResumeStrength } =
-    useContext(ResumeContext);
+  const { i18n, t } = useTranslation();
+  const language = i18n.language;
+  // console.log(language,"language");
+  const {
+    resumeData,
+    setResumeData,
+    resumeStrength,
+    setResumeStrength,
+    selectedLang,
+  } = useContext(ResumeContext);
   const [activeTooltip, setActiveTooltip] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [loadingStates, setLoadingStates] = useState({});
@@ -114,7 +123,7 @@ const WorkExperience = () => {
       const response = await fetch(
         `${BASE_URL}/api/user/locations?locations=${encodeURIComponent(
           keyword
-        )}`
+        )}&lang=${language}`
       );
       if (response.ok) {
         const data = await response.json();
@@ -136,9 +145,9 @@ const WorkExperience = () => {
 
     try {
       const response = await axios.get(
-        `https://api.sentryspot.co.uk/api/user/job-title?job_title_keyword=${encodeURIComponent(
+        `${BASE_URL}/api/user/job-title?job_title_keyword=${encodeURIComponent(
           keyword
-        )}`
+        )}&lang=${language}`
       );
       if (response.data && response.data.data) {
         setJobTitleSuggestions(response.data.data);
@@ -159,7 +168,7 @@ const WorkExperience = () => {
       const response = await axios.get(
         `${BASE_URL}/api/user/compnay-list?company_keyword=${encodeURIComponent(
           keyword
-        )}`
+        )}&lang=${language}`
       );
       if (response.data && response.data.data) {
         setCompanySuggestions(response.data.data);
@@ -217,6 +226,7 @@ const WorkExperience = () => {
           company_name: resumeData.workExperience[index].company,
           job_title: resumeData.workExperience[index].position,
           location: resumeData.workExperience[index].location,
+          lang: language,
         },
         {
           headers: {
@@ -260,6 +270,7 @@ const WorkExperience = () => {
           company_name: resumeData.workExperience[index].company,
           job_title: resumeData.workExperience[index].position,
           location: resumeData.workExperience[index].location,
+          lang: language,
         },
         {
           headers: {
@@ -370,6 +381,7 @@ const WorkExperience = () => {
             key: "professional_experience",
             keyword: value,
             content: value,
+            lang: language,
           },
           {
             headers: {
@@ -508,14 +520,16 @@ const WorkExperience = () => {
 
   return (
     <div className="flex-col gap-3 w-full mt-10 px-10">
-      <h2 className="input-title text-black text-3xl mb-6">Work Experience</h2>
+      <h2 className="input-title text-black text-3xl mb-6">
+        {t("resumeStrength.sections.workHistory")}
+      </h2>
       <div className="flex items-center space-x-2 mb-4">
         <label className="text-lg text-black font-medium">
-          Are you a Fresher?
+          {t("builder_forms.work_experience.fresher_question")}
         </label>
         <button
           className={`w-14 h-7 flex items-center rounded-full p-1 transition ${
-            resumeData.is_fresher ? "bg-teal-500" : "bg-gray-400"
+            resumeData.is_fresher ? "bg-teal-600" : "bg-gray-400"
           }`}
           onClick={handleToggleFresher}
         >
@@ -560,11 +574,14 @@ const WorkExperience = () => {
             {expandedExperiences[index] && (
               <div className="p-4 bg-white">
                 <div className="relative mb-4">
-                  <label className="text-black">Company Name</label>
+                  <label className="text-black">
+                    {t("builder_forms.work_experience.company_name")}
+                  </label>
                   <input
                     type="text"
                     placeholder="Company"
                     name="company"
+                    maxLength={150}
                     className={`w-full other-input border ${
                       improve && hasErrors(index, "company")
                         ? "border-red-500"
@@ -637,11 +654,14 @@ const WorkExperience = () => {
                 </div>
 
                 <div className="relative mb-4">
-                  <label className="text-black">Job Title</label>
+                  <label className="text-black">
+                    {t("builder_forms.work_experience.job_title")}
+                  </label>
                   <input
                     type="text"
                     placeholder="Position"
                     name="position"
+                    maxLength={150}
                     className={`w-full other-input border ${
                       improve && hasErrors(index, "position")
                         ? "border-red-500"
@@ -714,7 +734,9 @@ const WorkExperience = () => {
                 </div>
 
                 <div className="">
-                  <label className="text-black">Start Date</label>
+                  <label className="text-black">
+                    {t("builder_forms.work_experience.start_date")}
+                  </label>
                   <div className="flex-wrap-gap-2">
                     <select
                       className={`other-input border flex-1 ${
@@ -748,7 +770,9 @@ const WorkExperience = () => {
                     </select>
                   </div>
 
-                  <label className="text-black">End Date</label>
+                  <label className="text-black">
+                    {t("builder_forms.work_experience.end_date")}
+                  </label>
                   <div className="flex-wrap-gap-2 flex items-center gap-2 ">
                     <select
                       className={`other-input border flex-1 ${
@@ -802,7 +826,9 @@ const WorkExperience = () => {
                   </div>
                 </div>
                 <div className="relative mb-4">
-                  <label className="mt-2 text-black">Location</label>
+                  <label className="mt-2 text-black">
+                    {t("builder_forms.work_experience.location")}
+                  </label>
                   <input
                     type="text"
                     placeholder="Location"
@@ -883,7 +909,9 @@ const WorkExperience = () => {
 
                 <div className="relative mb-4">
                   <div className="flex justify-between mb-2">
-                    <label className="text-black">Description</label>
+                    <label className="text-black">
+                      {t("builder_forms.work_experience.description")}
+                    </label>
 
                     <button
                       type="button"
@@ -904,8 +932,13 @@ const WorkExperience = () => {
                   </div>
                   <ReactQuill
                     placeholder="Description"
-                    value={experience.description}
-                    onChange={(value) => handleDescriptionChange(value, index)}
+                    value={experience.description || ""}
+                    // onChange={(value) => handleDescriptionChange(value, index)}
+                    onChange={(value) => {
+                      if (value.replace(/<[^>]*>/g, "").length <= 1000) {
+                        handleDescriptionChange(value, index);
+                      }
+                    }}
                     className={`bg-white rounded-md ${
                       improve && hasErrors(index, "descriptionDetails")
                         ? "border-red-500"
@@ -1009,7 +1042,9 @@ const WorkExperience = () => {
 
                 <div className="relative mb-4">
                   <div className="flex justify-between mb-2">
-                    <label className="text-black">Key Achievements</label>
+                    <label className="text-black">
+                      {t("builder_forms.work_experience.key_achievements")}
+                    </label>
                     <button
                       type="button"
                       className="border bg-black text-white px-3 rounded-3xl"
@@ -1031,6 +1066,7 @@ const WorkExperience = () => {
                   <textarea
                     placeholder="Key Achievements (one per line)"
                     name="KeyAchievements"
+                    maxLength={1000}
                     className={`w-full other-input border ${
                       improve && hasErrors(index, "KeyAchievements")
                         ? "border-red-500"

@@ -12,8 +12,8 @@ function Navbarcontent() {
           AI Resume Builder
         </h1>
         <p className="text-base sm:text-lg">
-          AI Resume Builder on CreateMyResume.com offers a seamless way to craft
-          professional resumes tailored to specific job roles. Leveraging
+          AI Resume Builder on Create My Resume.com offers a seamless way to
+          craft professional resumes tailored to specific job roles. Leveraging
           advanced AI algorithms, it guides users through every step, ensuring
           optimal formatting, keyword optimization, and personalized content.
           Save time and create standout resumes with ease.

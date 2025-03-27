@@ -54,6 +54,7 @@ const Background = () => {
       {/* Selected Skills */}
       {selectedSkills.length > 0 && (
         <div className="my-8">
+        
           <div className="flex justify-center space-x-4">
             {selectedSkills.map((skill) => (
               <div
@@ -76,29 +77,27 @@ const Background = () => {
             <div
               key={skill}
               onClick={() => handleSkillSelect(skill)}
-              className={`p-3 border rounded-lg border-gray-400 text-gray-800 text-center cursor-pointer hover:bg-teal-900 hover:text-white ${
+              className={`p-3 border rounded-lg border-gray-400 text-gray-800 text-center cursor-pointer hover:bg-blue-900 hover:text-white ${
                 selectedSkills.length >= 3
                   ? "cursor-not-allowed opacity-50"
                   : ""
               }`}
             >
-              {skill} +
+              {skill}{" "} +
             </div>
           ))}
       </div>
 
       <div className="flex px-60 my-20 justify-between text-center">
         <Link href="/Createletterpage">
-          <button className="border-2 rounded-full p-2 px-10 text-lg font-bold border-teal-500 text-black">
+          <button className="border-2 rounded-full p-2 px-10 text-lg font-bold border-green-500 text-black">
             Back
           </button>
         </Link>
 
         <button
           className={`rounded-full p-2 px-10 text-lg font-bold text-black ${
-            selectedSkills.length === 3
-              ? "bg-yellow-500 cursor-pointer"
-              : "bg-gray-300"
+            selectedSkills.length === 3 ? "bg-yellow-500 cursor-pointer" : "bg-gray-300"
           }`}
           disabled={selectedSkills.length !== 3}
           onClick={handleContinue}
