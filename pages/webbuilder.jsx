@@ -66,7 +66,8 @@ export default function WebBuilder() {
   const [userId, setUserId] = useState(0);
   const templateRef = useRef(null);
   const [loading, setLoading] = useState(null);
-
+  const { i18n, t } = useTranslation();
+  const language = i18n.language;
   const {
     setResumeStrength,
     resumeData,
@@ -95,7 +96,7 @@ export default function WebBuilder() {
       if (id && token) {
         try {
           const response = await axios.get(
-            `${BASE_URL}/api/user/resume-list/${id}`,
+            `${BASE_URL}/api/user/resume-list/${id}?lang=${language}`,
             {
               headers: {
                 Authorization: token,
@@ -213,25 +214,72 @@ export default function WebBuilder() {
     setResumeId(id);
   }, []);
   const sections = [
-    { label: "Personal Details", component: <PersonalInformation /> },
-    { label: "Social Links", component: <SocialMedia /> },
-    { label: "Summary", component: <Summary /> },
-    { label: "Education", component: <Education /> },
-    { label: "Experience", component: <WorkExperience /> },
-    { label: "Projects", component: <Projects /> },
     {
-      label: "Skills",
+      label: t("resumeStrength.sections.personalInformation"),
+      component: <PersonalInformation />,
+    },
+    {
+      label: t("resumeStrength.sections.socialLinks"),
+      component: <SocialMedia />,
+    },
+    {
+      label: t("resumeStrength.sections.personalSummary"),
+      component: <Summary />,
+    },
+    { label: t("resumeStrength.sections.education"), component: <Education /> },
+    {
+      label: t("resumeStrength.sections.workHistory"),
+      component: <WorkExperience />,
+    },
+    { label: t("resumeStrength.sections.projects"), component: <Projects /> },
+    {
+      label: t("resumeStrength.sections.skills"),
       component: Array.isArray(resumeData?.skills) ? (
         resumeData.skills.map((skill, index) => (
-          <Skill title={skill.title} key={index} />
+          <Skill title={skill.title} currentSkillIndex={index} key={index} />
         ))
       ) : (
         <p>No skills available</p>
       ),
     },
-    { label: "Languages", component: <Language /> },
-    { label: "Certifications", component: <Certification /> },
+    { label: t("resumeStrength.sections.languages"), component: <Language /> },
+    {
+      label: t("resumeStrength.sections.certification"),
+      component: <Certification />,
+    },
   ];
+  // const sections = [
+  //   { label: sections.personalInformation, component: <PersonalInformation /> },
+  //   { label: t.sections.socialLinks, component: <SocialMedia /> },
+  //   { label: t.sections.personalSummary, component: <Summary /> },
+  //   { label: t.sections.education, component: <Education /> },
+  //   { label: t.sections.workHistory, component: <WorkExperience /> },
+  //   { label: t.sections.projects, component: <Projects /> },
+
+  //   {
+  //     label:  t.sections.skills,
+  //     component: Array.isArray(resumeData?.skills) ? (
+  //       resumeData.skills.map((skill, index) => (
+  //         <Skill title={skill.title} currentSkillIndex={index} key={index} />
+  //       ))
+  //     ) : (
+  //       <p>No skills available</p>
+  //     ),
+  //   },
+  //   { label: t.sections.languages, component: <Language /> },
+  //   { label: t.sections.certifications, component: <Certification /> },
+  // ];
+
+  // const handleProfilePicture = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file instanceof Blob) {
+  //     const reader = new FileReader();
+  //     reader.onload = (event) => {
+  //       setResumeData({ ...resumeData, profilePicture: event.target.result });
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
 
   const handleChange = (e) => {
     setResumeData({ ...resumeData, [e.target.name]: e.target.value });
@@ -427,7 +475,7 @@ export default function WebBuilder() {
 
       if (orderId && token && PayerID) {
         const response = await axios.get(
-          `${BASE_URL}/api/user/paypal/verify-order?orderid=${orderId}`,
+          `${BASE_URL}/api/user/paypal/verify-order?orderid=${orderId}?lang=${language}`,
           {
             headers: {
               Authorization: token,
@@ -462,7 +510,7 @@ export default function WebBuilder() {
     handleFinish();
     try {
       const response = await axios.get(
-        `${BASE_URL}/api/user/download-file/11/${resumeId}`,
+        `${BASE_URL}/api/user/download-file/11/${resumeId}?lang=${language}`,
         {
           headers: {
             Authorization: token,
@@ -633,7 +681,7 @@ export default function WebBuilder() {
         const token = localStorage.getItem("token");
 
         const userProfileResponse = await axios.get(
-          `${BASE_URL}/api/user/user-profile`,
+          `${BASE_URL}/api/user/user-profile?lang=${language}`,
           {
             headers: {
               Authorization: token,
@@ -663,7 +711,7 @@ export default function WebBuilder() {
   return (
     <>
       <Meta
-        title="Create My Resume - AI Resume Builder"
+        title="Create My Resume  - AI Resume Builder"
         description="ATSResume is a cutting-edge resume builder that helps job seekers create a professional, ATS-friendly resume in minutes..."
         keywords="ATS-friendly, Resume optimization..."
       />
@@ -680,14 +728,17 @@ export default function WebBuilder() {
                     disabled={currentSection === 0}
                     className="w-40 h-10 rounded-lg bg-teal-700 text-white font-medium transition hover:bg-teal-800 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Previous
+                    {t("buttons.previous")}
                   </button>
+
                   <button
                     type="button"
                     onClick={handleNext}
-                    className="w-40 h-10 rounded-lg bg-black text-white font-medium transition hover:bg-black"
+                    className="w-40 h-10 rounded-lg bg-black text-white font-medium transition "
                   >
-                    {currentSection === sections.length - 1 ? "Finish" : "Next"}
+                    {currentSection === sections.length - 1
+                      ? t("buttons.finish")
+                      : t("buttons.next")}
                   </button>
                 </div>
 
@@ -743,8 +794,8 @@ export default function WebBuilder() {
                             key={index}
                             className={`px-4 py-2 cursor-pointer transition rounded-lg border-2 ${
                               currentSection === index
-                                ? "border-teal-700 font-semibold bg-teal-700 text-white"
-                                : "border-teal-700 bg-white text-black hover:bg-teal-50"
+                                ? "border-teal-500 font-semibold bg-teal-600 text-white"
+                                : "border-teal-500 bg-white text-black hover:bg-blue-50"
                             }`}
                             onClick={() => handleSectionClick(index)}
                           >
@@ -842,24 +893,33 @@ export default function WebBuilder() {
               <div className="flex gap-4">
                 <button
                   onClick={handleClick}
-                  className="bg-teal-700 text-white px-6 py-2 rounded-lg"
+                  className="bg-teal-700 text-white px-6 py-2 rounded-lg hover:bg-teal-800"
                 >
-                  {loading == "save" ? (
-                    <SaveLoader loadingText={"Saving"} />
+                  {loading === "save" ? (
+                    <SaveLoader loadingText={t("buttons.saving")} />
                   ) : (
-                    "Save Resume"
+                    t("buttons.save")
                   )}
                 </button>
+
                 <button
                   onClick={downloadAsPDF}
                   className="bg-black text-white px-6 py-2 rounded-lg"
                 >
-                  {loading == "download" ? (
-                    <SaveLoader loadingText={"Downloading"} />
+                  {loading === "download" ? (
+                    <SaveLoader loadingText={t("buttons.downloading")} />
                   ) : (
-                    "Pay & Download"
+                    t("buttons.download")
                   )}
                 </button>
+
+                <button
+                  onClick={handleBackToEditor}
+                  className="bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors"
+                >
+                  {t("buttons.backToDashboard")}
+                </button>
+
                 {/* <PayAndDownload
                   resumeId={resumeId}
                   token={token}
@@ -904,7 +964,7 @@ export default function WebBuilder() {
                         <div className="md:w-1/2 w-full p-4 ">
                           <div className="text-center mb-6">
                             <h2 className="text-2xl font-bold text-gray-900">
-                              £49
+                              $49
                             </h2>
                             <p className="text-sm text-gray-500">
                               Total Amount
@@ -987,12 +1047,6 @@ export default function WebBuilder() {
                     </div>
                   </div>
                 )} */}
-                <button
-                  onClick={handleBackToEditor}
-                  className="bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors"
-                >
-                  Back to Dashboard
-                </button>
               </div>
             </div>
 

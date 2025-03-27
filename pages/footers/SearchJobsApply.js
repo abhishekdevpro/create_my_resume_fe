@@ -5,13 +5,14 @@ import Navbar from "../Navbar/Navbar";
 function SearchJobsApply() {
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       <div className="m-10 mx-40 p-5  shadow-2xl">
         <h1 className="text-4xl font-semibold my-4 underline ">
           Search Jobs & Apply
         </h1>
         <h2 className="text-lg font-bold my-5">
-          Find Your Dream Job with Create My Resume ’s Advanced Job Search & Apply Tool
+          Find Your Dream Job with Create My Resume ’s Advanced Job Search &
+          Apply Tool
         </h2>
         At Create My Resume , we aim to simplify your job search and application
         process. Our advanced job search and apply tool leverages cutting-edge
@@ -90,9 +91,9 @@ function SearchJobsApply() {
         <br />
         <h2 className="text-lg font-bold my-4 ">How It Works</h2>
         <h2 className="text-sm font-bold ">Step 1: Create Your Profile</h2>
-        Sign up on the Create My Resume platform and create your profile. Upload your
-        resume and provide details about your skills, experiences, and career
-        aspirations.
+        Sign up on the Create My Resume platform and create your profile. Upload
+        your resume and provide details about your skills, experiences, and
+        career aspirations.
         <br />
         <br />
         <h2 className="text-sm font-bold ">Step 2: Search for Jobs</h2>
@@ -157,8 +158,8 @@ function SearchJobsApply() {
         <h2 className="text-sm font-bold ">
           Start Searching for Jobs & Apply Today
         </h2>
-        Transform your job search with Create My Resume ’s advanced job search and
-        apply tool. Sign up now to discover job opportunities that perfectly
+        Transform your job search with Create My Resume ’s advanced job search
+        and apply tool. Sign up now to discover job opportunities that perfectly
         match your profile and streamline your path to career success.
         <br />
         <h2 className="text-lg font-bold my-4">Get Started</h2>

@@ -34,7 +34,7 @@ const List = () => {
           ) : (
             <table className="min-w-full bg-dark text-black rounded-md text-center">
               <thead>
-                <tr className="bg-teal-600 text-white">
+                <tr className="bg-teal-700 text-white">
                   <th className="py-2 px-4">Name</th>
                   <th className="py-2 px-4">Email</th>
                   <th className="py-2 px-4">Phone</th>

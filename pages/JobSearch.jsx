@@ -97,7 +97,7 @@
 
 //           <button
 //             onClick={fetchJobs}
-//             className="w-full py-2 px-4 bg-teal-600 text-white rounded-lg "
+//             className="w-full py-2 px-4 bg-teal-700 text-white rounded-lg "
 //           >
 //             Search Jobs
 //           </button>
@@ -113,7 +113,7 @@
 //                 key={job.id}
 //                 className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition duration-200"
 //               >
-//                 <h3 className="text-xl font-semibold text-teal-600">
+//                 <h3 className="text-xl font-semibold text-teal-700">
 //                   {job.title}
 //                 </h3>
 //                 <p className="text-sm text-gray-600">{job.company}</p>
@@ -122,7 +122,7 @@
 //                   href={job.url}
 //                   target="_blank"
 //                   rel="noopener noreferrer"
-//                   className="text-teal-600 hover:underline mt-2 block"
+//                   className="text-teal-700 hover:underline mt-2 block"
 //                 >
 //                   Apply Now
 //                 </a>
@@ -172,7 +172,7 @@ const JobSearch = () => {
       setJobResults(response.data.jobs);
       setLoading(false);
     } catch (err) {
-      setError("Failed to fetch jobs. Please try again later.");
+      setError(t("jobsearch.error_message"));
       setLoading(false);
     }
   };
@@ -180,13 +180,15 @@ const JobSearch = () => {
   return (
     <div className="w-full max-w-7xl mx-auto px-4 py-8">
       <div className="bg-white rounded-lg shadow-sm p-4 mb-6">
-        <h1 className="text-2xl font-bold text-gray-800">My Jobs</h1>
+        <h1 className="text-2xl font-bold text-gray-800">
+          {t("jobsearch.my_jobs")}
+        </h1>
       </div>
 
       <div className="bg-gray-100 p-4">
         <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg">
           <h1 className="text-3xl font-semibold text-center mb-6">
-            Job Search
+            {t("jobsearch.job_search")}
           </h1>
 
           {/* Search Form */}
@@ -195,13 +197,13 @@ const JobSearch = () => {
               htmlFor="keywords"
               className="block text-sm font-medium text-gray-700"
             >
-              Keywords
+              {t("jobsearch.keywords")}
             </label>
             <input
               id="keywords"
               type="text"
               className="mt-1 p-2 w-full border rounded-lg shadow-sm"
-              placeholder="Enter job title, e.g., 'Developer'"
+              placeholder={t("jobsearch.keywords_placeholder")}
               value={keywords}
               onChange={(e) => setKeywords(e.target.value)}
             />
@@ -212,13 +214,13 @@ const JobSearch = () => {
               htmlFor="location"
               className="block text-sm font-medium text-gray-700"
             >
-              Location
+              {t("jobsearch.location")}
             </label>
             <input
               id="location"
               type="text"
               className="mt-1 p-2 w-full border rounded-lg shadow-sm"
-              placeholder="Enter city or country, e.g., 'Berlin'"
+              placeholder={t("jobsearch.location_placeholder")}
               value={location}
               onChange={(e) => setLocation(e.target.value)}
             />
@@ -226,14 +228,16 @@ const JobSearch = () => {
 
           <button
             onClick={fetchJobs}
-            className="w-full py-2 px-4 bg-teal-600 text-white rounded-lg"
+            className="w-full py-2 px-4 bg-teal-700 text-white rounded-lg"
           >
-            Search Jobs
+            {t("jobsearch.search_jobs")}
           </button>
         </div>
 
         {/* Display Job Results */}
-        {loading && <div className="mt-6 text-center">Loading</div>}
+        {loading && (
+          <div className="mt-6 text-center">{t("jobsearch.loading")}</div>
+        )}
         {error && <div className="mt-6 text-center text-red-500">{error}</div>}
         {jobResults && !loading && !error && (
           <div className="mt-8 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
@@ -242,7 +246,7 @@ const JobSearch = () => {
                 key={job.id}
                 className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition duration-200"
               >
-                <h3 className="text-xl font-semibold text-teal-600">
+                <h3 className="text-xl font-semibold text-teal-700">
                   {job.title}
                 </h3>
                 <p className="text-sm text-gray-600">{job.company}</p>
@@ -251,9 +255,9 @@ const JobSearch = () => {
                   href={job.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-teal-600 hover:underline mt-2 block"
+                  className="text-teal-700 hover:underline mt-2 block"
                 >
-                  Apply Now
+                  {t("jobsearch.apply_now")}
                 </a>
               </div>
             ))}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import logo from "./logo.png";
 import { toast } from "react-toastify";
@@ -11,20 +11,25 @@ import { useRouter } from "next/router";
 import Navbar from "../Navbar/Navbar";
 import { FcGoogle } from "react-icons/fc";
 import { BASE_URL } from "../../components/Constant/constant";
+import { useTranslation } from "react-i18next";
+import { ResumeContext } from "../../components/context/ResumeContext";
 const Login2 = () => {
+  const { t } = useTranslation();
   const [isThirdstepOpen, setThirdstepOpen] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [isChecked, setIsChecked] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  const router = useRouter();
+  const [isChecked, setIsChecked] = useState(false);
+
+  // Checkbox handler
   const handleCheckboxChange = (e) => {
     setIsChecked(e.target.checked);
   };
-
+  const router = useRouter();
+  const { selectedLang } = useContext(ResumeContext);
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -34,14 +39,14 @@ const Login2 = () => {
     e.preventDefault();
 
     if (!formData.email || !formData.password) {
-      toast.error("Email and Password are required");
+      toast.error(t("loginpage.toast.email_required"));
       return;
     }
 
     setIsLoading(true);
     try {
       const response = await axios.post(
-        `${BASE_URL}/api/user/auth/login`,
+        `${BASE_URL}/api/user/auth/login?lang=${selectedLang}`,
         formData
       );
 
@@ -49,14 +54,18 @@ const Login2 = () => {
         console.log(response);
         console.log("Token", response.data.data.token);
         localStorage.setItem("token", response.data.data.token);
-        toast.success(response.data.message || "Login Successfully");
+        toast.success(
+          response.data.message || t("loginpage.toast.login_success")
+        );
         router.push("/dashboard");
       } else {
-        toast.error("Failed to login");
+        toast.error(t("loginpage.toast.login_failed"));
       }
     } catch (error) {
       console.error(error);
-      toast.error(error.response?.data?.message || "An error occurred");
+      toast.error(
+        error.response?.data?.message || t("loginpage.toast.error_occurred")
+      );
     } finally {
       setIsLoading(false);
     }
@@ -66,7 +75,7 @@ const Login2 = () => {
     setShowPassword(!showPassword);
   };
   const handleGoogleSignin = async () => {
-    const url = `${BASE_URL}/api/user/auth/google`;
+    const url = `${BASE_URL}/api/user/auth/google?lang=${selectedLang}`;
 
     try {
       const response = await axios.get(
@@ -83,7 +92,7 @@ const Login2 = () => {
         console.log("Google sign-in token: ", response.data.data);
         window.open(response.data.data);
       } else {
-        toast.error("Google sign-in failed.");
+        toast.error(t("loginpage.toast.google_failed"));
       }
     } catch (err) {
       console.log(err);
@@ -99,41 +108,44 @@ const Login2 = () => {
             <Image src={logo} className="w-40 h-10" alt="Logo" />
           </div>
           <div className="text-2xl text-black text-center font-bold mb-4">
-            Welcome Back
+            {t("loginpage.welcome")}
           </div>
           <p className="text-black text-base text-center mb-6">
-            People across the globe are joining us to upgrade their career with
-            our Robust AI.
+            {t("loginpage.description")}
           </p>
-          {/* <button
+          <button
             onClick={handleGoogleSignin}
             type="button"
             className="w-full flex items-center justify-center bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-md mt-4 shadow-sm hover:bg-gray-100 focus:outline-none"
           >
             <FcGoogle className="h-6 w-6 mr-2" />
-            Continue with Google
-          </button> */}
-          {/* <div className="p-4 flex justify-center items-center">
-            <p> OR</p>
-          </div> */}
+            {t("loginpage.continue_google")}
+          </button>
+          <div className="p-4 flex justify-center items-center">
+            <p> {t("loginpage.or")}</p>
+          </div>
 
           <form onSubmit={handleLogin}>
             <div className="mb-4">
-              <label className="block text-black mb-2">Email ID</label>
+              <label className="block text-black mb-2">
+                {t("loginpage.email_label")}{" "}
+              </label>
               <input
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
                 className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                placeholder="Enter your email ID"
+                placeholder={t("loginpage.email_placeholder")}
                 required
                 disabled={isLoading}
               />
             </div>
 
             <div className="mb-4">
-              <label className="block text-black mb-2">Password</label>
+              <label className="block text-black mb-2">
+                {t("loginpage.password_label")}{" "}
+              </label>
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
@@ -141,7 +153,7 @@ const Login2 = () => {
                   value={formData.password}
                   onChange={handleInputChange}
                   className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                  placeholder="Enter your Password"
+                  placeholder={t("loginpage.password_placeholder")}
                   required
                   disabled={isLoading}
                 />
@@ -151,7 +163,7 @@ const Login2 = () => {
                   className="absolute inset-y-0 right-3 flex items-center text-gray-500"
                   disabled={isLoading}
                 >
-                  {showPassword ? "🕵🏻 Hide " : "👁 View"}
+                  {showPassword ? t("loginpage.hide") : t("loginpage.view")}
                 </button>
               </div>
             </div>
@@ -162,17 +174,25 @@ const Login2 = () => {
                 onClick={() => setThirdstepOpen(true)}
                 disabled={isLoading}
               >
-                New User? Create Account
+                {t("loginpage.new_user")}
               </button>
             </div>
             <div className="text-center py-2">
               <Link href="/forgotpassword">
                 <label className="text-black cursor-pointer">
-                  Forgot Password?
+                  {t("loginpage.forgot_password")}
                 </label>
               </Link>
             </div>
             <div className="mb-4 flex items-center space-x-2">
+              {/* <input
+                type="checkbox"
+                id="terms"
+                name="terms"
+                // checked={isChecked}
+                // onChange={(e) => setIsChecked(e.target.checked)}
+                className="w-4 h-4 text-yellow-500 border-gray-300 rounded focus:ring-yellow-500"
+              /> */}
               <input
                 type="checkbox"
                 id="terms"
@@ -181,64 +201,31 @@ const Login2 = () => {
                 onChange={handleCheckboxChange}
                 className="w-4 h-4 text-yellow-500 border-gray-300 rounded focus:ring-yellow-500"
               />
+
               <label htmlFor="terms" className="text-gray-700 text-sm">
-                I agree to the{" "}
+                {t("loginpage.agree_terms")}{" "}
                 <Link
                   href="/TermsandConditions"
                   className="text-teal-700 underline"
                 >
-                  Terms & Conditions
+                  {t("loginpage.terms_conditions")}
                 </Link>
               </label>
             </div>
-            {/* <Link href={}> */}
 
             <button
               type="submit"
+              // className="w-full bg-teal-700 text-white px-4 py-2 rounded-md hover:bg-teal-700 transition-colors duration-300 relative"
               className={`w-full text-white px-4 py-2 rounded-md transition-colors duration-300 relative 
                 ${
                   !isChecked || isLoading
                     ? "bg-gray-400 cursor-not-allowed "
-                    : "bg-teal-700 hover:bg-teal-800"
+                    : "bg-teal-700 hover:bg-[#008f6f]"
                 }`}
               disabled={!isChecked || isLoading} // Disabled when terms are not checked or loading
             >
-              Login
+              {t("loginpage.login_btn")}
             </button>
-            {/* </Link> */}
-            {/* <button
-              type="submit"
-              className="w-full bg-teal-700 text-white px-4 py-2 rounded-md hover:bg-teal-700 transition-colors duration-300 relative"
-              disabled={isLoading}
-            >
-              {isLoading ? (
-                <div className="flex items-center justify-center">
-                  <svg
-                    className="animate-spin h-5 w-5 mr-2 text-black"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle
-                      className="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                    ></circle>
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                    ></path>
-                  </svg>
-                  Logging in...
-                </div>
-              ) : (
-                "Send OTP"
-              )}
-            </button> */}
           </form>
         </div>
       </div>
@@ -253,7 +240,7 @@ export default Login2;
 
 // import React, { useEffect, useState } from "react";
 // import Link from "next/link";
-// import logo from "../../public/assets/logo.png";
+// import logo from "./logo.png";
 // import { toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 
@@ -343,7 +330,7 @@ export default Login2;
 //       <div className="flex justify-center items-center h-screen w-full">
 //         <div className="p-8 rounded-xl shadow-lg shadow-slate-700 w-full max-w-lg bg-white">
 //           <div className="flex justify-center mb-6">
-//             <Image src={logo} className="w-64 h-20" alt="Logo" />
+//             <Image src={logo} className="w-40 h-10" alt="Logo" />
 //           </div>
 //           <div className="text-2xl text-black text-center font-bold mb-4">
 //             Welcome Back
@@ -399,21 +386,21 @@ export default Login2;
 //               </label>
 //             </div>
 
-//             {/* <button
-//               // type="submit"
+//             <button
+//               type="submit"
 //               className="w-full bg-teal-700 text-white px-4 py-2 rounded-md hover:bg-teal-700 transition-colors duration-300 relative"
-//               // disabled={isLoading}
+//               disabled={isLoading}
 //             >
 //               Send OTP
-//             </button> */}
+//             </button>
 //           </form>
-//           <button
+//           {/* <button
 //             // type="submit"
 //             className="w-full bg-teal-700 text-white px-4 py-2 rounded-md hover:bg-teal-700 transition-colors duration-300 relative"
 //             // disabled={isLoading}
 //           >
 //             Send OTP
-//           </button>
+//           </button> */}
 //         </div>
 //       </div>
 //     </>

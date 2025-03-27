@@ -9,11 +9,11 @@ const ProfileSection = ({ visits }) => {
             <User />
           </div>
           <div>
-            <h3 className="text-lg font-semibold">Your CibliJob ID</h3>
+            <h3 className="text-lg font-semibold">Your Create My Resume ID</h3>
             {/* <p className="text-gray-600">Your total visits: {visits} visitors</p> */}
           </div>
         </div>
-        <button className="px-6 py-2 border border-teal-600 text-teal-600 rounded-lg hover:bg-blue-50">
+        <button className="px-6 py-2 border border-teal-700 text-teal-700 rounded-lg hover:bg-blue-50">
           View Profile & Visits
         </button>
       </div>

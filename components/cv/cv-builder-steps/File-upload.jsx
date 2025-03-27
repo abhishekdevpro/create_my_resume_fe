@@ -31,7 +31,7 @@ export default function FileUploadStep({ onNext, onBack }) {
 
     try {
       const response = await axios.post(
-        `${BASE_URL}/api/jobseeker/resume-upload/12345`,
+        `${BASE_URL}/api/user/resume-upload/12345`,
         formData,
         {
           headers: {
@@ -91,14 +91,14 @@ export default function FileUploadStep({ onNext, onBack }) {
         className={`border-2 border-dashed rounded-xl p-12 text-center cursor-pointer transition-all
           ${
             isDragActive
-              ? "border-teal-400 bg-teal-50"
-              : "border-gray-300 hover:border-teal-400"
+              ? "border-blue-400 bg-blue-50"
+              : "border-gray-300 hover:border-blue-400"
           }
           ${isUploading ? "cursor-not-allowed opacity-75" : ""}`}
       >
         <input {...getInputProps()} disabled={isUploading} />
-        <div className="w-20 h-20 mx-auto mb-6 bg-teal-100 rounded-full flex items-center justify-center">
-          <Upload className="w-10 h-10 text-teal-600" />
+        <div className="w-20 h-20 mx-auto mb-6 bg-blue-100 rounded-full flex items-center justify-center">
+          <Upload className="w-10 h-10 text-teal-700" />
         </div>
 
         {isUploading ? (
@@ -106,7 +106,7 @@ export default function FileUploadStep({ onNext, onBack }) {
             <div className="text-lg font-medium">Uploading your resume...</div>
             <div className="w-64 h-3 bg-gray-200 rounded-full mx-auto overflow-hidden">
               <div
-                className="h-full bg-teal-600 rounded-full transition-all duration-300"
+                className="h-full bg-teal-700 rounded-full transition-all duration-300"
                 style={{ width: `${uploadProgress}%` }}
               />
             </div>
@@ -117,7 +117,7 @@ export default function FileUploadStep({ onNext, onBack }) {
             <p className="text-xl font-medium mb-4">
               Drag and drop your resume here
             </p>
-            <button className="px-6 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-600 transition-colors">
+            <button className="px-6 py-3 bg-teal-700 text-white rounded-lg hover:bg-teal-700 transition-colors">
               Select PDF File
             </button>
             <p className="mt-4 text-sm text-gray-500">
@@ -137,8 +137,8 @@ export default function FileUploadStep({ onNext, onBack }) {
         <button
           onClick={onNext}
           disabled={!uploadSuccess || isUploading}
-          className="px-8 py-3 bg-teal-600 text-white rounded-lg font-medium hover:bg-teal-600 transition-colors
-            disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-teal-600"
+          className="px-8 py-3 bg-teal-700 text-white rounded-lg font-medium hover:bg-teal-700 transition-colors
+            disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-teal-700"
         >
           Next
         </button>

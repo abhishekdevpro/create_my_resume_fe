@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 const InterviewSection = () => {
+  const { t } = useTranslation();
   return (
     <div className="border border-gray-200 rounded-lg p-6 mb-6">
       <div className="flex justify-between items-center">
@@ -21,16 +23,17 @@ const InterviewSection = () => {
             </svg>
           </div>
           <div>
-            <h3 className="text-lg font-semibold">Clear Your Interview</h3>
+            <h3 className="text-lg font-semibold">
+              {t("dashboard_interview.clearInterview")}
+            </h3>
             <p className="text-gray-600 max-w-md">
-              Gain insights from our expert-written resources and receive weekly
-              updates straight to your inbox.
+              {t("dashboard_interview.description")}
             </p>
           </div>
         </div>
-        <Link href={`https://blog.Create My Resume.fr/`}>
-          <button className="px-6 py-2 border border-teal-600 text-teal-600 rounded-lg hover:bg-teal-50">
-            Visit Resources
+        <Link href={``}>
+          <button className="px-6 py-2 border border-teal-700 text-teal-700 rounded-lg hover:bg-blue-50">
+            {t("dashboard_interview.visitResources")}
           </button>
         </Link>
       </div>

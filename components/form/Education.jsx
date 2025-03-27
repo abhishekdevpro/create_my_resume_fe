@@ -5,7 +5,10 @@ import { AlertCircle, X, Loader2 } from "lucide-react";
 import { useRouter } from "next/router";
 import { MdRemoveCircle } from "react-icons/md";
 import { BASE_URL } from "../Constant/constant";
+import { useTranslation } from "react-i18next";
 const Education = () => {
+  const { i18n, t } = useTranslation();
+  const language = i18n.language;
   const { resumeData, setResumeData, resumeStrength } =
     useContext(ResumeContext);
   const [activeTooltip, setActiveTooltip] = useState(null);
@@ -50,7 +53,7 @@ const Education = () => {
       const response = await fetch(
         `${BASE_URL}/api/user/university-lists?university_keyword=${encodeURIComponent(
           keyword
-        )}`
+        )}&lang=${language}`
       );
       if (response.ok) {
         const data = await response.json();
@@ -73,7 +76,7 @@ const Education = () => {
       const response = await fetch(
         `${BASE_URL}/api/user/degree?degree_keyword=${encodeURIComponent(
           keyword
-        )}`
+        )}&lang=${language}`
       );
       if (response.ok) {
         const data = await response.json();
@@ -97,7 +100,7 @@ const Education = () => {
       const response = await fetch(
         `${BASE_URL}/api/user/locations?locations=${encodeURIComponent(
           keyword
-        )}`
+        )}&lang=${language}`
       );
       if (response.ok) {
         const data = await response.json();
@@ -255,13 +258,13 @@ const Education = () => {
 
   return (
     <div className="flex-col gap-3 w-full mt-10 px-10">
-      <h2 className="input-title text-black text-3xl">Education</h2>
+      <h2 className="input-title text-black text-3xl">{t("resumeStrength.sections.education")}</h2>
       {resumeData.education.map((education, index) => (
         <div key={index} className="f-col">
           <div className="relative mb-4">
             <div className="flex items-center justify-between mt-4">
               <h3 className="text-black text-xl font-semibold">
-                {`Education ${index + 1}`}
+                {`${t("resumeStrength.sections.education")} ${index + 1}`}
               </h3>
               <button
                 type="button"
@@ -277,6 +280,7 @@ const Education = () => {
                 type="text"
                 placeholder="School"
                 name="school"
+                maxLength={150}
                 className={`w-full other-input border ${
                   hasErrors(index, "school") ? "border-red-500" : "border-black"
                 }`}
@@ -350,6 +354,7 @@ const Education = () => {
               type="text"
               placeholder="Degree"
               name="degree"
+              maxLength={150}
               className={`w-full other-input border ${
                 improve && hasErrors(index, "degree")
                   ? "border-red-500"
@@ -402,7 +407,7 @@ const Education = () => {
           </div>
 
           <div className="">
-            <label className="text-black">Start Date</label>
+            <label className="text-black">{t("builder_forms.work_experience.start_date")}</label>
             <div className="flex-wrap-gap-2">
               <select
                 className={`border other-input flex-1 ${
@@ -438,7 +443,7 @@ const Education = () => {
               </select>
             </div>
 
-            <label className="text-black">End Date</label>
+            <label className="text-black">{t("builder_forms.work_experience.end_date")}</label>
             <div className="flex-wrap-gap-2">
               <select
                 className={`other-input border flex-1 ${
@@ -487,7 +492,7 @@ const Education = () => {
           </div>
 
           <div className="relative">
-            <label className="mt-2 text-black">Location</label>
+            <label className="mt-2 text-black">{t("builder_forms.work_experience.location")}</label>
             <div className="relative">
               <input
                 type="text"
