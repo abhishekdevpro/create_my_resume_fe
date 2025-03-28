@@ -375,7 +375,7 @@ const ResumeStrength = ({ score, strength, resumeId }) => {
               >
                 {t("resumeStrength.improveResume")}
               </button>
-              <button
+              {/* <button
                 disabled={strength.ats_score === 10 || !resumeId}
                 onClick={() => setIsModalOpen(true)}
                 className={`px-6 py-2 bg-teal-700 text-white rounded-lg hover:bg-teal-800 transition-colors ${
@@ -385,7 +385,7 @@ const ResumeStrength = ({ score, strength, resumeId }) => {
                 }`}
               >
                 {t("resumeStrength.improveATS")}
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
