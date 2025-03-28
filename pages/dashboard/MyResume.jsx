@@ -181,7 +181,7 @@ const MyResume = () => {
             {t("myresume.create_new_resume")}
           </button>
         </Link>
-        <UploadResumeBtn />
+        {/* <UploadResumeBtn /> */}
       </div>
 
       {/* Resume Table */}

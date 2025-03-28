@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useRouter } from "next/router";
 import { BASE_URL } from "../Constant/constant";
+
 import {
   User,
   Share2,
@@ -174,7 +175,7 @@ const TooltipContent = ({ improvements, resumeId, onClose }) => {
       </div>
       <button
         onClick={handleATS}
-        className={`mt-6 px-6 py-2 w-full bg-teal-700 text-white rounded-lg hover:bg-teal-800 transition-colors ${
+        className={`mt-6 px-6 py-2 w-full bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors ${
           improvements.ats_score === 10 || Loading
             ? "opacity-50 cursor-not-allowed"
             : ""
@@ -274,24 +275,60 @@ const ResumeStrength = ({ score, strength, resumeId }) => {
     ];
   };
 
-  const handleImproveResume = () => {
-    setShowLoader(true);
-    setTimeout(() => {
-      router.push({
-        pathname: `/dashboard/aibuilder/${resumeId}`,
-        query: { improve: "true" },
-      });
-    }, 5000);
-  };
+  // const handleImproveResume = () => {
+  //   setShowLoader(true);
+  //   setTimeout(() => {
+  //     router.push({
+  //       pathname: `/dashboard/aibuilder/${resumeId}`,
+  //       query: { improve: "true" },
+  //     });
+  //   }, 5000);
+  // };
+  const handleImproveResume = async () => {
+    if (!resumeId) return;
 
+    setShowLoader(true);
+
+    try {
+      const token = localStorage.getItem("token");
+      // Call the API before navigating
+      const response = await axios.get(
+        `${BASE_URL}/api/user/auto-improve/${resumeId}?lang=${selectedLang}`,
+        {
+          headers: {
+            Authorization: token, // Ensure correct auth header
+          },
+        }
+      );
+
+      // If API request is successful, navigate to the AI Builder page
+      if (response.status === 200) {
+        toast.success(response?.data?.message);
+        setTimeout(() => {
+          router.push({
+            pathname: `/dashboard/aibuilder/${resumeId}`,
+            query: { improve: "true" },
+          });
+        }, 5000);
+      } else {
+        toast.error("Failed to improve resume. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error improving resume:", error);
+      toast.error(
+        error.response?.data?.message || "An error occurred. Try again."
+      );
+    } finally {
+      setShowLoader(false);
+    }
+  };
   const sectionsList = getSectionsList(strength);
 
   const getScoreColor = (score, maxScore) => {
     const percentage = (score / maxScore) * 100;
-    if (percentage >= 70) return "bg-teal-600";
+    if (percentage >= 70) return "bg-green-500";
     return "bg-red-600";
   };
-
   return (
     <>
       {showLoader && <FullScreenLoader />}
