@@ -55,10 +55,10 @@
       
       
       "ready_in_15_minutes": "Get it ready in less than 15 minutes",
-      "certified_by_recruiters": "Certified By Recruiters & Admired By Job Seekers",
+      "certified_by_recruiters": "Created by Recruiters, to help you impress.",
       "looking_cover_letter": "Looking For Impressive Cover Letters?",
       "explore_cover_letters": "Explore from our 25+ premium Cover Letters, which are exclusively crafted by our Experts.",
-      "create_cv": "Create Your CV",
+      "create_cv": "Create Your Cover Letter",
       "alt1_h3":"Assistant Editor Resume Example",
       "alt2_h3":"Farmer Resume Template",
       "alt3_h3":"Doctor Resume Template",
@@ -78,7 +78,7 @@
         "resume_builder": "Resume Builder",
         "resume_description": "Relevant for automation & one time download.",
         "starting_price": "Starting",
-        "price_currency": "$",
+        "price_currency": "€",
         "price_amount": "0",
         "feature1": "Create optimized resumes",
         "feature2": "Copy and paste content from site",
@@ -100,7 +100,7 @@
   
     "combo_title": "French English Combo",
     "combo_description": "Built by expert resume writers",
-    "combo_price_currency": "$",
+    "combo_price_currency": "€",
     "combo_price_amount": "29",
     "combo_price_per_resume": "/Resume",
     "feature1_c": "Create optimized resumes",
@@ -151,7 +151,7 @@
         "ai_resume_accuracy": "AI - Resume Accuracy",
         "ai_resume_enhancer": "AI - Resume Enhancer",
         "ai_job_match_apply": "AI - Job Match & Apply",
-        "copyright": "© Copyright By info@createmyresume All Rights Reserved",
+        "copyright": "© Copyright By createmyresume.ca All Rights Reserved",
         "toast_success":"Subscribed successfully!"
       
       },
@@ -213,7 +213,7 @@
           
           "how_to_apply": "How to Apply",
           "how_to_apply_description": "If you’re passionate about helping others succeed and want to be part of a dynamic, growth-oriented team, we’d love to hear from you. To apply for a position at Create My Resume, please send your resume and a cover letter to",
-          "apply_email": "career@Genesistech.ca",
+          "apply_email": "career@createmyresume.ca",
           
           "join_us": "Join Us and Make a Difference",
           "join_us_description": "At Create My Resume, you’ll have the opportunity to make a meaningful impact every day. Join us and help shape the future of job seekers around the world. We look forward to welcoming you to our team!",
@@ -244,7 +244,7 @@
             "exclusive_resources_desc": "As a Create My Resume client, you’ll gain access to exclusive resources, including industry reports, salary surveys, and negotiation workshops. Our comprehensive toolkit ensures that you have all the information and skills needed to advocate for yourself effectively.",
           
             "maximize_earning": "Start Maximizing Your Earning Potential Today",
-            "maximize_earning_desc": "Don’t leave your salary to chance. Take control of your career and maximize your earning potential with the help of Genesis’s salary tools and resources. Contact us today to learn more about how we can support you in your job search and salary negotiations.",
+            "maximize_earning_desc": "Don’t leave your salary to chance. Take control of your career and maximize your earning potential with the help of Create My Resume's salary tools and resources. Contact us today to learn more about how we can support you in your job search and salary negotiations.",
             
               "privacyPolicy": "Privacy Policy",
               "intro": "At Create My Resume, we value your privacy and are committed to protecting your personal information. This Privacy Policy outlines how we collect, use, and safeguard your data when you use our website and services.",
@@ -285,11 +285,11 @@
               "childrensPrivacy": "Our services are not intended for individuals under 18. If a child provides personal data, we will delete it.",
               "changesPolicy": "We may update this Privacy Policy. Continued use of our services after changes means acceptance of the revised policy.",
               "contactUs": "If you have any questions, contact us at:",
-              "email_name": "abc@genesistech.ca",
+              "email_name": "bonjour@createmyresume.ca",
               
                 "title": "AI Resume Builder",
                 "introduction": "Revolutionizing the Job Application Process",
-                "description": "Welcome to Genesis’s AI Resume Builder – an innovative solution designed to streamline the resume creation process and help you land your dream job. Our cutting-edge AI technology simplifies resume writing, ensuring that your skills and achievements are presented in the best possible light.",
+                "description_ai": "Welcome to Create My Resume's AI Resume Builder – an innovative solution designed to streamline the resume creation process and help you land your dream job. Our cutting-edge AI technology simplifies resume writing, ensuring that your skills and achievements are presented in the best possible light.",
                 "key_features": "Key Features",
                 "features": [
                   {
@@ -361,7 +361,7 @@
                 ],
                 "cta": {
                   "title": "Start Building Your Resume Today",
-                  "description": "Transform your job application process with Genesis’s AI Resume Builder. Sign up now and take the first step toward landing your dream job with a professionally crafted resume that showcases your unique strengths and qualifications.",
+                  "description": "Transform your job application process with Create My Resume's  AI Resume Builder. Sign up now and take the first step toward landing your dream job with a professionally crafted resume that showcases your unique strengths and qualifications.",
                   "button": "Get Started"
                 },
                 
@@ -407,6 +407,16 @@
                   "Ai_Skill_Tests_paragraph17":"Reduce the costs associated with traditional hiring methods. Our AI Skill Tests minimize the need for multiple interview rounds and help you identify top talent early in the process.",
                   "Ai_Skill_Tests_paragraph18":" Transform your hiring process with Create My Resume ’s AI Skill Tests. Sign up now to experience the benefits of accurate, efficient, and unbiased candidate assessments.",
                   "Ai_Skill_Tests_paragraph19"  :"Ready to elevate your hiring process? Visit our AI Skill Tests page and start creating customized skill assessments today!",
+                  "Ai_Skill_Tests_paragraph20": "Use our intuitive platform to create the AI Skill Test. Choose from a variety of question types and formats, and set the difficulty level and time limits according to your requirements.",
+                  "Ai_Skill_Tests_paragraph21":"Send test invitations to candidates via email or integrate the test link into your job postings. Candidates can complete the test online at their convenience.",
+                  "Ai_Skill_Tests_paragraph22":"Review the real-time results and detailed analytics provided by our AI. Compare candidates performance and identify the best fit for your job role.",
+                  "Ai_Skill_Tests_paragraph23":"Use the insights gained from the AI Skill Tests to make confident, data-driven hiring decisions. The comprehensive assessment results ensure you select the most qualified candidates for your organization.",
+                  "Ai_Skill_Tests_paragraph24":"Automate the initial screening process and reduce the time spent on manual evaluations. Our AI Skill Tests provide quick and accurate assessments, speeding up your hiring process.",
+                  "Ai_Skill_Tests_paragraph25":"Gain a deeper understanding of candidates abilities with precise and objective evaluations. Our AI technology ensures consistent and reliable results.",
+                  "Ai_Skill_Tests_paragraph26":"Offer candidates a seamless and user-friendly testing experience. The adaptive nature of our tests keeps candidates engaged and motivated.",
+                  "Ai_Skill_Tests_paragraph27":"Reduce the costs associated with traditional hiring methods. Our AI Skill Tests minimize the need for multiple interview rounds and help you identify top talent early in the process.",
+                  "Ai_Skill_Tests_paragraph28":"Transform your hiring process with Resume Intellect’s AI Skill Tests. Sign up now to experience the benefits of accurate, efficient, and unbiased candidate assessments.",
+                  "Ai_Skill_Tests_paragraph29":"Ready to elevate your hiring process? Visit our AI Skill Tests page and start creating customized skill assessments today!",
                   
                     "Terms-and-Conditions": {
                       "title": "Terms and Conditions",
@@ -484,7 +494,7 @@
                           "title": "10. Contact Information",
                           "list": [
                             "If you have any questions or concerns about these terms and conditions, please contact us at:",
-                            "Email: abc@genesistech.ca"
+                            "Email: bonjour@createmyresume.ca"
                           ]
                         }
                       ],
@@ -515,6 +525,14 @@
                   "Ai_CV_Parsing_h20":"Scalability",
                   "Ai_CV_Parsing_h21":"Start Using AI CV Parsing Today",
                   "Ai_CV_Parsing_h22":"Get Started",
+                  "Ai_CV_Parsing_h23":"Review and Analyze",
+                  "Ai_CV_Parsing_h24":"Automate Candidate Matching",
+                  "Ai_CV_Parsing_h25":"Make Informed Hiring Decisions",
+                  "Ai_CV_Parsing_h26":"Benefits of Using AI CV Parsing",
+                  "Ai_CV_Parsing_h27":"Efficiency and Speed",
+                  "Ai_CV_Parsing_h28":"Improved Accuracy",
+                  "Ai_CV_Parsing_h29":"Enhanced Candidate Experience",
+               
                   "Ai_CV_Parsing_p1":"At Create My Resume , we leverage cutting-edge AI CV parsing technology to streamline the recruitment process, making it faster and more efficient for both employers and job seekers. Our AI CV parsing tool accurately extracts and analyzes key information from CVs, helping you identify the best candidates quickly and effectively.",
                   "Ai_CV_Parsing_p2":"Our AI CV parser uses sophisticated algorithms to extract essential details from CVs, including personal information, contact details, work experience, education, skills, and certifications. The extracted data is organized in a structured format, making it easy to review and compare candidates.",
                   "Ai_CV_Parsing_p3":"Our parser can handle CVs in various formats, such as PDF, DOC, DOCX, and TXT. This flexibility ensures that no matter how candidates submit their CVs, our tool can process and analyze them efficiently.",
@@ -541,6 +559,7 @@
                     "AI-Enhanced_h1A": "Key Features of AI-Enhanced Resume Accuracy",
                     "AI-Enhanced_h2": "Grammar and Spell Check",
                     "AI-Enhanced_h3": "Consistency and Formatting",
+                      "AI-Enhanced_h2A": "Key Features of AI-Enhanced Resume Accuracy",
                     "AI-Enhanced_h3A": "Data Verification",
                     "AI-Enhanced_h4": "Skills and Keywords Matching",
                     "AI-Enhanced_h5": "Quantitative Achievements",
@@ -558,6 +577,17 @@
                     "AI-Enhanced_h17": "Higher Success Rate",
                     "AI-Enhanced_h18": "Time and Effort Savings",
                     "AI-Enhanced_h19": "Start Enhancing Your Resume Accuracy Today",
+                    "AI-Enhanced_h20": "Step 2: AI Analysis",
+                    "AI-Enhanced_h21": "Step 3: Receive Feedback",
+                    "AI-Enhanced_h22": "Step 4: Make Adjustments",
+                    "AI-Enhanced_h23": "Step 5: Final Review",
+                    "AI-Enhanced_h24": "Benefits of AI-Enhanced Resume Accuracy",
+                    "AI-Enhanced_h25": "Professional Presentation",
+                    "AI-Enhanced_h26": "Increased Confidence",
+                    "AI-Enhanced_h27": "Higher Success Rate",
+                    "AI-Enhanced_h28": "Time and Effort Savings",
+                    "AI-Enhanced_h29": "Start Enhancing Your Resume Accuracy Today",
+                   
                     "AI-Enhanced_p1": "At Create My Resume, we understand that the accuracy of your resume can significantly impact your chances of landing your dream job. Our AI-enhanced resume accuracy tools ensure that your resume is not only compelling but also precise and error-free. Leveraging advanced AI technology, we help you create resumes that truly reflect your qualifications and experiences.",
                     "AI-Enhanced_p2": "Our AI-powered tools meticulously check for grammar, spelling, and punctuation errors. This ensures that your resume is polished and professional, making a strong impression on potential employers.",
                     "AI-Enhanced_p3": "The AI reviews your resume for consistency in formatting, including font styles, sizes, bullet points, and spacing. This creates a visually appealing and uniform document that is easy to read.",
@@ -575,7 +605,7 @@
                     "AI-Enhanced_p15": "With an accurate and well-crafted resume, you can confidently apply for jobs, knowing that your application is strong and reliable.",
                     "AI-Enhanced_p16": "Optimizing your resume for accuracy and relevance increases your chances of passing through ATS filters and being shortlisted for interviews.",
                     "AI-Enhanced_p17": "Our AI tools automate the resume review process, saving you time and effort while ensuring a high level of precision and quality.",
-                    "AI-Enhanced_p18": "Transform your resume with Genesis’s AI-enhanced accuracy tools. Sign up now to create a resume that is polished, precise, and professional.",
+                    "AI-Enhanced_p18": "Transform your resume with Create My Resume's AI-enhanced accuracy tools. Sign up now to create a resume that is polished, precise, and professional.",
                   
                   
                   
@@ -585,8 +615,8 @@
                     "professional_title": "Professional Title",
                     "languages": "Languages",
                     "age": "Age",
-                    "current_salary": "Current Salary ($)",
-                    "expected_salary": "Expected Salary ($)",
+                    "current_salary": "Current Salary (€)",
+                    "expected_salary": "Expected Salary (€)",
                     "description": "Description",
                     "phone_number": "Phone Number",
                     "email": "Email",
@@ -600,7 +630,17 @@
                     "remove_photo": "Remove Photo",
                     "photo_removed": "Profile photo removed successfully",
                     "photo_remove_failed": "Failed to remove profile photo",
-                    
+                    "profile_error": {
+    "all_fields_required": "All fields are required",
+    "invalid_age": "Age must be between 18 and 100",
+    "invalid_phone": "Phone number must be 8-15 digits",
+    "invalid_current_salary": "Current salary must be a positive number",
+    "invalid_expected_salary": "Expected salary must be a positive number",
+    "invalid_image_format": "Only JPEG, JPG, and PNG images are allowed",
+    "profile_updated": "Profile updated successfully",
+    "profile_update_failed": "Profile update failed",
+    "update_error": "An error occurred while updating the profile"
+  },
                      
                       "profile": "Profile",
                       "ai_resume_builder": "AI Resume Builder",
@@ -809,7 +849,8 @@
     "improvements": {
       "title": "Areas for Improvement",
       "file_format": "File Formatting",
-      "keyword_optimization": "Keyword Optimization"
+      "keyword_optimization": "Keyword Optimization",
+      "sectionOrder": "Section Order"
     },
     "formatting": {
       "title": "Formatting Checklist",
@@ -820,7 +861,11 @@
       "consistent_font": "Consistent Font",
       "consistent_font_desc": "Consistent font usage throughout the resume",
       "contact_info": "Contact Info Visible",
-      "contact_info_desc": "Contact information is clearly visible"
+      "contact_info_desc": "Contact information is clearly visible",
+       "clear_exp": "Clear Experience",
+      "clear_exp_desc": "Work experience section is clearly structured and readable",
+        "clear_summary": "Clear Summary",
+      "clear_summary_desc": "Summary section is well-written and clearly presented"
     },
     "overall_comments": "Overall Comments",
     "button": {
@@ -841,7 +886,7 @@
         "viewCoverLetters": "View Cover Letters"
       },
       "createResume":{
-        "welcome_resumebuilder":"Welcome to Resume Builder",
+        "welcome_resumebuilder":"Welcome to Create My Resume",
         "create_resume":"Click the button below to create your resume.",
          "resume_btn":"Create Your Resume",
          "creating":"Creating..."
@@ -860,7 +905,20 @@
             "3-5": "3-5 Years",
             "5-10": "5-10 Years",
             "10-plus": "10+ Years"
-          }
+            
+          },
+          "back": "Back",
+             "next": "Next",
+              "saving": "Saving",
+              "toast": {
+                "selectExperience": "Please select an experience level before proceeding.",
+                "resumeDataNotLoaded": "Resume data not loaded yet. Please wait.",
+                "resumeIdNotFound": "Resume ID not found.",
+                "experienceSaved": "Experience saved successfully.",
+                "errorSavingExperience": "Error while saving the experience.",
+                "errorUpdatingResume": "Error updating resume!",
+                "errorFetchingResume": "Error fetching resume data."
+              }
         },
         
           "templateStep": {
@@ -873,6 +931,7 @@
             "back": "Back",
             "next": "Next",
             "loading": "Loading...",
+            "usethistemplate":"Use This Template",
             "toast": {
               "resume_not_found": "Resume ID or token not found",
               "fetch_error": "Error fetching resume data",
@@ -934,7 +993,10 @@
                     "login_success": "Login Successfully",
                     "login_failed": "Failed to login",
                     "error_occurred": "An error occurred",
-                    "google_failed": "Google sign-in failed."
+                    "google_failed": "Google sign-in failed.",
+                    "password_length_error": "Password must be between 6 and 30 caractères.",
+                     "invalid_email": "Please enter a valid email address.",
+      "password_strength_error": "Password must contain 6-30 characters, at least one uppercase, one lowercase, and one number."
                   }
                 },
                 "forgotpage":{
@@ -964,8 +1026,27 @@
                   "signup_failed": "Failed to sign up",
                   "error_occurred": "An error occurred",
                   "signup": "Signup",
-                  "signing_up": "Signing up..."
+                  "signing_up": "Signing up...",
+                   "password_length_error": "Password must be between 6 and 30 caractères.",
+                   "all_fields_required": "All fields are required.",
+                   "invalid_first_name": "First name must contain only letters and be 2-40 characters long.",
+                   "invalid_last_name": "Last name must contain only letters and be 2-40 characters long.",
+                   "invalid_email": "Please enter a valid email address.",
+                   "invalid_phone": "Phone number must be between 8 and 15 digits.",
+                   "password_strength_error": "Password must be 6-30 characters, include one uppercase, one lowercase, and a number.",
+                   "verification_sent": "Verification email has been sent!",
+                   "signup_failed": "Signup failed. Please try again.",
+                   "error_occurred": "An error occurred. Please try again."
                 },
+                 "resetpassword": {
+    "both_fields_required": "Both fields are required.",
+    "password_strength_error": "Password must be 6-30 characters, include one uppercase, one lowercase, and a number.",
+    "passwords_do_not_match": "Passwords do not match.",
+    "invalid_token": "Invalid token.",
+    "password_reset_success": "Password reset successfully.",
+    "failed_to_reset": "Failed to reset password.",
+    "error_occurred": "An error occurred. Please try again."
+  },
                 "builder_forms":{
                   "personal_info": {
                     "details_info": "Detail Information",
@@ -976,7 +1057,16 @@
                     "address_placeholder": "Address",
                     "suggestions": "Suggestions",
                     "auto_fix": "Auto Fix",
-                    "add_section": "✙ Add section"
+                    "fixing": "Fixing...",
+                    "add_section": "✙ Add section",
+                     "mark_resolved": "Mark Resolved",
+                    "placeholders": {
+                      "name": "Full Name",
+                      "position": "Job Title",
+                      "address": "Location",
+                      "contactInformation": "Phone Number",
+                      "email": "Email Address"
+                    }
                   },
                   "social_media": {
     "title": "Social Media",
@@ -987,7 +1077,32 @@
     "remove_button": "Remove",
     "add_section": "✙ Add section"
   },
+  "education":{
+"placeholders": {
+    "school": "School",
+    "degree": "Degree",
+    "location": "Location"
+  },
+  "tooltips": {
+    "school": "School Suggestions",
+    "degree": "Degree Suggestions",
+    "location": "Location Suggestions",
+    "start_date": "Start Date Issues",
+    "end_date": "End Date Issues"
+  },
+  "dropdown": {
+    "month": "Month",
+    "year": "Year",
+    "present": "Present"
+  }
+  },
+  "certification":{
+  "placeholderTitle": "Enter certification title",
+   "certificationSuggestion": "Certifications Suggestion"
+  }
+  ,
   "work_experience": {
+    
     "title": "Work Experience",
     "fresher_question": "Are you a fresher?",
     "company_name": "Company Name",
@@ -999,7 +1114,40 @@
     "location": "Location",
     "save_button": "Save",
     "cancel_button": "Cancel",
-    "add_section": "✙ Add section"
+    "add_section": "✙ Add section",
+    "company":"Company",
+    "companySuggestions": "Company Suggestions",
+    "position": "Position",
+    "positionSuggestions": "Position Suggestions",
+  
+    "locationSuggestions": "Location Suggestions",
+   
+    "descriptionSuggestions": "Description Suggestions",
+    "keyAchievementsPlaceholder": "Enter key achievements (one per line)",
+    "keyAchievementsSuggestions": "Key Achievement Suggestions",
+    "removeWorkExperience": "Remove Work Experience",
+    "popup": {
+    "selectDescription": "Select Description",
+    "selectKeyAchievements": "Select Key Achievements",
+    "noDescriptions": "No descriptions available.",
+    "noKeyAchievements": "No key achievements available.",
+    "retry": "Retry",
+    "retrying": "Retrying...",
+    "saveSelection": "Save Selection",
+    "close": "Close"
+  }
+  },
+  "skill":{
+    "noSkillsFound": "No skills found.",
+    "addSkill": "Add Skill",
+    "skillError": "Skill Error",
+    "dismiss": "Dismiss",
+    "deleteAllSkills": "Delete All Skills",
+    "smartAssist": "Smart Assist",
+    "selectAISkills": "Select AI Skills",
+    "noAISkillsAvailable": "No AI skills available.",
+    "addSelectedSkills": "Add Selected Skills",
+    "close": "Close"
   },
   "language": {
     "title": "Languages",
@@ -1020,8 +1168,50 @@
     "good": "Good",
     "basicKnowledge": "Basic Knowledge",
     "justStarting": "Just Starting"
+  },
+  "project":{
+     "placeholderName": "Project Name",
+      "placeholderLink": "Link",
+      "project":"Project",
+       "remove": "Remove Project",
+       "nameSuggestion": "Project Name Suggestion",
+         "link": "Project Link",
+         "popup": {
+          "select_description": "Select Description",
+          "select_key_achievements": "Select Key Achievements",
+          "no_descriptions": "No descriptions available.",
+          "no_key_achievements": "No key achievements available.",
+          "retrying": "Retrying...",
+          "retry": "Retry",
+          "save_selection": "Save Selection",
+          "close": "Close"
+        }
   }
+
+  
                 },
+                "summaryperosnal": {
+    "sections": {
+      "personalSummary": "Personal Summary"
+    },
+    "suggestions": {
+      "title": "Summary Suggestions",
+      "autoFix": "Auto Fix"
+    }
+  },
+  "smartAssist": "Smart Assist",
+  "summary": {
+    "placeholder": "Enter your professional summary or use Smart Assist to generate one",
+    "charCount": "{{count}}/1000"
+  },
+  "popup": {
+    "selectSummary": "Select a Summary",
+    "close": "Close",
+    "add": "Add"
+  },
+  "error": {
+    "jobTitleRequired": "Job Title is required in Detail Information"
+  },
                 "aiResumeEnhancer": {
                     "title": "AI Resume Enhancer",
                     "subtitle": "Elevate Your Job Applications with AI-Driven Enhancements",
@@ -1275,6 +1465,17 @@
     "addSection": "✙ Add section",
     "remove": "Remove"
   },
+  "coverLetterSection": {
+    "title": "Cover Letter Sections",
+    "sections": [
+      "Introduction: Stating Intent Clearly",
+      "Hook: Why You’re a Fit",
+      "Proof & Sign-Off: Show Value and Close Strong"
+    ],
+    "placeholder": "Write {{sectionTitle}}",
+   
+  "aiAssist": "AI Assist"
+  },
   "closingGratitude": {
     "title": "Closing & Gratitude",
     "closing": "Closing",
@@ -1286,7 +1487,11 @@
   },
   "navigation": {
     "previous": "Previous",
-    "next": "Next"
+    "next": "Next",
+     "finish": "Finish",
+     "toast":{
+      "pleaseSaveCoverLetter":"Please save your cover letter"
+     }
   },
   
     "cvBuilder": {
@@ -1307,7 +1512,8 @@
       "template2": "Template 2",
       "template3": "Template 3",
       "template4": "Template 4"
-    }
+    },
+    "premium": "Premium"
   },
   "buttons": {
     "save": "Save Resume",
@@ -1352,7 +1558,7 @@
     "help_support": "Need help or want to change your subscription?",
     "contact_us": "Contact us at:",
     "phone": "📞 855-695-3235",
-    "email": "📧 customersupport@info@createmyresume",
+    "email": "📧 customersupport@createmyresume.ca",
     "availability": "Available 7 days a week:",
     "monday_friday": "Monday-Friday: 8 AM - 8 PM (CST)",
     "saturday": "Saturday: 8 AM - 5 PM (CST)",
@@ -1364,13 +1570,240 @@
     "more_info": "For more information or changes to your subscription, contact us at",
     
       "upgrade": "Upgrade",
-      "cancel_subscription": "Cancel Subscription"
+      "cancel_subscription": "Cancel Subscription",
+     
+  "confirm_title": "Are you sure?",
+  "confirm_message": "Do you really want to cancel your subscription?",
+  "confirm_yes": "Yes, Cancel",
+  "confirm_no": "No, Go Back"
+
+
+
     
+  },
+  
+  "project":{
+    "no_project":"No projects available. Add a new project to get started."
+  
+  },
+  "admin":{
+    "navbar":{
+     
+        "logout": "Logout"
+     
+      
+    },
+    "sidebar":{
+      "home": "Home",
+      "admin": "Admin",
+      "customers": "All Customers",
+      "templates": "My Templates",
+      "leads": "Leads",
+      "payment": "Payment",
+      "subscribers": "Subscribers List",
+      "logout": "Log Out"
+    },
+    "customers":{
+      "title": "All Customers",
+      "searchEmail": "Search by Email",
+      "searchPhone": "Search by Phone",
+      "ascending": "Ascending",
+      "descending": "Descending",
+      "search": "Search",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "mobile": "Mobile",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At",
+      "na": "N/A",
+      "noData": "No data found"
+    },
+    "templatelist":{
+      "myResume": "My Resume",
+      "myCoverLetter": "My Cover Letter"
+    },
+    "leads":{
+      "requestService": "Request Service",
+      "newTemplate": "New Template",
+      "newCoverLetter": "New Cover Letter",
+      "support": "Support"
+    },
+    "payment":{
+      "id": "ID",
+      "name": "Name",
+      "email": "Email",
+      "planName": "Plan Name",
+      "status": "Status",
+      "remark": "Remark",
+      "action": "Action",
+      "paymentHistory": "Payment History",
+      "noPaymentFound": "No Payment History Found",
+      "noRecordsAvailable": "There are no payment records available at this time.",
+      "addRemarkPlaceholder": "Add remark...",
+      "submit": "Submit",
+      "remarkEmpty": "Please enter a remark before submitting",
+      "remarkSuccess": "Remark submitted successfully",
+      "remarkFailed": "Failed to submit remark"
+    },
+  
+    "subscriberlist":{
+      "subscriberList": "Subscriber List",
+      "noData": "There is no data available.",
+      "createdAt": "Created At",
+      "email": "Email",
+      "status": "Subscription Status",
+      "action": "Subscription Action",
+      "subscribed": "🔔 Subscribed",
+      "notSubscribed": "🔕 Not Subscribed",
+      "unsubscribe": "🔕 Unsubscribe",
+      "loading": "Loading...",
+      "error": "Failed to load users.",
+      "unsubscribeError": "Failed to unsubscribe user."
+    },
+    "login":{
+      "adminLogin": "🛡️ Admin Login",
+      "adminId": "🛡️ Admin ID",
+      "password": "🔒 Password",
+      "enterEmail": "Enter your email ID",
+      "enterPassword": "Enter your password",
+      "login": "Login",
+      "loginSuccess": "Login successfully",
+      "loginFail": "Failed to Login",
+      "errorOccurred": "An error occurred",
+      "emailPasswordRequired": "Email and Password are Required"
+    }
+    
+},
+"plan": {
+  "confirm_title": "Are you sure?",
+  "confirm_message": "Do you really want to purchase this plan?",
+  "confirm_yes": "Yes, Purchase",
+  "confirm_no": "No, Go Back"
+},
+"paymentplans":{
+  "Cast a wider net – 10x your job applications": "Cast a wider net – 10x your job applications",
+  "Our AI-powered platform scours": "Our AI-powered platform scours millions of jobs to continuously find and apply to relevant job openings until you're hired.",
+  "Kudos! You're one step closer to success": "Kudos! You're one step closer to success",
+  "Pricing Plans": "Pricing Plans",
+  "title": "Choose the plan that works best for you",
+  "subtitle": "Our pricing plans are designed to accommodate all your resume building needs.",
+  "Best Value": "Best Value",
+  "Free": "Free",
+  "Free Plan": "Free Plan",
+  "single": "Single Purchase",
+  "month": "Monthly",
+  "year": "Yearly",
+  "mo": "mo",
+  "yr": "yr",
+  "Get Started": "Get Started",
+  "Everything in Free +": "Everything in Free +",
+  "Unlimited Resume Edits": "Unlimited Resume Edits",
+  "Download in PDF": "Download in PDF",
+  "Interactive Dashboard": "Interactive Dashboard",
+  "2 Unique Resume Templates": "2 Unique Resume Templates",
+  "2 Color Options & 2 Fonts": "2 Color Options & 2 Fonts",
+  "Resume Parsing (ATS-Friendly)": "Resume Parsing (ATS-Friendly)",
+  "French Language Support": "French Language Support",
+  "Job Search & Career Resources": "Job Search & Career Resources",
+  "Cover Letter Builder": "Cover Letter Builder",
+  "Job Alerts & Tracking": "Job Alerts & Tracking",
+  "27 Unique Resume Templates": "27 Unique Resume Templates",
+  "5 Color Options & 6 Fonts": "5 Color Options & 6 Fonts",
+  "Free Cover Letter Builder": "Free Cover Letter Builder",
+  "AI Resume Score & Feedback": "AI Resume Score & Feedback",
+  "Skill Tests & Analysis": "Skill Tests & Analysis",
+  "AI-Enabled Content": "AI-Enabled Content",
+  "Auto-Improvement": "Auto-Improvement",
+  "ATS Optimization": "ATS Optimization",
+  "37 Unique Resume Templates": "37 Unique Resume Templates",
+  "8 Color Options & 6 Fonts": "8 Color Options & 6 Fonts",
+  "Most Affordable ATS Optimization": "Most Affordable ATS Optimization",
+  "All subscription features": "All subscription features",
+  "Automate your job search": "Automate your job search",
+  "We continuously scan millions of openings to find your top matches.": "We continuously scan millions of openings to find your top matches.",
+  "10x your job applications": "10x your job applications",
+  "Submit 10x as many applications with less effort than one manual application.": "Submit 10x as many applications with less effort than one manual application.",
+  "Wake up to your best matches": "Wake up to your best matches",
+  "Start each day with a list of roles matched to your skills and preferences.": "Start each day with a list of roles matched to your skills and preferences.",
+  "Save valuable hours every week": "Save valuable hours every week",
+  "Reclaim your time by letting our AI handle the grunt work of job searching.": "Reclaim your time by letting our AI handle the grunt work of job searching.",
+  "Money-back guarantee": "Money-back guarantee",
+  "If you are unhappy for any reason during the trial, just let us know - we'll refund your money.": "If you are unhappy for any reason during the trial, just let us know - we'll refund your money.",
+  "24/7 customer support": "24/7 customer support",
+  "Get assistance anytime with our award-winning customer care service.": "Get assistance anytime with our award-winning customer care service.",
+  "Next": "Next",
+  "Got questions?": "Got questions?",
+  "Contact our 24/7 customer support.": "Contact our 24/7 customer support.",
+  "You may cancel by email, online, or by calling us toll-free at 855-695-3235.": "You may cancel by email, online, or by calling us toll-free at 855-695-3235."
+},
+
+"addSection": "✙ Add section",
+ "smartAssist": "✙ Smart Assist",
+  "keyAssist": "✙ Key Assist",
+  "cookie": {
+    "message": "This site uses cookies to ensure you get the best experience on our website.",
+    "cookiePolicy": "Cookie policy",
+    "privacyPolicy": "Terms & Conditions",
+    "and": "and",
+    "button": "Got it!"
+  },
+  "plans":{
+    "mo": "mo",
+  "one-time payment": "one-time payment",
+  "every month": "every month",
+  "Review your order": "Review your order",
+  "Plan": "Plan",
+  "Automatically renews": "Automatically renews",
+  "Total due today": "Total due today",
+  "By clicking": "By clicking",
+  "below, you agree to our": "below, you agree to our",
+  "Terms of Use": "Terms of Use",
+  "and": "and",
+  "Privacy Policy": "Privacy Policy",
+  "You also understand that you will be billed": "You also understand that you will be billed",
+  "which will automatically renew": "which will automatically renew",
+  "You can cancel at any time.": "You can cancel at any time.",
+  "Start applying": "Start applying",
+  "plan.confirm_title": "Are you sure?",
+  "plan.confirm_message": "Do you really want to purchase this plan?",
+  "plan.confirm_yes": "Yes",
+  "plan.confirm_no": "No, Go Back",
+  "SECURE CHECKOUT": "SECURE CHECKOUT"
+  },
+  "paymentss": {
+  "selectPlan": "Please select a plan before proceeding.",
+  "authRequired": "Authentication required. Please log in.",
+  "redirecting": "Redirecting to payment...",
+  "alreadySubscribed": "You already have an active subscription for this plan.",
+  "genericError": "Error processing payment."
+},
+
+  "job_title_required": "Job Title is required",
+  "resumePreview":{
+     "summary": "Summary",
+     "education":"Education",
+      "workExperience": "Work Experience",
+       "projects": "Projects",
+        "skills": "Skills",
+         "languages": "Languages"
+  },
+  "errorPopup": {
+    "title": "Error",
+    "message": "An error occurred. Please try again.",
+    "cancel": "Cancel",
+    "upgradePlan": "Upgrade Plan"
+  }
+
+
+
   }
   
+
   
   
-}                     
+  
+                   
       
                     
                     

@@ -156,7 +156,7 @@
 // //                 </label>
 
 // //                 <button
-// //                   className={`p-2 mt-4 w-full text-white bg-blue-800 rounded ${loading ? "opacity-50 cursor-not-allowed" : "hover:bg-teal-700 transition"}`}
+// //                   className={`p-2 mt-4 w-full text-white bg-blue-800 rounded ${loading ? "opacity-50 cursor-not-allowed" : "hover:bg-green-600 transition"}`}
 // //                   onClick={handleUpload}
 // //                   disabled={loading}
 // //                 >
@@ -565,7 +565,7 @@ const ResumeEnhancementModal = ({ isOpen, onClose, fileLocation, token }) => {
   //             className={`px-4 py-2 rounded ${
   //               isEnhancing
   //               ? 'bg-gray-400 cursor-not-allowed'
-  //               : 'bg-teal-600 hover:bg-teal-700 text-white'
+  //               : 'bg-green-500 hover:bg-green-600 text-white'
   //             }`}
   //           >
   //             {isEnhancing ? 'Enhancing...' : 'Yes, Enhance'}

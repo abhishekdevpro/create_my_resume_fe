@@ -7,7 +7,6 @@ import { Download, Edit, Trash, Plus } from "lucide-react";
 import Link from "next/link";
 import { BASE_URL } from "../../components/Constant/constant";
 import { useTranslation } from "react-i18next";
-import UploadResumeBtn from "../../components/resume-builder-steps/uploadresumebtn";
 
 const MyResume = () => {
   const { t } = useTranslation();

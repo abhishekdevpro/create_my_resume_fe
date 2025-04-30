@@ -6,10 +6,11 @@ export const ResumeContext = createContext();
 export const ResumeProvider = ({ children }) => {
   const [resumeData, setResumeData] = useState(DefaultResumeData);
   const [resumeStrength, setResumeStrength] = useState({});
+  const [exp, setExp] = useState();
   const [headerColor, setHeaderColor] = useState("");
   const [backgroundColorss, setBgColor] = useState("");
   const [selectedFont, setSelectedFont] = useState("Ubuntu");
-  const [selectedLang, setSelectedLang] = useState("en");
+  const [selectedLang, setSelectedLang] = useState("fr");
 
   const handleProfilePicture = (e) => {
     const file = e.target.files[0];
@@ -20,6 +21,10 @@ export const ResumeProvider = ({ children }) => {
       };
       reader.readAsDataURL(file);
     }
+  };
+  const deleteProfilePicture = (e) => {
+    e.preventDefault();
+    setResumeData({ ...resumeData, profilePicture: "" });
   };
 
   const handleChange = (e) => {
@@ -43,6 +48,9 @@ export const ResumeProvider = ({ children }) => {
         setResumeStrength,
         selectedLang,
         setSelectedLang,
+        deleteProfilePicture,
+        exp,
+        setExp,
       }}
     >
       {children}
