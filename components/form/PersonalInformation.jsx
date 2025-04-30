@@ -1,9 +1,13 @@
-// import React, { useContext, useState, useEffect } from "react";
+// "use client";
+
+// import { useContext, useState, useEffect, useRef } from "react";
 // import { ResumeContext } from "../context/ResumeContext";
 // import { AlertCircle, X, Loader2, ChevronDown } from "lucide-react";
 // import { useRouter } from "next/router";
 // import { BASE_URL } from "../Constant/constant";
 // import { useTranslation } from "react-i18next";
+// import axiosInstance from "../utils/axiosInstance";
+
 // const PersonalInformation = () => {
 //   const { i18n, t } = useTranslation();
 //   const language = i18n.language;
@@ -15,6 +19,7 @@
 //     handleChange,
 //     resumeStrength,
 //     setResumeStrength,
+//     deleteProfilePicture,
 //   } = useContext(ResumeContext);
 //   const router = useRouter();
 //   const { improve } = router.query;
@@ -33,16 +38,45 @@
 //     autoFix: false,
 //     countryCodes: false,
 //   });
+//   const [validationErrors, setValidationErrors] = useState({});
 
 //   const dummyImage =
 //     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlie4MsQ9pJSSKY7DoEpxn3uBAq-rT7in1sA&s";
+
+//   // Define validation rules
+//   const VALIDATION_RULES = {
+//     name: {
+//       maxLength: 50,
+//       minLength: 2,
+//       errorMessage: "Name must be between 2 and 20 characters",
+//     },
+//     position: {
+//       maxLength: 150,
+//       minLength: 2,
+//       errorMessage: "Job title must be between 2 and 100 characters",
+//     },
+//     contactInformation: {
+//       maxLength: 20,
+//       errorMessage: "Contact number must be 20 characters or less",
+//     },
+//     email: {
+//       maxLength: 100,
+//       regex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+//       errorMessage: "Please enter a valid email address",
+//     },
+//     address: {
+//       maxLength: 500,
+//       minLength: 5,
+//       errorMessage: "Address must be between 5 and 200 characters",
+//     },
+//   };
 
 //   useEffect(() => {
 //     const fetchCountryCodes = async () => {
 //       setIsLoading((prev) => ({ ...prev, countryCodes: true }));
 //       try {
-//         const response = await fetch(
-//           `${BASE_URL}/api/user/countries?lang=${language}`
+//         const response = await axiosInstance.get(
+//           `/api/user/countries?lang=${language}`
 //         );
 //         if (response.ok) {
 //           const data = await response.json();
@@ -58,7 +92,7 @@
 //     };
 
 //     fetchCountryCodes();
-//   }, []);
+//   }, [language]);
 
 //   const fetchJobTitles = async (keyword) => {
 //     if (!keyword || keyword.length < 1) {
@@ -68,10 +102,10 @@
 
 //     setIsLoading((prev) => ({ ...prev, jobTitle: true }));
 //     try {
-//       const response = await fetch(
-//         `${BASE_URL}/api/user/job-title?job_title_keyword=${encodeURIComponent(
+//       const response = await axiosInstance.get(
+//         `/api/user/job-title?job_title_keyword=${encodeURIComponent(
 //           keyword
-//         )}?lang=${language}`
+//         )}&lang=${language}`
 //       );
 //       if (response.ok) {
 //         const data = await response.json();
@@ -93,10 +127,10 @@
 
 //     setIsLoading((prev) => ({ ...prev, location: true }));
 //     try {
-//       const response = await fetch(
-//         `${BASE_URL}/api/user/locations?locations=${encodeURIComponent(
+//       const response = await axiosInstance.get(
+//         `/api/user/locations?locations=${encodeURIComponent(
 //           keyword
-//         )}?lang=${language}`
+//         )}&lang=${language}`
 //       );
 //       if (response.ok) {
 //         const data = await response.json();
@@ -183,6 +217,12 @@
 //               };
 //               setResumeStrength(updatedStrength);
 //             }
+
+//             // Clear validation errors for this field
+//             setValidationErrors((prev) => ({
+//               ...prev,
+//               [field]: null,
+//             }));
 //           }
 //         }
 //       }
@@ -191,33 +231,6 @@
 //     } finally {
 //       setIsLoading((prev) => ({ ...prev, autoFix: false }));
 //     }
-//   };
-
-//   const VALIDATION_RULES = {
-//     name: {
-//       maxLength: 20,
-//       minLength: 2,
-//       errorMessage: "Name must be between 2 and 150 characters",
-//     },
-//     position: {
-//       maxLength: 100,
-//       minLength: 2,
-//       errorMessage: "Job title must be between 2 and 100 characters",
-//     },
-//     contactInformation: {
-//       maxLength: 20,
-//       errorMessage: "Contact number must be 20 characters or less",
-//     },
-//     email: {
-//       maxLength: 100,
-//       regex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-//       errorMessage: "Please enter a valid email address",
-//     },
-//     address: {
-//       maxLength: 200,
-//       minLength: 5,
-//       errorMessage: "Address must be between 5 and 200 characters",
-//     },
 //   };
 
 //   // Comprehensive validation function
@@ -248,26 +261,74 @@
 //     }
 
 //     // Contact number specific validation
-//     if (field === "contactInformation") {
-//       const contactRegex = /^(\+\d{1,3}\s?)?\(?\d+\)?[\d\s\-]+$/;
-//       if (!contactRegex.test(trimmedValue)) {
-//         return "Invalid contact number format";
-//       }
-//     }
+//     // if (field === "contactInformation") {
+//     //   const contactRegex = /^(\+\d{1,3}\s?)?$$?\d+$$?[\d\s-]+$/
+//     //   if (!contactRegex.test(trimmedValue)) {
+//     //     return "Invalid contact number format"
+//     //   }
+//     // }
 
 //     return null; // Validation passed
+//   };
+
+//   // Function to enforce character limits during input
+//   const enforceCharLimit = (value, field) => {
+//     const rules = VALIDATION_RULES[field];
+//     if (!rules || !rules.maxLength) return value;
+
+//     // For contact information, we need to handle the country code separately
+//     if (field === "contactInformation") {
+//       const countryCodeLength = selectedCountryCode.length;
+//       const contactWithoutCode = value.replace(/^(\+\d+\s*)?/, "");
+
+//       if (countryCodeLength + contactWithoutCode.length > rules.maxLength) {
+//         return contactWithoutCode.slice(0, rules.maxLength - countryCodeLength);
+//       }
+//       return contactWithoutCode;
+//     }
+
+//     // For other fields, simply limit to maxLength
+//     return value.slice(0, rules.maxLength);
 //   };
 
 //   const handleInputChange = (e) => {
 //     const { name, value } = e.target;
 
-//     if (name === "position") {
-//       fetchJobTitles(value);
-//     } else if (name === "address") {
-//       fetchLocations(value);
+//     // Enforce character limit
+//     const limitedValue = enforceCharLimit(value, name);
+
+//     // If the value was truncated, update the input field
+//     if (limitedValue !== value) {
+//       e.target.value = limitedValue;
 //     }
-//     const validationError = validateField(name, value);
-//     handleChange(e);
+
+//     if (name === "position") {
+//       fetchJobTitles(limitedValue);
+//     } else if (name === "address") {
+//       fetchLocations(limitedValue);
+//     }
+
+//     // Validate the field
+//     const validationError = validateField(name, limitedValue);
+
+//     // Update validation errors state
+//     setValidationErrors((prev) => ({
+//       ...prev,
+//       [name]: validationError,
+//     }));
+
+//     // Create a modified event with the limited value
+//     const modifiedEvent = {
+//       target: {
+//         name,
+//         value: limitedValue,
+//       },
+//     };
+
+//     // Call the original handleChange with our modified event
+//     handleChange(modifiedEvent);
+
+//     // Update resume strength if there's an error
 //     if (validationError) {
 //       const updatedStrength = {
 //         ...resumeStrength,
@@ -277,14 +338,35 @@
 //         },
 //       };
 //       setResumeStrength(updatedStrength);
+//     } else if (resumeStrength?.personal_info_strenght?.[name]) {
+//       // Clear errors if validation passes
+//       const updatedStrength = {
+//         ...resumeStrength,
+//         personal_info_strenght: {
+//           ...resumeStrength.personal_info_strenght,
+//           [name]: [],
+//         },
+//       };
+//       setResumeStrength(updatedStrength);
 //     }
 //   };
 
 //   const selectSuggestion = (field, value) => {
+//     // Enforce character limit on the selected suggestion
+//     const limitedValue = enforceCharLimit(value, field);
+
 //     const event = {
-//       target: { name: field, value },
+//       target: { name: field, value: limitedValue },
 //     };
 //     handleChange(event);
+
+//     // Validate the selected suggestion
+//     const validationError = validateField(field, limitedValue);
+//     setValidationErrors((prev) => ({
+//       ...prev,
+//       [field]: validationError,
+//     }));
+
 //     if (field === "position") {
 //       setShowJobTitleDropdown(false);
 //     } else {
@@ -298,25 +380,37 @@
 
 //     // Update contact information with new country code
 //     if (resumeData.contactInformation) {
+//       const contactWithoutCode = resumeData.contactInformation.replace(
+//         /^(\+\d+\s*)?/,
+//         ""
+//       );
+
+//       // Enforce character limit considering the new country code
+//       const rules = VALIDATION_RULES.contactInformation;
+//       const maxContactLength = rules.maxLength - newCountryCode.length - 1; // -1 for space
+//       const limitedContact = contactWithoutCode.slice(0, maxContactLength);
+
 //       const updatedContact = {
 //         target: {
 //           name: "contactInformation",
-//           value: `${newCountryCode} ${resumeData.contactInformation.replace(
-//             /^(\+\d+\s*)?/,
-//             ""
-//           )}`,
+//           value: `${newCountryCode} ${limitedContact}`,
 //         },
 //       };
 //       handleChange(updatedContact);
+
+//       // Validate the updated contact
+//       const validationError = validateField(
+//         "contactInformation",
+//         `${newCountryCode} ${limitedContact}`
+//       );
+//       setValidationErrors((prev) => ({
+//         ...prev,
+//         contactInformation: validationError,
+//       }));
 //     }
 
 //     setShowCountryCodeDropdown(false);
 //   };
-
-//   // const hasErrors = (field) => {
-//   //   const strengthInfo = resumeStrength?.personal_info_strenght?.[field];
-//   //   return Array.isArray(strengthInfo) && strengthInfo.length > 0;
-//   // };
 
 //   const getSuggestions = (field) => {
 //     return resumeStrength?.personal_info_strenght?.[field] || [];
@@ -355,78 +449,33 @@
 //       hasSuggestions: true,
 //     },
 //   ];
-//   // const hasErrors = (field) => {
-//   //   const strengthInfo = resumeStrength?.personal_info_strenght?.[field];
-//   //   return Array.isArray(strengthInfo) && strengthInfo.length > 0;
-//   // };
-//   // const hasErrors = (field) => {
-//   //   const strengthInfo = resumeStrength?.personal_info_strenght?.[field];
 
-//   //   // Special check for contact information to ensure it's validated correctly
-//   //   if (field === "contactInformation") {
-//   //     const contactValue = resumeData[field];
-//   //     console.log("Contact Value: ", contactValue); // Debugging line
-
-//   //     const isValidContact = /^(\+\d{1,3}\s?)?\(?\d+\)?[\d\s\-]+$/.test(
-//   //       contactValue
-//   //     );
-//   //     console.log("Is Valid Contact: ", isValidContact); // Debugging line
-
-//   //     if (contactValue && !isValidContact) {
-//   //       return true; // Invalid phone number format
-//   //     }
-//   //     return false; // Valid phone number
-//   //   }
-
-//   //   return Array.isArray(strengthInfo) && strengthInfo.length > 0;
-//   // };
-//   // const hasErrors = (field) => {
-//   //   const strengthInfo = resumeStrength?.personal_info_strenght?.[field];
-//   //   const fieldValue = resumeData[field]?.trim(); // Trim to check for empty values
-
-//   //   // 1️⃣ Check for empty values (show error if missing)
-//   //   if (!fieldValue) return true;
-
-//   //   // 2️⃣ Special validation for contact information
-//   //   if (field === "contactInformation") {
-//   //     console.log("Contact Value: ", fieldValue); // Debugging
-
-//   //     const isValidContact = /^(\+\d{1,3}\s?)?\(?\d+\)?[\d\s\-]+$/.test(
-//   //       fieldValue
-//   //     );
-
-//   //     console.log("Is Valid Contact: ", isValidContact); // Debugging
-
-//   //     if (!isValidContact) {
-//   //       return true; // Invalid phone number format
-//   //     }
-//   //   }
-
-//   //   // 3️⃣ Check for API errors in `resumeStrength`
-//   //   return Array.isArray(strengthInfo) && strengthInfo.length > 0;
-//   // };
 //   const hasErrors = (field) => {
+//     // Check for validation errors first
+//     if (validationErrors[field]) return true;
+
+//     // Then check for API-level errors in resumeStrength
 //     const strengthInfo = resumeStrength?.personal_info_strenght?.[field];
-//     const fieldValue = resumeData[field] || "";
-
-//     // Validate the field
-//     const validationError = validateField(field, fieldValue);
-
-//     // If there's a validation error, return true
-//     if (validationError) return true;
-
-//     // Check for API-level errors in resumeStrength
 //     return Array.isArray(strengthInfo) && strengthInfo.length > 0;
 //   };
 
 //   const handleContactChange = (e) => {
 //     const { value } = e.target;
-//     const fullContactValue = `${selectedCountryCode} ${value.replace(
-//       /^(\+\d+\s*)?/,
-//       ""
-//     )}`;
 
-//     console.log("Updated Contact Value: ", fullContactValue); // Debugging line
+//     // Remove any existing country code from the input
+//     const contactWithoutCode = value.replace(/^(\+\d+\s*)?/, "");
+
+//     // Enforce character limit considering the country code
+//     const rules = VALIDATION_RULES.contactInformation;
+//     const maxContactLength = rules.maxLength - selectedCountryCode.length - 1; // -1 for space
+//     const limitedContact = contactWithoutCode.slice(0, maxContactLength);
+
+//     // If the value was truncated, update the input field
+//     if (limitedContact !== contactWithoutCode) {
+//       e.target.value = limitedContact;
+//     }
+
+//     const fullContactValue = `${selectedCountryCode} ${limitedContact}`;
 
 //     const updatedContact = {
 //       target: {
@@ -434,9 +483,43 @@
 //         value: fullContactValue,
 //       },
 //     };
+
+//     // Validate the contact
+//     const validationError = validateField(
+//       "contactInformation",
+//       fullContactValue
+//     );
+//     setValidationErrors((prev) => ({
+//       ...prev,
+//       contactInformation: validationError,
+//     }));
+
 //     handleChange(updatedContact);
 //   };
 
+//   // Function to get the remaining character count for a field
+//   const getRemainingChars = (field) => {
+//     const rules = VALIDATION_RULES[field];
+//     if (!rules || !rules.maxLength) return null;
+
+//     const value = resumeData[field] || "";
+
+//     if (field === "contactInformation") {
+//       // For contact, we need to consider the country code in the count
+//       return rules.maxLength - value.length;
+//     }
+
+//     return rules.maxLength - value.length;
+//   };
+//   const handleDelete = (e) => {
+//     deleteProfilePicture(e);
+
+//     // Reset the file input to clear the filename
+//     if (fileInputRef.current) {
+//       fileInputRef.current.value = "";
+//     }
+//   };
+//   const fileInputRef = useRef(null);
 //   return (
 //     <div className="flex flex-col gap-3 w-full items-center md:mt-10 p-4 md:px-10">
 //       <h2 className="text-2xl md:text-3xl font-semibold text-black">
@@ -445,12 +528,26 @@
 
 //       <div className="flex flex-col items-center gap-6 w-full">
 //         <div className="flex flex-col items-center gap-4">
-//           <img
-//             src={resumeData.profilePicture || dummyImage}
-//             alt="Profile"
-//             className="w-28 h-28 md:w-32 md:h-32 rounded-lg object-cover"
-//           />
+//           <div className="relative">
+//             <img
+//               src={resumeData.profilePicture || dummyImage}
+//               alt="Profile"
+//               className="w-28 h-28 md:w-32 md:h-32 rounded-lg object-cover"
+//             />
+
+//             {resumeData.profilePicture && (
+//               <button
+//                 onClick={handleDelete}
+//                 className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-red-600 transition-colors"
+//                 aria-label="Delete profile picture"
+//               >
+//                 ✕
+//               </button>
+//             )}
+//           </div>
+
 //           <input
+//             ref={fileInputRef}
 //             type="file"
 //             name="profileImage"
 //             accept="image/*"
@@ -460,6 +557,12 @@
 //         </div>
 
 //         <div className="flex flex-col gap-4 w-full max-w-xl">
+//           {/* {Object.keys(VALIDATION_RULES).some((field) => hasErrors(field)) && (
+//             <div className="w-full bg-red-50 border border-red-200 p-3 rounded-md">
+//               <p className="text-red-600 text-sm">Please review and correct the highlighted fields</p>
+//             </div>
+//           )} */}
+
 //           {formFields.map(
 //             ({ field, placeholder, type, hasSuggestions, hasCountryCode }) => (
 //               <div
@@ -469,43 +572,37 @@
 //               >
 //                 <div className="flex items-center relative">
 //                   {/* If field has a country code (for contact number) */}
-
 //                   {hasCountryCode && (
 //                     <div className="relative w-full">
 //                       <div className="flex items-center">
 //                         {/* Country Code Selector */}
-//                         <div
-//                           className="absolute left-2 z-10 flex items-center cursor-pointer"
-//                           onClick={() =>
-//                             setShowCountryCodeDropdown(!showCountryCodeDropdown)
-//                           }
-//                         >
-//                           <span className="text-gray-700 mr-1">
-//                             {selectedCountryCode}
-//                           </span>
-//                           <ChevronDown className="w-4 h-4 text-gray-500" />
-//                         </div>
+//                         {/* <div
+//                         className="absolute left-2 z-10 flex items-center cursor-pointer"
+//                         onClick={() => setShowCountryCodeDropdown(!showCountryCodeDropdown)}
+//                       >
+//                         <span className="text-gray-700 mr-1">{selectedCountryCode}</span>
+//                         <ChevronDown className="w-4 h-4 text-gray-500" />
+//                       </div>
 
-//                         {/* Input Field for Contact Information */}
-//                         {showCountryCodeDropdown && (
-//                           <div className="absolute top-full left-0 mt-1 w-64 max-h-60 overflow-y-auto bg-white border border-gray-300 rounded-md shadow-lg z-50">
-//                             {countryCodes.map((country) => (
-//                               <div
-//                                 key={country.id}
-//                                 className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex justify-between"
-//                                 onClick={() => selectCountryCode(country)}
-//                               >
-//                                 <span>{country.name}</span>
-//                                 <span>+{country.phonecode}</span>
-//                               </div>
-//                             ))}
-//                           </div>
-//                         )}
+//                       {showCountryCodeDropdown && (
+//                         <div className="absolute top-full left-0 mt-1 w-64 max-h-60 overflow-y-auto bg-white border border-gray-300 rounded-md shadow-lg z-50">
+//                           {countryCodes.map((country) => (
+//                             <div
+//                               key={country.id}
+//                               className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex justify-between"
+//                               onClick={() => selectCountryCode(country)}
+//                             >
+//                               <span>{country.name}</span>
+//                               <span>+{country.phonecode}</span>
+//                             </div>
+//                           ))}
+//                         </div>
+//                       )} */}
 //                         <input
 //                           type={type}
 //                           placeholder={placeholder}
 //                           name={field}
-//                           className={`w-full p-2 pl-16 border rounded-md outline-none transition-colors ${
+//                           className={`w-full p-2 pl-2 border rounded-md outline-none transition-colors ${
 //                             improve && hasErrors(field)
 //                               ? "border-red-500 focus:border-red-600"
 //                               : "border-gray-300 focus:border-blue-500"
@@ -515,15 +612,11 @@
 //                               ? resumeData[field].replace(/^(\+\d+\s*)?/, "")
 //                               : ""
 //                           }
-//                           onChange={
-//                             field === "contactInformation"
-//                               ? handleContactChange
-//                               : handleInputChange
-//                           }
+//                           onChange={handleContactChange}
 //                         />
 
 //                         {/* Error Icon for Contact Information */}
-//                         {/* {improve && hasErrors(field) && (
+//                         {improve && hasErrors(field) && (
 //                           <button
 //                             type="button"
 //                             className="absolute right-2 mt-2 text-red-500 hover:text-red-600 transition-colors"
@@ -536,18 +629,19 @@
 //                           >
 //                             <AlertCircle className="w-5 h-5" />
 //                           </button>
-//                         )} */}
-//                         {improve &&
-//                           Object.keys(VALIDATION_RULES).some((field) =>
-//                             hasErrors(field)
-//                           ) && (
-//                             <div className="w-full max-w-xl bg-red-50 border border-red-200 p-3 rounded-md mb-4">
-//                               <p className="text-red-600 text-sm">
-//                                 Please review and correct the highlighted fields
-//                               </p>
-//                             </div>
-//                           )}
+//                         )}
 //                       </div>
+
+//                       {/* Character counter for contact */}
+//                       {/* {VALIDATION_RULES[field].maxLength && (
+//                       <div
+//                         className={`text-xs mt-1 text-right ${
+//                           getRemainingChars(field) <= 5 ? "text-red-500" : "text-gray-500"
+//                         }`}
+//                       >
+//                         {getRemainingChars(field)} / {VALIDATION_RULES[field].maxLength} characters remaining
+//                       </div>
+//                     )} */}
 //                     </div>
 //                   )}
 
@@ -599,6 +693,17 @@
 //                             <Loader2 className="w-5 h-5 animate-spin text-gray-400" />
 //                           </div>
 //                         )}
+
+//                       {/* Character counter */}
+//                       {/* {VALIDATION_RULES[field].maxLength && (
+//                       <div
+//                         className={`text-xs mt-1 text-right ${
+//                           getRemainingChars(field) <= 5 ? "text-red-500" : "text-gray-500"
+//                         }`}
+//                       >
+//                         {getRemainingChars(field)} / {VALIDATION_RULES[field].maxLength} characters remaining
+//                       </div>
+//                     )} */}
 //                     </div>
 //                   )}
 //                 </div>
@@ -625,7 +730,7 @@
 //                   )}
 
 //                 {activeTooltip === field && hasErrors(field) && (
-//                   <div className="absolute z-50 left-8  w-80 bg-white rounded-lg shadow-xl transform transition-all duration-200 ease-in-out border border-gray-700">
+//                   <div className="absolute z-50 left-8 w-80 bg-white rounded-lg shadow-xl transform transition-all duration-200 ease-in-out border border-gray-700">
 //                     <div className="p-4 border-b border-gray-700">
 //                       <div className="flex items-center justify-between">
 //                         <div className="flex items-center space-x-2">
@@ -636,16 +741,14 @@
 //                         </div>
 
 //                         <div className="flex items-center space-x-2">
-//                           {(field === "name" ||
-//                             field === "position" ||
-//                             field === "contactInformation") && (
+//                           {(field === "name" || field === "position") && (
 //                             <button
 //                               onClick={() =>
 //                                 handleAutoFix(field, resumeData[field])
 //                               }
 //                               disabled={
 //                                 isLoading.autoFix || !resumeData[field]?.trim()
-//                               } // ✅ Disable when empty
+//                               }
 //                               className="px-3 py-1 text-sm font-medium text-white bg-blue-600 rounded-md shadow hover:bg-blue-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
 //                             >
 //                               {isLoading.autoFix ? (
@@ -665,6 +768,15 @@
 //                       </div>
 //                     </div>
 //                     <div className="p-4">
+//                       {/* Show validation errors first */}
+//                       {/* {validationErrors[field] && (
+//                       <div className="flex items-start space-x-3 mb-3">
+//                         <div className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-red-400 mt-2"></div>
+//                         <p className="text-black text-sm">{validationErrors[field]}</p>
+//                       </div>
+//                     )} */}
+
+//                       {/* Then show API suggestions */}
 //                       {getSuggestions(field).map((msg, i) => (
 //                         <div
 //                           key={i}
@@ -689,17 +801,17 @@
 // export default PersonalInformation;
 "use client";
 
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 import { ResumeContext } from "../context/ResumeContext";
 import { AlertCircle, X, Loader2, ChevronDown } from "lucide-react";
 import { useRouter } from "next/router";
 import { BASE_URL } from "../Constant/constant";
 import { useTranslation } from "react-i18next";
+import axiosInstance from "../utils/axiosInstance";
 
 const PersonalInformation = () => {
   const { i18n, t } = useTranslation();
   const language = i18n.language;
-
   const {
     resumeData,
     setResumeData,
@@ -707,6 +819,7 @@ const PersonalInformation = () => {
     handleChange,
     resumeStrength,
     setResumeStrength,
+    deleteProfilePicture,
   } = useContext(ResumeContext);
   const router = useRouter();
   const { improve } = router.query;
@@ -725,45 +838,17 @@ const PersonalInformation = () => {
     autoFix: false,
     countryCodes: false,
   });
-  const [validationErrors, setValidationErrors] = useState({});
+  const [resolvedFields, setResolvedFields] = useState({});
 
   const dummyImage =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlie4MsQ9pJSSKY7DoEpxn3uBAq-rT7in1sA&s";
-
-  // Define validation rules
-  const VALIDATION_RULES = {
-    name: {
-      maxLength: 50,
-      minLength: 2,
-      errorMessage: "Name must be between 2 and 20 characters",
-    },
-    position: {
-      maxLength: 150,
-      minLength: 2,
-      errorMessage: "Job title must be between 2 and 100 characters",
-    },
-    contactInformation: {
-      maxLength: 20,
-      errorMessage: "Contact number must be 20 characters or less",
-    },
-    email: {
-      maxLength: 100,
-      regex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-      errorMessage: "Please enter a valid email address",
-    },
-    address: {
-      maxLength: 500,
-      minLength: 5,
-      errorMessage: "Address must be between 5 and 200 characters",
-    },
-  };
 
   useEffect(() => {
     const fetchCountryCodes = async () => {
       setIsLoading((prev) => ({ ...prev, countryCodes: true }));
       try {
-        const response = await fetch(
-          `${BASE_URL}/api/user/countries?lang=${language}`
+        const response = await axiosInstance.get(
+          `/api/user/countries?lang=${language}`
         );
         if (response.ok) {
           const data = await response.json();
@@ -789,17 +874,15 @@ const PersonalInformation = () => {
 
     setIsLoading((prev) => ({ ...prev, jobTitle: true }));
     try {
-      const response = await fetch(
-        `${BASE_URL}/api/user/job-title?job_title_keyword=${encodeURIComponent(
+      const response = await axiosInstance.get(
+        `/api/user/job-title?job_title_keyword=${encodeURIComponent(
           keyword
         )}&lang=${language}`
       );
-      if (response.ok) {
-        const data = await response.json();
-        const jobTitles = data.data.map((item) => item.name);
-        setJobTitleSuggestions(jobTitles);
-        setShowJobTitleDropdown(true);
-      }
+
+      const jobTitles = response.data.data.map((item) => item.name);
+      setJobTitleSuggestions(jobTitles);
+      setShowJobTitleDropdown(true);
     } catch (error) {
       console.error("Error fetching job titles:", error);
     }
@@ -814,17 +897,15 @@ const PersonalInformation = () => {
 
     setIsLoading((prev) => ({ ...prev, location: true }));
     try {
-      const response = await fetch(
-        `${BASE_URL}/api/user/locations?locations=${encodeURIComponent(
+      const response = await axiosInstance.get(
+        `/api/user/locations?locations=${encodeURIComponent(
           keyword
         )}&lang=${language}`
       );
-      if (response.ok) {
-        const data = await response.json();
-        const locations = data.data.location_names.map((item) => item);
-        setLocationSuggestions(locations);
-        setShowLocationDropdown(true);
-      }
+      const data = response.data;
+      const locations = data.data.location_names.map((item) => item);
+      setLocationSuggestions(locations);
+      setShowLocationDropdown(true);
     } catch (error) {
       console.error("Error fetching locations:", error);
     }
@@ -904,12 +985,6 @@ const PersonalInformation = () => {
               };
               setResumeStrength(updatedStrength);
             }
-
-            // Clear validation errors for this field
-            setValidationErrors((prev) => ({
-              ...prev,
-              [field]: null,
-            }));
           }
         }
       }
@@ -920,140 +995,34 @@ const PersonalInformation = () => {
     }
   };
 
-  // Comprehensive validation function
-  const validateField = (field, value) => {
-    const rules = VALIDATION_RULES[field];
-    if (!rules) return null; // No specific validation for this field
-
-    // Trim the value to remove leading/trailing whitespace
-    const trimmedValue = value?.trim() || "";
-
-    // Check for empty value
-    if (!trimmedValue) {
-      return "This field cannot be empty";
-    }
-
-    // Length validation
-    if (rules.maxLength && trimmedValue.length > rules.maxLength) {
-      return rules.errorMessage;
-    }
-
-    if (rules.minLength && trimmedValue.length < rules.minLength) {
-      return rules.errorMessage;
-    }
-
-    // Email validation
-    if (field === "email" && rules.regex && !rules.regex.test(trimmedValue)) {
-      return rules.errorMessage;
-    }
-
-    // Contact number specific validation
-    // if (field === "contactInformation") {
-    //   const contactRegex = /^(\+\d{1,3}\s?)?$$?\d+$$?[\d\s-]+$/
-    //   if (!contactRegex.test(trimmedValue)) {
-    //     return "Invalid contact number format"
-    //   }
-    // }
-
-    return null; // Validation passed
-  };
-
-  // Function to enforce character limits during input
-  const enforceCharLimit = (value, field) => {
-    const rules = VALIDATION_RULES[field];
-    if (!rules || !rules.maxLength) return value;
-
-    // For contact information, we need to handle the country code separately
-    if (field === "contactInformation") {
-      const countryCodeLength = selectedCountryCode.length;
-      const contactWithoutCode = value.replace(/^(\+\d+\s*)?/, "");
-
-      if (countryCodeLength + contactWithoutCode.length > rules.maxLength) {
-        return contactWithoutCode.slice(0, rules.maxLength - countryCodeLength);
-      }
-      return contactWithoutCode;
-    }
-
-    // For other fields, simply limit to maxLength
-    return value.slice(0, rules.maxLength);
-  };
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-
-    // Enforce character limit
-    const limitedValue = enforceCharLimit(value, name);
-
-    // If the value was truncated, update the input field
-    if (limitedValue !== value) {
-      e.target.value = limitedValue;
-    }
-
-    if (name === "position") {
-      fetchJobTitles(limitedValue);
-    } else if (name === "address") {
-      fetchLocations(limitedValue);
-    }
-
-    // Validate the field
-    const validationError = validateField(name, limitedValue);
-
-    // Update validation errors state
-    setValidationErrors((prev) => ({
-      ...prev,
-      [name]: validationError,
-    }));
-
-    // Create a modified event with the limited value
-    const modifiedEvent = {
-      target: {
-        name,
-        value: limitedValue,
-      },
+    const maxLengths = {
+      name: 30,
+      position: 20,
+      contactInformation: 10,
+      email: 50,
+      address: 50,
     };
 
-    // Call the original handleChange with our modified event
-    handleChange(modifiedEvent);
+    // Check if value exceeds max length for the field
+    if (maxLengths[name] && value.length > maxLengths[name]) {
+      return;
+    }
+    handleChange(e);
 
-    // Update resume strength if there's an error
-    if (validationError) {
-      const updatedStrength = {
-        ...resumeStrength,
-        personal_info_strenght: {
-          ...resumeStrength?.personal_info_strenght,
-          [name]: [validationError],
-        },
-      };
-      setResumeStrength(updatedStrength);
-    } else if (resumeStrength?.personal_info_strenght?.[name]) {
-      // Clear errors if validation passes
-      const updatedStrength = {
-        ...resumeStrength,
-        personal_info_strenght: {
-          ...resumeStrength.personal_info_strenght,
-          [name]: [],
-        },
-      };
-      setResumeStrength(updatedStrength);
+    if (name === "position") {
+      fetchJobTitles(value);
+    } else if (name === "address") {
+      fetchLocations(value);
     }
   };
 
   const selectSuggestion = (field, value) => {
-    // Enforce character limit on the selected suggestion
-    const limitedValue = enforceCharLimit(value, field);
-
     const event = {
-      target: { name: field, value: limitedValue },
+      target: { name: field, value },
     };
     handleChange(event);
-
-    // Validate the selected suggestion
-    const validationError = validateField(field, limitedValue);
-    setValidationErrors((prev) => ({
-      ...prev,
-      [field]: validationError,
-    }));
-
     if (field === "position") {
       setShowJobTitleDropdown(false);
     } else {
@@ -1067,37 +1036,25 @@ const PersonalInformation = () => {
 
     // Update contact information with new country code
     if (resumeData.contactInformation) {
-      const contactWithoutCode = resumeData.contactInformation.replace(
-        /^(\+\d+\s*)?/,
-        ""
-      );
-
-      // Enforce character limit considering the new country code
-      const rules = VALIDATION_RULES.contactInformation;
-      const maxContactLength = rules.maxLength - newCountryCode.length - 1; // -1 for space
-      const limitedContact = contactWithoutCode.slice(0, maxContactLength);
-
       const updatedContact = {
         target: {
           name: "contactInformation",
-          value: `${newCountryCode} ${limitedContact}`,
+          value: `${newCountryCode} ${resumeData.contactInformation.replace(
+            /^(\+\d+\s*)?/,
+            ""
+          )}`,
         },
       };
       handleChange(updatedContact);
-
-      // Validate the updated contact
-      const validationError = validateField(
-        "contactInformation",
-        `${newCountryCode} ${limitedContact}`
-      );
-      setValidationErrors((prev) => ({
-        ...prev,
-        contactInformation: validationError,
-      }));
     }
 
     setShowCountryCodeDropdown(false);
   };
+
+  // const hasErrors = (field) => {
+  //   const strengthInfo = resumeStrength?.personal_info_strenght?.[field];
+  //   return Array.isArray(strengthInfo) && strengthInfo.length > 0;
+  // };
 
   const getSuggestions = (field) => {
     return resumeStrength?.personal_info_strenght?.[field] || [];
@@ -1138,31 +1095,27 @@ const PersonalInformation = () => {
   ];
 
   const hasErrors = (field) => {
-    // Check for validation errors first
-    if (validationErrors[field]) return true;
-
-    // Then check for API-level errors in resumeStrength
     const strengthInfo = resumeStrength?.personal_info_strenght?.[field];
+    const fieldValue = resumeData[field]?.trim(); // Trim to check for empty values
+
+    // Check for empty required fields
+    if (!fieldValue) return true;
+
+    // Special validation for contact information
+    if (field === "contactInformation") {
+      const isValidContact = /^(\+\d{1,3}\s?)?\(?\d+\)?[\d\s\-]+$/.test(
+        fieldValue
+      );
+      if (!isValidContact) return true;
+    }
+
+    // Check for API-reported errors
     return Array.isArray(strengthInfo) && strengthInfo.length > 0;
   };
 
   const handleContactChange = (e) => {
     const { value } = e.target;
-
-    // Remove any existing country code from the input
-    const contactWithoutCode = value.replace(/^(\+\d+\s*)?/, "");
-
-    // Enforce character limit considering the country code
-    const rules = VALIDATION_RULES.contactInformation;
-    const maxContactLength = rules.maxLength - selectedCountryCode.length - 1; // -1 for space
-    const limitedContact = contactWithoutCode.slice(0, maxContactLength);
-
-    // If the value was truncated, update the input field
-    if (limitedContact !== contactWithoutCode) {
-      e.target.value = limitedContact;
-    }
-
-    const fullContactValue = `${selectedCountryCode} ${limitedContact}`;
+    const fullContactValue = `${value.replace(/^(\+\d+\s*)?/, "")}`;
 
     const updatedContact = {
       target: {
@@ -1170,49 +1123,69 @@ const PersonalInformation = () => {
         value: fullContactValue,
       },
     };
-
-    // Validate the contact
-    const validationError = validateField(
-      "contactInformation",
-      fullContactValue
-    );
-    setValidationErrors((prev) => ({
-      ...prev,
-      contactInformation: validationError,
-    }));
-
     handleChange(updatedContact);
   };
+  // console.log(resumeStrength, "rss");
+  const markAsResolved = (field) => {
+    // Mark this field as resolved
+    setResolvedFields((prev) => ({ ...prev, [field]: true }));
 
-  // Function to get the remaining character count for a field
-  const getRemainingChars = (field) => {
-    const rules = VALIDATION_RULES[field];
-    if (!rules || !rules.maxLength) return null;
-
-    const value = resumeData[field] || "";
-
-    if (field === "contactInformation") {
-      // For contact, we need to consider the country code in the count
-      return rules.maxLength - value.length;
+    // Also clear any errors in the resumeStrength for this field
+    if (resumeStrength?.personal_info_strenght) {
+      const updatedStrength = {
+        ...resumeStrength,
+        personal_info_strenght: {
+          ...resumeStrength.personal_info_strenght,
+          [field]: [],
+        },
+      };
+      // console.log(updatedStrength, "ups");
+      setResumeStrength(updatedStrength);
     }
 
-    return rules.maxLength - value.length;
+    // Close the tooltip
+    setActiveTooltip(null);
+  };
+  const fileInputRef = useRef(null);
+
+  // Enhanced delete function that also resets the file input
+  const handleDelete = (e) => {
+    deleteProfilePicture(e);
+
+    // Reset the file input to clear the filename
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
   };
 
   return (
-    <div className="flex flex-col gap-3 w-full items-center md:mt-10 p-4 md:px-10">
+    <div className="flex flex-col gap-3 w-full items-center md:mt-10 md:px-10 max-h-[400px] overflow-y-auto">
       <h2 className="text-2xl md:text-3xl font-semibold text-black">
         {t("builder_forms.personal_info.details_info")}
       </h2>
 
       <div className="flex flex-col items-center gap-6 w-full">
         <div className="flex flex-col items-center gap-4">
-          <img
-            src={resumeData.profilePicture || dummyImage}
-            alt="Profile"
-            className="w-28 h-28 md:w-32 md:h-32 rounded-lg object-cover"
-          />
+          <div className="relative">
+            <img
+              src={resumeData.profilePicture || dummyImage}
+              alt="Profile"
+              className="w-28 h-28 md:w-32 md:h-32 rounded-lg object-cover"
+            />
+
+            {resumeData.profilePicture && (
+              <button
+                onClick={handleDelete}
+                className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-red-600 transition-colors"
+                aria-label="Delete profile picture"
+              >
+                ✕
+              </button>
+            )}
+          </div>
+
           <input
+            ref={fileInputRef}
             type="file"
             name="profileImage"
             accept="image/*"
@@ -1222,12 +1195,6 @@ const PersonalInformation = () => {
         </div>
 
         <div className="flex flex-col gap-4 w-full max-w-xl">
-          {/* {Object.keys(VALIDATION_RULES).some((field) => hasErrors(field)) && (
-            <div className="w-full bg-red-50 border border-red-200 p-3 rounded-md">
-              <p className="text-red-600 text-sm">Please review and correct the highlighted fields</p>
-            </div>
-          )} */}
-
           {formFields.map(
             ({ field, placeholder, type, hasSuggestions, hasCountryCode }) => (
               <div
@@ -1237,38 +1204,45 @@ const PersonalInformation = () => {
               >
                 <div className="flex items-center relative">
                   {/* If field has a country code (for contact number) */}
+
                   {hasCountryCode && (
                     <div className="relative w-full">
                       <div className="flex items-center">
                         {/* Country Code Selector */}
                         {/* <div
-                        className="absolute left-2 z-10 flex items-center cursor-pointer"
-                        onClick={() => setShowCountryCodeDropdown(!showCountryCodeDropdown)}
-                      >
-                        <span className="text-gray-700 mr-1">{selectedCountryCode}</span>
-                        <ChevronDown className="w-4 h-4 text-gray-500" />
-                      </div>
-
-                      {showCountryCodeDropdown && (
-                        <div className="absolute top-full left-0 mt-1 w-64 max-h-60 overflow-y-auto bg-white border border-gray-300 rounded-md shadow-lg z-50">
-                          {countryCodes.map((country) => (
-                            <div
-                              key={country.id}
-                              className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex justify-between"
-                              onClick={() => selectCountryCode(country)}
-                            >
-                              <span>{country.name}</span>
-                              <span>+{country.phonecode}</span>
-                            </div>
-                          ))}
+                          className="absolute left-2 z-10 flex items-center cursor-pointer"
+                          onClick={() =>
+                            setShowCountryCodeDropdown(!showCountryCodeDropdown)
+                          }
+                        >
+                          <span className="text-gray-700 mr-1">
+                            {selectedCountryCode}
+                          </span>
+                          <ChevronDown className="w-4 h-4 text-gray-500" />
                         </div>
-                      )} */}
+
+                        {showCountryCodeDropdown && (
+                          <div className="absolute top-full left-0 mt-1 w-64 max-h-60 overflow-y-auto bg-white border border-gray-300 rounded-md shadow-lg z-50">
+                            {countryCodes.map((country) => (
+                              <div
+                                key={country.id}
+                                className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex justify-between"
+                                onClick={() => selectCountryCode(country)}
+                              >
+                                <span>{country.name}</span>
+                                <span>+{country.phonecode}</span>
+                              </div>
+                            ))}
+                          </div>
+                        )} */}
                         <input
                           type={type}
-                          placeholder={placeholder}
+                          placeholder={t(
+                            `builder_forms.personal_info.placeholders.${field}`
+                          )}
                           name={field}
-                          className={`w-full p-2 border rounded-md outline-none transition-colors ${
-                            hasErrors(field)
+                          className={`w-full p-2 pl-2 border rounded-md outline-none transition-colors ${
+                            improve && hasErrors(field)
                               ? "border-red-500 focus:border-red-600"
                               : "border-gray-300 focus:border-blue-500"
                           }`}
@@ -1277,36 +1251,31 @@ const PersonalInformation = () => {
                               ? resumeData[field].replace(/^(\+\d+\s*)?/, "")
                               : ""
                           }
-                          onChange={handleContactChange}
+                          onChange={
+                            field === "contactInformation"
+                              ? handleContactChange
+                              : handleInputChange
+                          }
                         />
 
                         {/* Error Icon for Contact Information */}
-                        {improve && hasErrors(field) && (
-                          <button
-                            type="button"
-                            className="absolute right-2 mt-2 text-red-500 hover:text-red-600 transition-colors"
-                            onClick={() =>
-                              setActiveTooltip(
-                                activeTooltip === field ? null : field
-                              )
-                            }
-                            aria-label="Show suggestions"
-                          >
-                            <AlertCircle className="w-5 h-5" />
-                          </button>
-                        )}
+                        {improve &&
+                          hasErrors(field) &&
+                          !resolvedFields[field] && (
+                            <button
+                              type="button"
+                              className="absolute right-2 mt-2 text-red-500 hover:text-red-600 transition-colors"
+                              onClick={() =>
+                                setActiveTooltip(
+                                  activeTooltip === field ? null : field
+                                )
+                              }
+                              aria-label="Show suggestions"
+                            >
+                              <AlertCircle className="w-5 h-5" />
+                            </button>
+                          )}
                       </div>
-
-                      {/* Character counter for contact */}
-                      {/* {VALIDATION_RULES[field].maxLength && (
-                      <div
-                        className={`text-xs mt-1 text-right ${
-                          getRemainingChars(field) <= 5 ? "text-red-500" : "text-gray-500"
-                        }`}
-                      >
-                        {getRemainingChars(field)} / {VALIDATION_RULES[field].maxLength} characters remaining
-                      </div>
-                    )} */}
                     </div>
                   )}
 
@@ -1316,7 +1285,10 @@ const PersonalInformation = () => {
                       {/* Input Field */}
                       <input
                         type={type}
-                        placeholder={placeholder}
+                        // placeholder={placeholder}
+                        placeholder={t(
+                          `builder_forms.personal_info.placeholders.${field}`
+                        )}
                         name={field}
                         className={`w-full p-2 border rounded-md outline-none transition-colors ${
                           improve && hasErrors(field)
@@ -1331,53 +1303,52 @@ const PersonalInformation = () => {
                           if (field === "address")
                             setShowLocationDropdown(true);
                         }}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") {
+                            if (field === "address")
+                              setShowLocationDropdown(false);
+                            if (field === "position")
+                              setShowJobTitleDropdown(false);
+                          }
+                        }}
                       />
 
                       {/* Error Icon for Other Fields */}
-                      {improve && hasErrors(field) && (
-                        <button
-                          type="button"
-                          className="absolute right-2 mt-2 text-red-500 hover:text-red-600 transition-colors"
-                          onClick={() =>
-                            setActiveTooltip(
-                              activeTooltip === field ? null : field
-                            )
-                          }
-                          aria-label="Show suggestions"
-                        >
-                          <AlertCircle className="w-5 h-5" />
-                        </button>
-                      )}
+                      {improve &&
+                        hasErrors(field) &&
+                        !resolvedFields[field] && (
+                          <button
+                            type="button"
+                            className="absolute right-2 mt-2 text-red-500 hover:text-red-600 transition-colors"
+                            onClick={() =>
+                              setActiveTooltip(
+                                activeTooltip === field ? null : field
+                              )
+                            }
+                            aria-label="Show suggestions"
+                          >
+                            <AlertCircle className="w-5 h-5" />
+                          </button>
+                        )}
 
                       {/* Loading Indicator for Job Title & Address Suggestions */}
                       {hasSuggestions &&
                         isLoading[
                           field === "position" ? "jobTitle" : "location"
                         ] && (
-                          <div className="absolute right-8">
+                          <div className="absolute right-8 top-2">
                             <Loader2 className="w-5 h-5 animate-spin text-gray-400" />
                           </div>
                         )}
-
-                      {/* Character counter */}
-                      {/* {VALIDATION_RULES[field].maxLength && (
-                      <div
-                        className={`text-xs mt-1 text-right ${
-                          getRemainingChars(field) <= 5 ? "text-red-500" : "text-gray-500"
-                        }`}
-                      >
-                        {getRemainingChars(field)} / {VALIDATION_RULES[field].maxLength} characters remaining
-                      </div>
-                    )} */}
                     </div>
                   )}
                 </div>
 
                 {hasSuggestions &&
                   (field === "position"
-                    ? showJobTitleDropdown && jobTitleSuggestions.length > 0
+                    ? showJobTitleDropdown && jobTitleSuggestions?.length > 0
                     : showLocationDropdown &&
-                      locationSuggestions.length > 0) && (
+                      locationSuggestions?.length > 0) && (
                     <div className="absolute z-50 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-y-auto">
                       {(field === "position"
                         ? jobTitleSuggestions
@@ -1401,7 +1372,7 @@ const PersonalInformation = () => {
                         <div className="flex items-center space-x-2">
                           <AlertCircle className="w-5 h-5 text-red-400" />
                           <span className="font-medium text-black">
-                            Suggestions
+                            {t("builder_forms.personal_info.suggestions")}
                           </span>
                         </div>
 
@@ -1419,10 +1390,16 @@ const PersonalInformation = () => {
                               {isLoading.autoFix ? (
                                 <Loader2 className="w-4 h-4 animate-spin" />
                               ) : (
-                                "Auto Fix"
+                                t("builder_forms.personal_info.auto_fix")
                               )}
                             </button>
                           )}
+                          <button
+                            onClick={() => markAsResolved(field)}
+                            className="px-3 py-1 text-sm font-medium text-white bg-green-600 rounded-md shadow hover:bg-green-700 transition-all"
+                          >
+                            {t("builder_forms.personal_info.mark_resolved")}
+                          </button>
                           <button
                             onClick={() => setActiveTooltip(null)}
                             className="text-black transition-colors"
@@ -1433,15 +1410,6 @@ const PersonalInformation = () => {
                       </div>
                     </div>
                     <div className="p-4">
-                      {/* Show validation errors first */}
-                      {/* {validationErrors[field] && (
-                      <div className="flex items-start space-x-3 mb-3">
-                        <div className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-red-400 mt-2"></div>
-                        <p className="text-black text-sm">{validationErrors[field]}</p>
-                      </div>
-                    )} */}
-
-                      {/* Then show API suggestions */}
                       {getSuggestions(field).map((msg, i) => (
                         <div
                           key={i}

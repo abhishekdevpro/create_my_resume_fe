@@ -13,6 +13,7 @@ import { FcGoogle } from "react-icons/fc";
 import { BASE_URL } from "../../components/Constant/constant";
 import { useTranslation } from "react-i18next";
 import { ResumeContext } from "../../components/context/ResumeContext";
+import axiosInstance from "../../components/utils/axiosInstance";
 const Login2 = () => {
   const { t } = useTranslation();
   const [isThirdstepOpen, setThirdstepOpen] = useState(false);
@@ -36,17 +37,33 @@ const Login2 = () => {
   };
 
   const handleLogin = async (e) => {
+    const { email, password } = formData;
+
     e.preventDefault();
 
-    if (!formData.email || !formData.password) {
+    if (!email || !password) {
       toast.error(t("loginpage.toast.email_required"));
       return;
     }
-
+    if (password.length < 6 || password.length > 30) {
+      toast.error(t("loginpage.toast.password_length_error"));
+      return;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      toast.error(t("loginpage.toast.invalid_email"));
+      return;
+    }
+    // const passwordRegex =
+    //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&.]{6,30}$/;
+    // if (!passwordRegex.test(password)) {
+    //   toast.error(t("loginpage.toast.password_strength_error"));
+    //   return;
+    // }
     setIsLoading(true);
     try {
-      const response = await axios.post(
-        `${BASE_URL}/api/user/auth/login?lang=${selectedLang}`,
+      const response = await axiosInstance.post(
+        `/api/user/auth/login?lang=${selectedLang}`,
         formData
       );
 
@@ -75,10 +92,10 @@ const Login2 = () => {
     setShowPassword(!showPassword);
   };
   const handleGoogleSignin = async () => {
-    const url = `${BASE_URL}/api/user/auth/google?lang=${selectedLang}`;
+    const url = `/api/user/auth/google?lang=${selectedLang}`;
 
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         url,
         {},
         {
@@ -156,6 +173,8 @@ const Login2 = () => {
                   placeholder={t("loginpage.password_placeholder")}
                   required
                   disabled={isLoading}
+                  minLength={6} // Minimum 8 characters
+                  maxLength={30} // Maximum 20 characters
                 />
                 <button
                   type="button"
@@ -168,14 +187,14 @@ const Login2 = () => {
               </div>
             </div>
             <div className="text-center py-2">
-              <button
-                type="button"
-                className="text-teal-700 hover:text-teal-700"
-                onClick={() => setThirdstepOpen(true)}
+              <Link
+                href="/signup"
+                className="text-[#00b38d] hover:text-[#00b38d]"
+                // onClick={() => setThirdstepOpen(true)}
                 disabled={isLoading}
               >
                 {t("loginpage.new_user")}
-              </button>
+              </Link>
             </div>
             <div className="text-center py-2">
               <Link href="/forgotpassword">
@@ -205,8 +224,8 @@ const Login2 = () => {
               <label htmlFor="terms" className="text-gray-700 text-sm">
                 {t("loginpage.agree_terms")}{" "}
                 <Link
-                  href="/TermsandConditions"
-                  className="text-teal-700 underline"
+                  href="/terms&conditions"
+                  className="text-[#00b38d] underline"
                 >
                   {t("loginpage.terms_conditions")}
                 </Link>
@@ -215,12 +234,12 @@ const Login2 = () => {
 
             <button
               type="submit"
-              // className="w-full bg-teal-700 text-white px-4 py-2 rounded-md hover:bg-teal-700 transition-colors duration-300 relative"
+              // className="w-full bg-[#00b38d] text-white px-4 py-2 rounded-md hover:bg-[#00b38d] transition-colors duration-300 relative"
               className={`w-full text-white px-4 py-2 rounded-md transition-colors duration-300 relative 
                 ${
                   !isChecked || isLoading
                     ? "bg-gray-400 cursor-not-allowed "
-                    : "bg-teal-700 hover:bg-[#008f6f]"
+                    : "bg-[#00b38d] hover:bg-[#008f6f]"
                 }`}
               disabled={!isChecked || isLoading} // Disabled when terms are not checked or loading
             >
@@ -379,7 +398,7 @@ export default Login2;
 //                 I agree to the{" "}
 //                 <Link
 //                   href="/TermsandConditions"
-//                   className="text-teal-700 underline"
+//                   className="text-[#00b38d] underline"
 //                 >
 //                   Terms & Conditions
 //                 </Link>
@@ -388,7 +407,7 @@ export default Login2;
 
 //             <button
 //               type="submit"
-//               className="w-full bg-teal-700 text-white px-4 py-2 rounded-md hover:bg-teal-700 transition-colors duration-300 relative"
+//               className="w-full bg-[#00b38d] text-white px-4 py-2 rounded-md hover:bg-[#00b38d] transition-colors duration-300 relative"
 //               disabled={isLoading}
 //             >
 //               Send OTP
@@ -396,7 +415,7 @@ export default Login2;
 //           </form>
 //           {/* <button
 //             // type="submit"
-//             className="w-full bg-teal-700 text-white px-4 py-2 rounded-md hover:bg-teal-700 transition-colors duration-300 relative"
+//             className="w-full bg-[#00b38d] text-white px-4 py-2 rounded-md hover:bg-[#00b38d] transition-colors duration-300 relative"
 //             // disabled={isLoading}
 //           >
 //             Send OTP

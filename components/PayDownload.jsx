@@ -3,12 +3,14 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BASE_URL } from "./Constant/constant";
+import axiosInstance from "./utils/axiosInstance";
 
 const PayAndDownload = ({ resumeId, token, PayerID }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [paymentVerified, setPaymentVerified] = useState(false);
   const templateRef = useRef();
-
+  const { i18n } = useTranslation();
+  const language = i18n.language;
   useEffect(() => {
     if (PayerID) {
       verifyPayment();
@@ -36,8 +38,8 @@ const PayAndDownload = ({ resumeId, token, PayerID }) => {
       `;
 
       // API call to generate the PDF
-      await axios.post(
-        `${BASE_URL}/api/user/generate-pdf-py`,
+      await axiosInstance.post(
+        `/api/user/generate-pdf-py?lang=${language}`,
         { html: fullContent },
         {
           headers: {
@@ -74,7 +76,7 @@ const PayAndDownload = ({ resumeId, token, PayerID }) => {
       };
 
       const response = await axios.post(
-        `${BASE_URL}/api/user/paypal/create-payment`,
+        `${BASE_URL}/api/user/paypal/create-payment?lang=${language}`,
         payload,
         {
           headers: {
@@ -111,7 +113,7 @@ const PayAndDownload = ({ resumeId, token, PayerID }) => {
 
       if (orderId && token && PayerID) {
         const response = await axios.get(
-          `${BASE_URL}/api/user/paypal/verify-order?orderid=${orderId}`,
+          `${BASE_URL}/api/user/paypal/verify-order?orderid=${orderId}&lang=${language}`,
           {
             headers: {
               Authorization: token,
@@ -145,7 +147,7 @@ const PayAndDownload = ({ resumeId, token, PayerID }) => {
       setIsLoading(true);
 
       const response = await axios.get(
-        `${BASE_URL}/api/user/download-file/11/${resumeId}`,
+        `${BASE_URL}/api/user/download-file/11/${resumeId}?lang=${language}`,
         {
           headers: {
             Authorization: token,

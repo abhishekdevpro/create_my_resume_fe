@@ -4,27 +4,58 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BASE_URL } from "../../../components/Constant/constant";
 import { ResumeContext } from "../../../components/context/ResumeContext";
+import axiosInstance from "../../../components/utils/axiosInstance";
 
 const VerificationPage = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
   const { selectedLang } = useContext(ResumeContext);
 
+  // useEffect(() => {
+  //   const { id } = router.query;
+  //   console.log(id, router.query, "token huu");
+
+  //   if (!id) return;
+
+  //   const verifyUser = async () => {
+  //     try {
+  //       const response = await axiosInstance.get(
+  //         `/api/user/verify-account/${id}?lang=${selectedLang}`
+  //       );
+  //       console.log(response);
+  //       if (response.ok) {
+  //         toast.success("Account verified successfully!");
+  //         // Redirect to login after 3 seconds
+  //         setTimeout(() => {
+  //           router.push("/login2");
+  //         }, 3000);
+  //       } else {
+  //         toast.error(
+  //           "Verification failed. Please try again or contact support."
+  //         );
+  //         router.push("/login2");
+  //       }
+  //     } catch (error) {
+  //       toast.error("An error occurred during verification. Please try again.");
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   };
+
+  //   verifyUser();
+  // }, [router]);
   useEffect(() => {
     const { id } = router.query;
-    console.log(id, router.query, "token huu");
 
     if (!id) return;
 
     const verifyUser = async () => {
       try {
-        const response = await fetch(
-          `${BASE_URL}/api/user/verify-account/${id}?lang=${selectedLang}`
+        const response = await axiosInstance.get(
+          `/api/user/verify-account/${id}?lang=${selectedLang}`
         );
-        console.log(response);
-        if (response.ok) {
+        if (response.data?.status === "success") {
           toast.success("Account verified successfully!");
-          // Redirect to login after 3 seconds
           setTimeout(() => {
             router.push("/login2");
           }, 3000);
@@ -36,6 +67,7 @@ const VerificationPage = () => {
         }
       } catch (error) {
         toast.error("An error occurred during verification. Please try again.");
+        router.push("/login2");
       } finally {
         setIsLoading(false);
       }
@@ -64,14 +96,14 @@ const VerificationPage = () => {
               <div className="mt-6">
                 <button
                   onClick={() => router.reload()}
-                  className="px-4 py-2 bg-green-400 text-white rounded-lg hover:bg-teal-600 transition-colors"
+                  className="px-4 py-2 bg-green-400 text-white rounded-lg hover:bg-green-500 transition-colors"
                 >
                   Try Again
                 </button>
                 <p className="mt-4 text-sm text-gray-600">
                   If the problem persists, please{" "}
                   <a
-                    href="mailto:support@genesistech.ca"
+                    href="mailto:support@createmyresume.ca"
                     className="text-blue-500 hover:underline"
                   >
                     contact support

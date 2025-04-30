@@ -4,6 +4,7 @@ import { BASE_URL } from "../../components/Constant/constant";
 import { toast } from "react-toastify";
 import { Trash2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import axiosInstance from "../../components/utils/axiosInstance";
 const ProfileForm = () => {
   const { i18n, t } = useTranslation();
   const language = i18n.language;
@@ -67,8 +68,8 @@ const ProfileForm = () => {
           }));
 
           // Fetch countries
-          const countriesResponse = await axios.get(
-            `${BASE_URL}/api/user/countries?lang=${language}`
+          const countriesResponse = await axiosInstance.get(
+            `/api/user/countries?lang=${language}`
           );
           if (countriesResponse.data.status === "success") {
             setCountries(countriesResponse.data.data);
@@ -89,13 +90,8 @@ const ProfileForm = () => {
       if (formData.country_id) {
         try {
           const token = localStorage.getItem("token");
-          const response = await axios.get(
-            `${BASE_URL}/api/user/stats/${formData.country_id}?lang=${language}`,
-            {
-              headers: {
-                Authorization: token, // Ensure token is included correctly
-              },
-            }
+          const response = await axiosInstance.get(
+            `/api/user/stats/${formData.country_id}?lang=${language}`
           );
           if (response.data.status === "success") {
             setStates(response.data.data);
@@ -118,8 +114,8 @@ const ProfileForm = () => {
       if (formData.state_id) {
         setLoading(true); // Set loading state to true
         try {
-          const citiesResponse = await axios.get(
-            `${BASE_URL}/api/user/cities/${formData.state_id}?lang=${language}`
+          const citiesResponse = await axiosInstance.get(
+            `/api/user/cities/${formData.state_id}?lang=${language}`
           );
 
           if (citiesResponse.data.status === "success") {
@@ -193,12 +189,118 @@ const ProfileForm = () => {
     }
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   const token = localStorage.getItem("token");
+  //   const formDataToSend = new FormData();
+
+  //   formDataToSend.append("first_name", formData.first_name);
+  //   formDataToSend.append("last_name", formData.last_name);
+  //   formDataToSend.append("professional_title", formData.professional_title);
+  //   formDataToSend.append("languages", formData.languages);
+  //   formDataToSend.append("age", formData.age);
+  //   formDataToSend.append("current_salary", formData.current_salary);
+  //   formDataToSend.append("expected_salary", formData.expected_salary);
+  //   formDataToSend.append("description", formData.description);
+  //   formDataToSend.append("country_id", formData.country_id);
+  //   formDataToSend.append("state_id", formData.state_id);
+  //   formDataToSend.append("city_id", formData.city_id);
+  //   formDataToSend.append("phone", formData.phone);
+
+  //   if (formData.uploadPhoto) {
+  //     formDataToSend.append("upload_photo", formData.uploadPhoto);
+  //   }
+
+  //   try {
+  //     const response = await axios.patch(
+  //       `${BASE_URL}/api/user/user-profile?lang=${language}`,
+  //       formDataToSend,
+  //       {
+  //         headers: {
+  //           "Content-Type": "multipart/form-data",
+  //           Authorization: token,
+  //         },
+  //       }
+  //     );
+  //     console.log(response.code, response.status, ">>>>response");
+  //     if (response.status === 200) {
+  //       toast.success(t("profile_updated"));
+  //     } else {
+  //       toast.error(t("profile_update_failed"), response.data.message);
+  //     }
+  //   } catch (error) {
+  //     toast.error("An error occurred during profile update:", error);
+  //   }
+  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const token = localStorage.getItem("token");
-    const formDataToSend = new FormData();
+    if (!token) {
+      toast.error(t("auth.token_missing"));
+      return;
+    }
 
+    // Field validations
+    if (
+      !formData.first_name ||
+      !formData.last_name ||
+      !formData.professional_title ||
+      !formData.languages ||
+      // !formData.age ||
+      !formData.current_salary ||
+      !formData.expected_salary ||
+      !formData.description ||
+      // !formData.country_id ||
+      // !formData.state_id ||
+      // !formData.city_id ||
+      !formData.phone
+    ) {
+      toast.error(t("profile_error.all_fields_required"));
+      return;
+    }
+
+    // Age validation (Must be between 18 and 100)
+    // if (
+    //   !/^\d+$/.test(formData.age) ||
+    //   formData.age < 18 ||
+    //   formData.age > 100
+    // ) {
+    //   toast.error(t("profile_error.invalid_age"));
+    //   return;
+    // }
+
+    // Salary validation (Must be a number and positive)
+    if (!/^\d+$/.test(formData.current_salary) || formData.current_salary < 0) {
+      toast.error(t("profile_error.invalid_current_salary"));
+      return;
+    }
+    if (
+      !/^\d+$/.test(formData.expected_salary) ||
+      formData.expected_salary < 0
+    ) {
+      toast.error(t("profile_error.invalid_expected_salary"));
+      return;
+    }
+
+    // Phone number validation (8 to 15 digits)
+    const phoneRegex = /^[0-9]{8,15}$/;
+    if (!phoneRegex.test(formData.phone)) {
+      toast.error(t("profile_error.invalid_phone"));
+      return;
+    }
+
+    // File validation (Only images allowed)
+    if (formData.uploadPhoto) {
+      const allowedTypes = ["image/jpeg", "image/png", "image/jpg"];
+      if (!allowedTypes.includes(formData.uploadPhoto.type)) {
+        toast.error(t("profile_error.invalid_image_format"));
+        return;
+      }
+    }
+
+    const formDataToSend = new FormData();
     formDataToSend.append("first_name", formData.first_name);
     formDataToSend.append("last_name", formData.last_name);
     formDataToSend.append("professional_title", formData.professional_title);
@@ -227,14 +329,16 @@ const ProfileForm = () => {
           },
         }
       );
-      console.log(response.code, response.status, ">>>>response");
+
+      console.log(response.status, ">>>>response");
       if (response.status === 200) {
         toast.success(t("profile_updated"));
       } else {
         toast.error(t("profile_update_failed"), response.data.message);
       }
     } catch (error) {
-      toast.error("An error occurred during profile update:", error);
+      console.error(error);
+      toast.error(error.response?.data?.message || t("profile.update_error"));
     }
   };
 
@@ -310,7 +414,7 @@ const ProfileForm = () => {
               />
             </div>
           </div> */}
-          <div className="md:flex items-center space-x-4 relative">
+          {/* <div className="md:flex items-center space-x-4 relative">
             {formData.photo && (
               <div className="relative">
                 <img
@@ -352,6 +456,51 @@ const ProfileForm = () => {
                 ? t("image_uploaded")
                 : t("no_file_chosen")}
             </span>
+          </div> */}
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-4 relative">
+            {formData.photo && (
+              <div className="relative">
+                <img
+                  src={
+                    formData.uploadPhoto
+                      ? URL.createObjectURL(formData.uploadPhoto)
+                      : `https://api.ciblijob.fr${formData.photo}`
+                  }
+                  alt="Profile"
+                  className="w-20 h-20 rounded-full border object-cover"
+                />
+                <button
+                  type="button"
+                  onClick={handleRemovePhoto}
+                  className="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1"
+                >
+                  <Trash2 size={16} />
+                </button>
+              </div>
+            )}
+
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleFileChange}
+                className="hidden"
+                id="fileInput"
+              />
+              <label
+                htmlFor="fileInput"
+                className="border p-2 cursor-pointer bg-gray-100 rounded-md text-center"
+              >
+                {t("choose_file")}
+              </label>
+              <span className="text-gray-700 text-sm sm:ml-2 break-all">
+                {formData.uploadPhoto
+                  ? formData.uploadPhoto.name
+                  : formData.photo
+                  ? t("image_uploaded")
+                  : t("no_file_chosen")}
+              </span>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">

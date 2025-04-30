@@ -176,8 +176,8 @@
 //           conditions, please contact us at:
 //           <br />
 //           Email:{" "}
-//           <a href="mailto:bonjour@cibli.fR" className="text-blue-500">
-//             bonjour@cibli.fR
+//           <a href="mailto:bonjour@createmyresume.ca" className="text-blue-500">
+//             bonjour@createmyresume.ca
 //           </a>
 //         </p>
 
@@ -219,8 +219,8 @@
 //           {t.contact}:
 //           <br />
 //           Email:{" "}
-//           <a href="mailto:bonjour@cibli.fR" className="text-blue-500">
-//             bonjour@cibli.fR
+//           <a href="mailto:bonjour@createmyresume.ca" className="text-blue-500">
+//             bonjour@createmyresume.ca
 //           </a>
 //         </p>
 //       </div>

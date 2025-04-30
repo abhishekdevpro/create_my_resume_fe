@@ -26,7 +26,7 @@ import { toast } from "react-toastify";
 import LoaderButton from "../components/utility/LoaderButton";
 import useLoader from "../hooks/useLoader";
 import Modal from "./adminlogin/Modal";
-import { Menu, X } from "lucide-react";
+import { AlertCircle, Menu, X } from "lucide-react";
 import Image from "next/image";
 import resumeImg from "./builderImages/GraphicDesignerResume.jpg";
 import poweredbypaypal from "./builderImages/poweredbypaypal.png";
@@ -69,6 +69,7 @@ export default function WebBuilder() {
   const [loading, setLoading] = useState(null);
   const { i18n, t } = useTranslation();
   const language = i18n.language;
+  const { improve } = router.query;
   const {
     setResumeStrength,
     resumeData,
@@ -79,6 +80,8 @@ export default function WebBuilder() {
     selectedFont,
     backgroundColorss,
     headerColor,
+
+    resumeStrength,
   } = useContext(ResumeContext);
 
   useEffect(() => {
@@ -218,23 +221,36 @@ export default function WebBuilder() {
     {
       label: t("resumeStrength.sections.personalInformation"),
       component: <PersonalInformation />,
+      showErrorIcon: resumeStrength?.is_personal_info === false,
     },
     {
       label: t("resumeStrength.sections.socialLinks"),
       component: <SocialMedia />,
+      showErrorIcon: resumeStrength?.is_social === false,
     },
     {
       label: t("resumeStrength.sections.personalSummary"),
       component: <Summary />,
+      showErrorIcon: resumeStrength?.is_personal_summery === false,
     },
-    { label: t("resumeStrength.sections.education"), component: <Education /> },
+    {
+      label: t("resumeStrength.sections.education"),
+      component: <Education />,
+      showErrorIcon: resumeStrength?.is_education === false,
+    },
     {
       label: t("resumeStrength.sections.workHistory"),
       component: <WorkExperience />,
+      showErrorIcon: resumeStrength?.is_work_history === false,
     },
-    { label: t("resumeStrength.sections.projects"), component: <Projects /> },
+    {
+      label: t("resumeStrength.sections.projects"),
+      component: <Projects />,
+      showErrorIcon: resumeStrength?.is_project === false,
+    },
     {
       label: t("resumeStrength.sections.skills"),
+      showErrorIcon: resumeStrength?.is_skills === false,
       component: Array.isArray(resumeData?.skills) ? (
         resumeData.skills.map((skill, index) => (
           <Skill title={skill.title} currentSkillIndex={index} key={index} />
@@ -243,10 +259,15 @@ export default function WebBuilder() {
         <p>No skills available</p>
       ),
     },
-    { label: t("resumeStrength.sections.languages"), component: <Language /> },
+    {
+      label: t("resumeStrength.sections.languages"),
+      component: <Language />,
+      showErrorIcon: resumeStrength?.is_languages === false,
+    },
     {
       label: t("resumeStrength.sections.certification"),
       component: <Certification />,
+      showErrorIcon: resumeStrength?.is_certifications === false,
     },
   ];
   // const sections = [
@@ -365,61 +386,7 @@ export default function WebBuilder() {
 
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = () => setShowModal(true);
-  const downloadAsPDF = async () => {
-    handleFinish();
-    if (!templateRef.current) {
-      toast.error("Template reference not found");
-      return;
-    }
 
-    setisDownloading(true); // Start loading before the async operation
-
-    try {
-      const token = localStorage.getItem("token");
-      const htmlContent = templateRef.current.innerHTML;
-
-      const fullContent = `
-            <style>
-                @import url('https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css');
-            </style>
-            ${htmlContent}
-        `;
-
-      const response = await axios.get(
-        `${BASE_URL}/api/user/download-resume/${resumeId}?pdf_type=${selectedPdfType}`,
-
-        {
-          headers: {
-            Authorization: token,
-            "Content-Type": "application/pdf",
-          },
-          responseType: "blob",
-        }
-      );
-      const url = window.URL.createObjectURL(
-        new Blob([response.data], { type: "application/pdf" })
-      );
-      const link = document.createElement("a");
-      link.href = url;
-
-      link.setAttribute("download", `resume.pdf`);
-      document.body.appendChild(link);
-      link.click();
-
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(url);
-
-      // downloadPDF();
-      // initiateCheckout(); // Call this only if the request is successful
-    } catch (error) {
-      console.error("PDF generation error:", error);
-      toast.error(
-        error.response?.data?.message || "Failed to generate and open PDF"
-      );
-    } finally {
-      setisDownloading(false); // Ensure loading is stopped after success or failure
-    }
-  };
   // const downloadAsPDF = async () => {
   //   handleFinish();
   //   if (!templateRef.current) {
@@ -478,6 +445,61 @@ export default function WebBuilder() {
   //     setLoading(null);
   //   }
   // };
+  const downloadAsPDF = async () => {
+    handleFinish();
+    if (!templateRef.current) {
+      toast.error("Template reference not found");
+      return;
+    }
+
+    // setisDownloading(true); // Start loading before the async operation
+
+    try {
+      const token = localStorage.getItem("token");
+      const htmlContent = templateRef.current.innerHTML;
+
+      const fullContent = `
+            <style>
+                @import url('https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css');
+            </style>
+            ${htmlContent}
+        `;
+
+      const response = await axios.get(
+        `${BASE_URL}/api/user/download-resume/${resumeId}?pdf_type=${selectedPdfType}`,
+
+        {
+          headers: {
+            Authorization: token,
+            "Content-Type": "application/pdf",
+          },
+          responseType: "blob",
+        }
+      );
+      const url = window.URL.createObjectURL(
+        new Blob([response.data], { type: "application/pdf" })
+      );
+      const link = document.createElement("a");
+      link.href = url;
+
+      link.setAttribute("download", `resume.pdf`);
+      document.body.appendChild(link);
+      link.click();
+
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+
+      // downloadPDF();
+      // initiateCheckout(); // Call this only if the request is successful
+    } catch (error) {
+      console.error("PDF generation error:", error);
+      toast.error(
+        error.response?.data?.message || "Failed to generate and open PDF"
+      );
+    } finally {
+      // setisDownloading(false); // Ensure loading is stopped after success or failure
+    }
+  };
   const initiateCheckout = async () => {
     try {
       // Ensure resumeId is a valid integer
@@ -618,32 +640,42 @@ export default function WebBuilder() {
           resumeData.education?.map((edu) => ({
             school: edu.school || "",
             degree: edu.degree || "",
-            startYear: edu.startYear || "",
-            endYear: edu.endYear || "",
+            startYear: edu.startYear,
+            endYear: edu.endYear,
             location: edu.location || "",
           })) || [],
         workExperience:
           resumeData.workExperience?.map((exp) => ({
             company: exp.company || "",
             position: exp.position || "",
-            description: exp.description || "",
-            KeyAchievements: Array.isArray(exp.KeyAchievements)
-              ? exp.KeyAchievements
-              : [exp.KeyAchievements || ""],
-            startYear: exp.startYear || "",
-            endYear: exp.endYear || "",
+            description: exp.description,
+            // KeyAchievements: Array.isArray(exp.KeyAchievements)
+            //   ? exp.KeyAchievements
+            //   : [exp.KeyAchievements],
+            keyAchievements: Array.isArray(exp.keyAchievements)
+              ? exp.keyAchievements.filter((item) => item?.trim?.()) // filter out empty strings or undefined
+              : exp.keyAchievements && exp.keyAchievements.trim?.()
+              ? [exp.keyAchievements.trim()]
+              : [],
+            startYear: exp.startYear,
+            endYear: exp.endYear,
             location: exp.location || "",
           })) || [],
         projects:
           resumeData.projects?.map((project) => ({
             title: project.title || "",
             link: project.link || "",
-            description: project.description || "",
+            description: project.description,
+            // keyAchievements: Array.isArray(project.keyAchievements)
+            //   ? project.keyAchievements
+            //   : [project.keyAchievements],
             keyAchievements: Array.isArray(project.keyAchievements)
-              ? project.keyAchievements
-              : [project.keyAchievements || ""],
-            startYear: project.startYear || "",
-            endYear: project.endYear || "",
+              ? project.keyAchievements.filter((item) => item?.trim?.()) // filter out empty strings or undefined
+              : project.keyAchievements && project.keyAchievements.trim?.()
+              ? [project.keyAchievements.trim()]
+              : [],
+            startYear: project.startYear,
+            endYear: project.endYear,
             name: project.name || "",
           })) || [],
         skills: Array.isArray(resumeData.skills)
@@ -680,7 +712,7 @@ export default function WebBuilder() {
         return;
       }
 
-      const url = `${BASE_URL}/api/user/resume-update/${id}`;
+      const url = `${BASE_URL}/api/user/resume-update/${id}?lang=${language}`;
       const response = await axios.put(
         url,
         { ...templateData, resume_html: resumeHtml },
@@ -781,7 +813,7 @@ export default function WebBuilder() {
                     type="button"
                     onClick={handlePrevious}
                     disabled={currentSection === 0}
-                    className="w-40 h-10 rounded-lg bg-teal-700 text-white font-medium transition hover:bg-teal-800 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-40 h-10 rounded-lg bg-green-500 text-white font-medium transition hover:bg-blue-900 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {t("buttons.previous")}
                   </button>
@@ -789,7 +821,7 @@ export default function WebBuilder() {
                   <button
                     type="button"
                     onClick={handleNext}
-                    className="w-40 h-10 rounded-lg bg-black text-white font-medium transition "
+                    className="w-40 h-10 rounded-lg bg-yellow-500 text-black font-medium transition hover:bg-yellow-400"
                   >
                     {currentSection === sections.length - 1
                       ? t("buttons.finish")
@@ -801,7 +833,7 @@ export default function WebBuilder() {
                   {/* <select
                     value={selectedFont}
                     onChange={handleFontChange}
-                    className="w-40 h-10 rounded-lg border border-teal-500 px-4 font-bold text-black bg-white focus:ring-2 focus:ring-teal-600"
+                    className="w-40 h-10 rounded-lg border border-green-500 px-4 font-bold text-black bg-white focus:ring-2 focus:ring-green-600"
                   >
                     <option value="Ubuntu">Ubuntu</option>
                     <option value="Calibri">Calibri</option>
@@ -847,14 +879,17 @@ export default function WebBuilder() {
                         {sections.map((section, index) => (
                           <li
                             key={index}
-                            className={`px-4 py-2 cursor-pointer transition rounded-lg border-2 ${
+                            className={`flex items-center justify-between gap-2 px-4 py-2 cursor-pointer transition-all duration-200 rounded-lg border-2 ${
                               currentSection === index
-                                ? "border-teal-500 font-semibold bg-teal-600 text-white"
-                                : "border-teal-500 bg-white text-black hover:bg-blue-50"
+                                ? "border-green-500 font-semibold bg-green-500 text-white"
+                                : "border-green-500 bg-white text-black hover:bg-blue-50"
                             }`}
                             onClick={() => handleSectionClick(index)}
                           >
-                            {section.label}
+                            <span> {section.label} </span>
+                            {improve && section.showErrorIcon && (
+                              <AlertCircle className="text-red-500 w-5 h-5" />
+                            )}
                           </li>
                         ))}
                       </ul>
@@ -922,7 +957,7 @@ export default function WebBuilder() {
                 {/* <select
                   value={selectedFont}
                   onChange={handleFontChange}
-                  className="w-40 h-10 rounded-lg border-2 border-teal-500 px-8 p-1 font-bold  bg-white text-black mt-2"
+                  className="w-40 h-10 rounded-lg border-2 border-green-500 px-8 p-1 font-bold  bg-white text-black mt-2"
                 >
                   <option value="Ubuntu">Ubuntu</option>
                   <option value="Calibri">Calibri</option>
@@ -951,7 +986,7 @@ export default function WebBuilder() {
               <div className="flex gap-4">
                 <button
                   onClick={handleClick}
-                  className="bg-teal-700 text-white px-6 py-2 rounded-lg hover:bg-teal-800"
+                  className="bg-green-500 text-white px-6 py-2 rounded-lg"
                 >
                   {loading === "save" ? (
                     <SaveLoader loadingText={t("buttons.saving")} />
@@ -962,7 +997,7 @@ export default function WebBuilder() {
 
                 <button
                   onClick={downloadAsPDF}
-                  className="bg-black text-white px-6 py-2 rounded-lg"
+                  className="bg-yellow-500 text-black px-6 py-2 rounded-lg"
                 >
                   {loading === "download" ? (
                     <SaveLoader loadingText={t("buttons.downloading")} />
@@ -1022,7 +1057,7 @@ export default function WebBuilder() {
                         <div className="md:w-1/2 w-full p-4 ">
                           <div className="text-center mb-6">
                             <h2 className="text-2xl font-bold text-gray-900">
-                              $49
+                              €49
                             </h2>
                             <p className="text-sm text-gray-500">
                               Total Amount
@@ -1036,7 +1071,7 @@ export default function WebBuilder() {
                               </label>
                               <input
                                 type="text"
-                                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-500"
+                                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
                                 value={`${formData.first_name} ${formData.last_name}`.trim()}
                                 name="full name"
                                 required
@@ -1049,7 +1084,7 @@ export default function WebBuilder() {
                               </label>
                               <input
                                 type="email"
-                                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-500"
+                                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
                                 value={formData.email}
                                 required
                                 name="email"
@@ -1061,7 +1096,7 @@ export default function WebBuilder() {
                                 ☎️ Phone
                               </label>
                               <input
-                                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-500"
+                                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
                                 required
                                 disabled
                                 type="number"

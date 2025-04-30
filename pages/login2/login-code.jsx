@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { BASE_URL } from "../../components/Constant/constant";
 import { ResumeContext } from "../../components/context/ResumeContext";
+import axiosInstance from "../../components/utils/axiosInstance";
 const LoginCode = () => {
   const [otp, setOtp] = useState("");
   const [captchaVerified, setCaptchaVerified] = useState(false);
@@ -40,8 +41,8 @@ const LoginCode = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post(
-        `${BASE_URL}/api/user/auth/login-verify-otp?lang=${selectedLang}`,
+      const response = await axiosInstance.post(
+        `/api/user/auth/login-verify-otp?lang=${selectedLang}`,
 
         { email, otp }
       );
@@ -68,7 +69,7 @@ const LoginCode = () => {
         {/* Back Button */}
         <Link
           href="/login2"
-          className="text-teal-700 flex items-center mb-6 hover:text-teal-700"
+          className="text-[#00b38d] flex items-center mb-6 hover:text-[#00b38d]"
         >
           <span className="mr-2">←</span> Back
         </Link>
@@ -126,7 +127,7 @@ const LoginCode = () => {
           Didn&apos;t receive your code?{" "}
           <Link href="/login2">
             {" "}
-            <button className="text-teal-700 font-semibold hover:text-teal-700">
+            <button className="text-[#00b38d] font-semibold hover:text-[#00b38d]">
               Send new code
             </button>
           </Link>
@@ -135,13 +136,13 @@ const LoginCode = () => {
         {/* Sign In Button */}
         <button
           onClick={handleSignIn}
-          className="w-full bg-teal-700 text-white py-2 px-4 rounded-md hover:bg-teal-700 flex items-center justify-center"
+          className="w-full bg-[#00b38d] text-white py-2 px-4 rounded-md hover:bg-[#00b38d] flex items-center justify-center"
         >
           Sign in <span className="ml-2">→</span>
         </button>
 
         {/* Alternative Option */}
-        <p className="mt-6 text-center text-sm text-teal-700 font-semibold">
+        <p className="mt-6 text-center text-sm text-[#00b38d] font-semibold">
           Don&apos;t have access to this email?
         </p>
       </div>
