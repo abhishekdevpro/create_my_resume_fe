@@ -105,7 +105,7 @@
 //                   </Link>
 //                 </li> */}
 //                 <li>
-//                   <Link href="https://blog.ciblijob.fr/">
+//                   <Link href="">
 //                     <span>Resources</span>
 //                   </Link>
 //                 </li>
