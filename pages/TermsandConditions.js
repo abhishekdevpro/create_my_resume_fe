@@ -176,7 +176,7 @@
 //           conditions, please contact us at:
 //           <br />
 //           Email:{" "}
-//           <a href="mailto:bonjour@createmyresume.ca" className="text-blue-500">
+//           <a href="mailto:bonjour@createmyresume.in" className="text-blue-500">
 //             bonjour@createmyresume.ca
 //           </a>
 //         </p>
@@ -219,8 +219,8 @@
 //           {t.contact}:
 //           <br />
 //           Email:{" "}
-//           <a href="mailto:bonjour@createmyresume.ca" className="text-blue-500">
-//             bonjour@createmyresume.ca
+//           <a href="mailto:bonjour@createmyresume.in" className="text-blue-500">
+//             bonjour@createmyresume.in
 //           </a>
 //         </p>
 //       </div>
@@ -267,7 +267,7 @@ function TermsandConditions() {
           {termsData.contact}:
           <br />
           Email:{" "}
-          <a href="mailto:abc@genesistech.ca" className="text-blue-500">
+          <a href="mailto:abc@genesistech.in" className="text-blue-500">
             abc@genesistech.ca
           </a>
         </p>

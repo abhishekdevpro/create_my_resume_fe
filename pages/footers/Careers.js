@@ -116,7 +116,7 @@
 //           of a dynamic, growth-oriented team, we’d love to hear from you. To
 //           apply for a position at Create My Resume, please send your resume and a cover
 //           letter to{" "}
-//           <a href="mailto:bonjour@createmyresume.ca" className="text-blue-500">
+//           <a href="mailto:bonjour@createmyresume.in" className="text-blue-500">
 //             career@Create My Resume.ca
 //           </a>
 //           .
@@ -223,7 +223,7 @@ function Careers() {
         </h3>
         <p className="text-base sm:text-lg">
           {t("how_to_apply_description")}{" "}
-          <a href="mailto:career@Genesistech.ca" className="text-blue-500">
+          <a href="mailto:career@Genesistech.in" className="text-blue-500">
             {t("apply_email")}
           </a>
           .

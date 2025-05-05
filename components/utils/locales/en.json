@@ -151,7 +151,7 @@
         "ai_resume_accuracy": "AI - Resume Accuracy",
         "ai_resume_enhancer": "AI - Resume Enhancer",
         "ai_job_match_apply": "AI - Job Match & Apply",
-        "copyright": "© Copyright By createmyresume.ca All Rights Reserved",
+        "copyright": "© Copyright By createmyresume.in All Rights Reserved",
         "toast_success":"Subscribed successfully!"
       
       },
@@ -213,7 +213,7 @@
           
           "how_to_apply": "How to Apply",
           "how_to_apply_description": "If you’re passionate about helping others succeed and want to be part of a dynamic, growth-oriented team, we’d love to hear from you. To apply for a position at Create My Resume, please send your resume and a cover letter to",
-          "apply_email": "career@createmyresume.ca",
+          "apply_email": "career@createmyresume.in",
           
           "join_us": "Join Us and Make a Difference",
           "join_us_description": "At Create My Resume, you’ll have the opportunity to make a meaningful impact every day. Join us and help shape the future of job seekers around the world. We look forward to welcoming you to our team!",
@@ -285,7 +285,7 @@
               "childrensPrivacy": "Our services are not intended for individuals under 18. If a child provides personal data, we will delete it.",
               "changesPolicy": "We may update this Privacy Policy. Continued use of our services after changes means acceptance of the revised policy.",
               "contactUs": "If you have any questions, contact us at:",
-              "email_name": "bonjour@createmyresume.ca",
+              "email_name": "bonjour@createmyresume.in",
               
                 "title": "AI Resume Builder",
                 "introduction": "Revolutionizing the Job Application Process",
@@ -494,7 +494,7 @@
                           "title": "10. Contact Information",
                           "list": [
                             "If you have any questions or concerns about these terms and conditions, please contact us at:",
-                            "Email: bonjour@createmyresume.ca"
+                            "Email: bonjour@createmyresume.in"
                           ]
                         }
                       ],
@@ -712,7 +712,8 @@
                           "search_jobs": "Search Jobs",
                           "loading": "Loading...",
                           "error_message": "Failed to fetch jobs. Please try again later.",
-                          "apply_now": "Apply Now"
+                          "apply_now": "Apply Now",
+                          "no_jobs_found": "No jobs found."
                         },
                          "notification_coming_soon": "🙋‍♀️ Notification Coming Soon",
                          "skill": {
@@ -1558,7 +1559,7 @@
     "help_support": "Need help or want to change your subscription?",
     "contact_us": "Contact us at:",
     "phone": "📞 855-695-3235",
-    "email": "📧 customersupport@createmyresume.ca",
+    "email": "📧 customersupport@createmyresume.in",
     "availability": "Available 7 days a week:",
     "monday_friday": "Monday-Friday: 8 AM - 8 PM (CST)",
     "saturday": "Saturday: 8 AM - 5 PM (CST)",

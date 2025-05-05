@@ -178,7 +178,7 @@
 //               Jobs
 //             </Link>
 //             <Link
-//               href="https://blog.ciblijob.fr/"
+//               href=""
 //               className="text-black hover:text-[#00b38d] px-3 py-2 rounded-md text-lg font-semibold"
 //             >
 //               Resources
@@ -219,7 +219,7 @@
 //                   <img
 //                     src={
 //                       photo
-//                         ? `https://api.ciblijob.fr${photo}`
+//                         ? `https://api.createmyresume.in${photo}`
 //                         : "https://img.freepik.com/premium-vector/businessman-avatar-illustration-cartoon-user-portrait-user-profile-icon_118339-4382.jpg"
 //                     }
 //                     alt="User"
@@ -337,7 +337,7 @@
 //                 AI Resume Builder
 //               </Link>
 //               <Link
-//                 href="https://blog.ciblijob.fr/"
+//                 href=""
 //                 className="text-black hover:text-[#00b38d] block  px-3 py-2 rounded-md text-base font-semibold"
 //               >
 //                 Resources
@@ -396,7 +396,7 @@
 //                 AI Resume Builder
 //               </Link>
 //               <Link
-//                 href="https://blog.ciblijob.fr/"
+//                 href=""
 //                 className="text-black hover:text-[#00b38d] block px-3 py-2 rounded-md text-base font-semibold"
 //               >
 //                 Resources
@@ -714,7 +714,7 @@ const Navbar = () => {
                   <img
                     src={
                       photo
-                        ? `https://api.ciblijob.fr${photo}`
+                        ? `https://api.createmyresume.in${photo}`
                         : "https://img.freepik.com/premium-vector/businessman-avatar-illustration-cartoon-user-portrait-user-profile-icon_118339-4382.jpg"
                     }
                     alt="User"
@@ -837,7 +837,7 @@ const Navbar = () => {
                 {t("ai_resume_builder")}
               </Link>
               <Link
-                href="https://blog.ciblijob.fr/"
+                href=""
                 className="text-black hover:text-[#00b38d] block px-3 py-2 rounded-md text-base font-semibold"
               >
                 {t("resources")}
