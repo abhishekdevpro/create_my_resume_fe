@@ -231,7 +231,7 @@ const Template22 = () => {
                 {(provided) => (
                   <div {...provided.droppableProps} ref={provided.innerRef}>
                     <h2
-                      className="section-title mb-1 border-b-2 border-gray-300 editable text-cyan-800"
+                      className="section-title mb-1 border-b-2 border-gray-300 editable text-teal-800"
                       contentEditable
                       suppressContentEditableWarning
                       style={{ color: headerColor }}
@@ -251,7 +251,7 @@ const Template22 = () => {
                             {...provided.dragHandleProps}
                             className={`hover:scale-105 transition-transform duration-300 mb-1 ${
                               snapshot.isDragging &&
-                              "outline-dashed outline-2 outline-gray-400 bg-white text-cyan-800"
+                              "outline-dashed outline-2 outline-gray-400 bg-white text-teal-800"
                             }`}
                           >
                             <div className="flex flex-row justify-between space-y-1">
@@ -272,14 +272,14 @@ const Template22 = () => {
                             >
                               {item.link}
                             </Link>
-                            <p className=" text-cyan-800">{item.description}</p>
+                            <p className=" text-teal-800">{item.description}</p>
                             <Droppable
                               droppableId={`PROJECTS_KEY_ACHIEVEMENT-${index}`}
                               type="PROJECTS_KEY_ACHIEVEMENT"
                             >
                               {(provided) => (
                                 <ul
-                                  className="list-disc pl-5 content text-cyan-800"
+                                  className="list-disc pl-5 content text-teal-800"
                                   {...provided.droppableProps}
                                   ref={provided.innerRef}
                                 >
@@ -300,7 +300,7 @@ const Template22 = () => {
                                               className={`hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
                                                                                             ${
                                                                                               snapshot.isDragging &&
-                                                                                              "outline-dashed outline-2 outline-gray-400 bg-white text-cyan-800"
+                                                                                              "outline-dashed outline-2 outline-gray-400 bg-white text-teal-800"
                                                                                             }`}
                                             >
                                               <div

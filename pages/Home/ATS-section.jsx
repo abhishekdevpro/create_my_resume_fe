@@ -1,5 +1,5 @@
-import { File, FileText, Rocket } from 'lucide-react';
-import React from 'react';
+import { File, FileText, Rocket } from "lucide-react";
+import React from "react";
 
 const ATSResumeSection = () => {
   return (
@@ -10,10 +10,10 @@ const ATSResumeSection = () => {
           <h1 className="text-4xl font-bold text-white mb-4">
             Resumes optimized for applicant tracking systems (ATS)
           </h1>
-          
+
           <p className="text-gray-200 text-lg max-w-2xl">
-            Enhancv resumes and cover letters are vigorously tested against major ATS 
-            systems to ensure complete parsability
+            Enhancv resumes and cover letters are vigorously tested against
+            major ATS systems to ensure complete parsability
           </p>
 
           <button className="bg-emerald-500 hover:bg-emerald-600 text-white font-medium py-3 px-6 rounded-lg transition-colors">
@@ -25,19 +25,19 @@ const ATSResumeSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             {
-                icon: <FileText />,
-                title: "Readable contact information",
-              },
-              {
-                icon: <File />,
-                title: "Full experience section parsing",
-              },
-              {
-                icon: <Rocket />,
-                title: "Optimized skills section",
-              },
+              icon: <FileText />,
+              title: "Readable contact information",
+            },
+            {
+              icon: <File />,
+              title: "Full experience section parsing",
+            },
+            {
+              icon: <Rocket />,
+              title: "Optimized skills section",
+            },
           ].map((feature, index) => (
-            <div 
+            <div
               key={index}
               className="bg-white bg-opacity-10 backdrop-blur-lg rounded-xl p-6 flex items-center space-x-4"
             >
@@ -56,7 +56,7 @@ const ATSResumeSection = () => {
               style={{
                 top: `${20 + i * 15}%`,
                 width: `${60 + i * 10}%`,
-                opacity: 0.2
+                opacity: 0.2,
               }}
             />
           ))}

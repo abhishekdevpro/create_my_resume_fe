@@ -193,6 +193,7 @@ const TooltipContent = ({ improvements, resumeId, onClose }) => {
 };
 
 const ResumeStrength = ({ score, strength, resumeId }) => {
+  const { selectedLang } = useContext(ResumeContext);
   const [showLoader, setShowLoader] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter();

@@ -64,7 +64,7 @@
 //   return (
 //     <div ref={templateRef} className="max-w-4xl mx-auto p-2 bg-white shadow-md border">
 //       <div className="flex">
-//         <div className="bg-cyan-500 p-5 w-1/3">
+//         <div className="bg-teal-500 p-5 w-1/3">
 //           <div className="mb-5">
 //             <div className="rounded-full border-2 border-white mb-5">
 //               <img
@@ -145,7 +145,7 @@
 //         </div>
 
 //         <div className="bg-slate-300 w-2/3">
-//           <div className="bg-cyan-800 p-5">
+//           <div className="bg-teal-800 p-5">
 //             <div className="border-b-2 border-white mb-2"></div>
 //             <h1 className="text-4xl font-bold mb-2 text-white">
 //               {resumeData.name}
@@ -157,10 +157,10 @@
 
 //           <div className="p-5 space-y-8">
 //             <div>
-//               <h2 className="text-xl text-cyan-800 font-bold mb-4">
+//               <h2 className="text-xl text-teal-800 font-bold mb-4">
 //                 EXPERIENCE
 //               </h2>
-//               <h3 className="text-xl text-cyan-800 font-semibold border-b-2 border-gray-800 pb-2 mb-4">
+//               <h3 className="text-xl text-teal-800 font-semibold border-b-2 border-gray-800 pb-2 mb-4">
 //                 Projects
 //               </h3>
 
@@ -187,7 +187,7 @@
 //                                 snapshot.isDragging ? "bg-white shadow-lg" : ""
 //                               }`}
 //                             >
-//                               <div className="flex justify-between items-center text-cyan-800">
+//                               <div className="flex justify-between items-center text-teal-800">
 //                                 <p className="text-xl font-semibold">
 //                                   {item.company}
 //                                 </p>
@@ -197,11 +197,11 @@
 //                                   id={`work-experience-start-end-date`}
 //                                 />
 //                               </div>
-//                               <p className="text-cyan-800 font-medium my-2">
+//                               <p className="text-teal-800 font-medium my-2">
 //                                 {item.position}
 //                               </p>
 //                               <p
-//                                 className="text-cyan-800 hover:outline-dashed hover:outline-2 hover:outline-gray-400"
+//                                 className="text-teal-800 hover:outline-dashed hover:outline-2 hover:outline-gray-400"
 //                                 contentEditable="true"
 //                                 suppressContentEditableWarning={true}
 //                               >
@@ -214,7 +214,7 @@
 //                               >
 //                                 {(provided) => (
 //                                   <ul
-//                                     className="list-disc pl-5 mt-2 text-cyan-800"
+//                                     className="list-disc pl-5 mt-2 text-teal-800"
 //                                     {...provided.droppableProps}
 //                                     ref={provided.innerRef}
 //                                   >
@@ -271,7 +271,7 @@
 //                       className="mt-8"
 //                     >
 //                       <h2
-//                         className="text-xl text-cyan-800 font-bold border-b-2 border-gray-300 pb-2 mb-4"
+//                         className="text-xl text-teal-800 font-bold border-b-2 border-gray-300 pb-2 mb-4"
 //                         contentEditable
 //                         suppressContentEditableWarning
 //                       >
@@ -296,7 +296,7 @@
 //                                 }`}
 //                               >
 //                                 <div className="flex justify-between items-center">
-//                                   <p className="text-lg font-semibold text-cyan-800">
+//                                   <p className="text-lg font-semibold text-teal-800">
 //                                     {item.name}
 //                                   </p>
 //                                   <DateRange
@@ -313,7 +313,7 @@
 //                                 >
 //                                   {item.link}
 //                                 </Link>
-//                                 <p className="text-cyan-800 mt-2">
+//                                 <p className="text-teal-800 mt-2">
 //                                   {item.description}
 //                                 </p>
 
@@ -323,7 +323,7 @@
 //                                 >
 //                                   {(provided) => (
 //                                     <ul
-//                                       className="list-disc pl-5 mt-2 text-cyan-800"
+//                                       className="list-disc pl-5 mt-2 text-teal-800"
 //                                       {...provided.droppableProps}
 //                                       ref={provided.innerRef}
 //                                     >
@@ -375,8 +375,8 @@
 //             </div>
 
 //             <div className="mt-8">
-//               <h2 className="text-xl font-bold text-cyan-800 mb-4">LANGUAGE</h2>
-//               <div className="text-cyan-800 font-bold">
+//               <h2 className="text-xl font-bold text-teal-800 mb-4">LANGUAGE</h2>
+//               <div className="text-teal-800 font-bold">
 //                 <Language languages={resumeData.languages} />
 //               </div>
 //             </div>
@@ -470,7 +470,7 @@ const Template21 = () => {
       className="max-w-4xl mx-auto p-2 bg-white shadow-md border"
     >
       <div className="flex">
-        <div className="bg-cyan-500 p-5 w-1/3">
+        <div className="bg-teal-500 p-5 w-1/3">
           <div className="mb-5">
             <div className=" mb-5">
               <Image
@@ -550,7 +550,7 @@ const Template21 = () => {
         </div>
 
         <div className="bg-slate-300 w-2/3">
-          <div className="bg-cyan-800 p-5">
+          <div className="bg-teal-800 p-5">
             <div className="border-b-2 border-white mb-2"></div>
             <h1 className="text-4xl font-bold mb-2 text-white">
               {resumeData.name}
@@ -562,10 +562,10 @@ const Template21 = () => {
 
           <div className="p-5 space-y-8">
             <div>
-              <h2 className="text-xl text-cyan-800 font-bold mb-4">
+              <h2 className="text-xl text-teal-800 font-bold mb-4">
                 EXPERIENCE
               </h2>
-              <h3 className="text-xl text-cyan-800 font-semibold border-b-2 border-gray-800 pb-2 mb-4">
+              <h3 className="text-xl text-teal-800 font-semibold border-b-2 border-gray-800 pb-2 mb-4">
                 Projects
               </h3>
 
@@ -592,7 +592,7 @@ const Template21 = () => {
                                 snapshot.isDragging ? "bg-white shadow-lg" : ""
                               }`}
                             >
-                              <div className="flex justify-between items-center text-cyan-800">
+                              <div className="flex justify-between items-center text-teal-800">
                                 <p className="text-xl font-semibold">
                                   {item.company}
                                 </p>
@@ -602,11 +602,11 @@ const Template21 = () => {
                                   id={`work-experience-start-end-date`}
                                 />
                               </div>
-                              <p className="text-cyan-800 font-medium my-2">
+                              <p className="text-teal-800 font-medium my-2">
                                 {item.position}
                               </p>
                               <p
-                                className="text-cyan-800 hover:outline-dashed hover:outline-2 hover:outline-gray-400"
+                                className="text-teal-800 hover:outline-dashed hover:outline-2 hover:outline-gray-400"
                                 contentEditable="true"
                                 suppressContentEditableWarning={true}
                               >
@@ -619,7 +619,7 @@ const Template21 = () => {
                               >
                                 {(provided) => (
                                   <ul
-                                    className="list-disc pl-5 mt-2 text-cyan-800"
+                                    className="list-disc pl-5 mt-2 text-teal-800"
                                     {...provided.droppableProps}
                                     ref={provided.innerRef}
                                   >
@@ -676,7 +676,7 @@ const Template21 = () => {
                       className="mt-8"
                     >
                       <h2
-                        className="text-xl text-cyan-800 font-bold border-b-2 border-gray-300 pb-2 mb-4"
+                        className="text-xl text-teal-800 font-bold border-b-2 border-gray-300 pb-2 mb-4"
                         contentEditable
                         suppressContentEditableWarning
                       >
@@ -701,7 +701,7 @@ const Template21 = () => {
                                 }`}
                               >
                                 <div className="flex justify-between items-center">
-                                  <p className="text-lg font-semibold text-cyan-800">
+                                  <p className="text-lg font-semibold text-teal-800">
                                     {item.name}
                                   </p>
                                   <DateRange
@@ -718,7 +718,7 @@ const Template21 = () => {
                                 >
                                   {item.link}
                                 </Link>
-                                <p className="text-cyan-800 mt-2">
+                                <p className="text-teal-800 mt-2">
                                   {item.description}
                                 </p>
 
@@ -728,7 +728,7 @@ const Template21 = () => {
                                 >
                                   {(provided) => (
                                     <ul
-                                      className="list-disc pl-5 mt-2 text-cyan-800"
+                                      className="list-disc pl-5 mt-2 text-teal-800"
                                       {...provided.droppableProps}
                                       ref={provided.innerRef}
                                     >
@@ -780,8 +780,8 @@ const Template21 = () => {
             </div>
 
             <div className="mt-8">
-              <h2 className="text-xl font-bold text-cyan-800 mb-4">LANGUAGE</h2>
-              <div className="text-cyan-800 font-bold">
+              <h2 className="text-xl font-bold text-teal-800 mb-4">LANGUAGE</h2>
+              <div className="text-teal-800 font-bold">
                 <Language languages={resumeData.languages} />
               </div>
             </div>
