@@ -183,7 +183,7 @@ function PrivacyPolicy() {
           )
         )}
 
-        <h2 className="text-xl font-semibold">{t("sections.contactUs")}</h2>
+        {/* <h2 className="text-xl font-semibold">{t("sections.contactUs")}</h2> */}
         <p className="text-gray-700">
           {t("contactUs")}{" "}
           <a

@@ -948,6 +948,7 @@ const WorkExperience = () => {
                   /> */}
                   <input
                     type="text"
+                    maxLength={40}
                     placeholder={t("builder_forms.work_experience.position")}
                     name="position"
                     className={`w-full other-input border ${
